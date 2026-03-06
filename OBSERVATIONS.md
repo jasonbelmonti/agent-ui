@@ -14,3 +14,4 @@
 - For textured signal text, clipped grain/raster needs to be visible at normal viewing scale; ultra-fine noise disappears even when the animation is technically present.
 - Requested work items should include materially verifiable success criteria, ideally commands, named stories, or clearly observable UI states.
 - User is exploring whether vivid purple should exist as a contrast accent to the highlight lime, with a preference for preserving core semantic tokens unless the new hue earns a distinct role.
+- User likes Marathon-style flat areas of color and is considering them as sparse, clean accents, especially around headings or section punctuation rather than as broad background treatment.
