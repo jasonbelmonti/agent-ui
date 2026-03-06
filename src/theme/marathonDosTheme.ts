@@ -11,8 +11,15 @@ export const marathonDosPalette = {
   text: "#f5f5f0",
   primary: "#c0fe04",
   primaryDeep: "#86b400",
+  accentViolet: "#9f4dff",
   warning: "#ff9b2f",
   error: "#f24723",
+} as const;
+
+export const marathonDosFontStacks = {
+  ui: "\"Azeret Mono\", \"SFMono-Regular\", \"Menlo\", monospace",
+  display: "\"Oxanium\", \"Azeret Mono\", sans-serif",
+  displaySecondary: "\"Doto\", \"Oxanium\", \"Azeret Mono\", sans-serif",
 } as const;
 
 export const marathonDosTheme: ThemeConfig = {
@@ -45,8 +52,8 @@ export const marathonDosTheme: ThemeConfig = {
     controlOutline: "rgba(192, 254, 4, 0.26)",
     controlOutlineWidth: 1,
     lineWidth: 1,
-    fontFamily: "\"Azeret Mono\", \"SFMono-Regular\", \"Menlo\", monospace",
-    fontFamilyCode: "\"Azeret Mono\", \"SFMono-Regular\", \"Menlo\", monospace",
+    fontFamily: marathonDosFontStacks.ui,
+    fontFamilyCode: marathonDosFontStacks.ui,
     fontSize: 13,
     fontSizeHeading1: 42,
     fontSizeHeading2: 28,
