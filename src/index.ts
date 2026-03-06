@@ -8,4 +8,4 @@ import "@fontsource/oxanium/700.css";
 import "./styles/theme.css";
 
 export { AntdThemeProvider, installStaticAntdTheme } from "./providers/AntdThemeProvider";
-export { marathonDosFontStacks, marathonDosTheme } from "./theme/marathonDosTheme";
+export { marathonDosFontStacks, marathonDosPalette, marathonDosTheme } from "./theme/marathonDosTheme";

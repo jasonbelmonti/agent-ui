@@ -142,6 +142,60 @@ const meta = {
           </Card>
         </Col>
       </Row>
+
+      <Card
+        title="Secondary Accent Trial"
+        extra="Violet Against Lime"
+        style={{
+          borderColor: "rgba(159, 77, 255, 0.42)",
+          background:
+            "linear-gradient(135deg, rgba(159, 77, 255, 0.18), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 52%), #0a0a0a",
+        }}
+      >
+        <Row gutter={[24, 24]}>
+          <Col xs={24} lg={14}>
+            <Space direction="vertical" size={10}>
+              <Typography.Text style={{ ...eyebrowStyle, color: marathonDosPalette.accentViolet }}>
+                Display Accent
+              </Typography.Text>
+              <Typography.Title
+                level={2}
+                className="marathon-text-display-secondary"
+                style={{ margin: 0, color: marathonDosPalette.accentViolet }}
+              >
+                Violet can cut through the phosphor stack
+              </Typography.Title>
+              <Typography.Paragraph style={{ margin: 0, maxWidth: 720 }}>
+                The experiment works best when violet behaves like a transmission/event accent
+                rather than a new default interaction color. Lime still owns focus, CTA energy, and
+                the general UI pulse.
+              </Typography.Paragraph>
+            </Space>
+          </Col>
+          <Col xs={24} lg={10}>
+            <Space direction="vertical" size={12} style={{ width: "100%" }}>
+              <div style={contrastChipRowStyle}>
+                <div style={{ ...contrastChipStyle, background: marathonDosPalette.primary }}>
+                  Lime Primary
+                </div>
+                <div
+                  style={{
+                    ...contrastChipStyle,
+                    background: marathonDosPalette.accentViolet,
+                    color: marathonDosPalette.text,
+                  }}
+                >
+                  Violet Accent
+                </div>
+              </div>
+              <Typography.Paragraph style={{ margin: 0, color: "rgba(245, 245, 240, 0.82)" }}>
+                This pairing is visually loud enough to be useful, but probably too competitive for
+                shared button and focus semantics.
+              </Typography.Paragraph>
+            </Space>
+          </Col>
+        </Row>
+      </Card>
     </Flex>
   ),
 } satisfies Meta;
@@ -154,6 +208,7 @@ export const ThemeFoundations: Story = {};
 
 const paletteEntries = Object.entries({
   Primary: marathonDosPalette.primary,
+  "Accent Violet": marathonDosPalette.accentViolet,
   Error: marathonDosPalette.error,
   Warning: marathonDosPalette.warning,
   Text: marathonDosPalette.text,
@@ -193,4 +248,25 @@ const fontSampleStyle = {
   display: "block",
   fontSize: 18,
   lineHeight: 1.2,
+};
+
+const contrastChipRowStyle = {
+  display: "flex",
+  flexWrap: "wrap" as const,
+  gap: 10,
+};
+
+const contrastChipStyle = {
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minWidth: 140,
+  minHeight: 42,
+  padding: "0 14px",
+  border: `1px solid ${marathonDosPalette.grid}`,
+  color: marathonDosPalette.black,
+  fontSize: 11,
+  fontWeight: 700,
+  letterSpacing: "0.14em",
+  textTransform: "uppercase" as const,
 };

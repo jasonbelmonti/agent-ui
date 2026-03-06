@@ -61,6 +61,22 @@ const meta = {
             </Typography.Paragraph>
           </Space>
         </Card>
+
+        <Card title="Violet Contrast Trial" style={violetCardStyle}>
+          <Space direction="vertical" size={10}>
+            <Typography.Text style={{ ...eyebrowStyle, color: marathonDosPalette.accentViolet }}>
+              Secondary Accent
+            </Typography.Text>
+            <Typography.Title level={2} className="marathon-signal-text" style={violetSignalStyle}>
+              SLIPSTREAM WINDOW OPEN
+            </Typography.Title>
+            <Typography.Paragraph style={copyStyle}>
+              This keeps lime as the interaction language and uses violet only as a display/event
+              accent, which is the safest place to test whether it sharpens the system or muddies
+              it.
+            </Typography.Paragraph>
+          </Space>
+        </Card>
       </Flex>
     </Flex>
   ),
@@ -101,6 +117,13 @@ const cardStyle: CSSProperties = {
     "linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 52%), rgba(12, 12, 12, 0.94)",
 };
 
+const violetCardStyle: CSSProperties = {
+  ...cardStyle,
+  background:
+    "linear-gradient(135deg, rgba(159, 77, 255, 0.18), transparent 34%), linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 52%), rgba(12, 12, 12, 0.94)",
+  borderColor: "rgba(159, 77, 255, 0.42)",
+};
+
 const inlineSignalStyle: SignalStyle = {
   display: "inline-block",
   fontSize: 15,
@@ -112,5 +135,12 @@ const overrideStyle: SignalStyle = {
   "--marathon-fx-signal-glow": "rgba(116, 241, 255, 0.34)",
   "--marathon-fx-signal-noise-size": "108px",
   "--marathon-fx-signal-flicker-depth": 0.04,
+  margin: 0,
+};
+
+const violetSignalStyle: SignalStyle = {
+  "--marathon-fx-signal-accent": marathonDosPalette.accentViolet,
+  "--marathon-fx-signal-glow": "rgba(159, 77, 255, 0.38)",
+  "--marathon-fx-signal-noise-size": "92px",
   margin: 0,
 };
