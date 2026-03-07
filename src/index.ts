@@ -25,6 +25,7 @@ export type {
 } from "./components/Panel";
 export { PixelCubePath } from "./components/PixelCubePath";
 export { PixelCubeLoader } from "./components/PixelCubeLoader";
+export { SignalWireframe } from "./components/SignalWireframe";
 export type {
   PixelCubePathProps,
   PixelCubePathTone,
@@ -34,4 +35,8 @@ export type {
   PixelCubeLoaderProps,
   PixelCubeLoaderTone,
 } from "./components/PixelCubeLoader";
+export type {
+  SignalWireframeProps,
+  SignalWireframeTone,
+} from "./components/SignalWireframe";
 export { marathonDosFontStacks, marathonDosPalette, marathonDosTheme } from "./theme/marathonDosTheme";
