@@ -104,8 +104,8 @@ function joinClassNames(...classNames: Array<string | undefined>) {
 
 function renderOverlay(content: ReactNode, stateLabel: string) {
   return (
-    <div aria-live="polite" className="marathon-graph-canvas__overlay">
-      <div aria-label={stateLabel} className="marathon-graph-canvas__overlay-card" role="status">
+    <div aria-live="polite" className="signal-ui-graph-canvas__overlay">
+      <div aria-label={stateLabel} className="signal-ui-graph-canvas__overlay-card" role="status">
         {content}
       </div>
     </div>
@@ -150,16 +150,16 @@ export function GraphCanvas<NodeType extends Node = Node, EdgeType extends Edge 
   const backgroundConfig = {
     ...defaultBackgroundProps,
     ...backgroundProps,
-    className: joinClassNames("marathon-graph-canvas__background", backgroundProps?.className),
+    className: joinClassNames("signal-ui-graph-canvas__background", backgroundProps?.className),
     patternClassName: joinClassNames(
-      "marathon-graph-canvas__background-pattern",
+      "signal-ui-graph-canvas__background-pattern",
       backgroundProps?.patternClassName,
     ),
   };
   const controlsConfig = {
     ...defaultControlProps,
     ...controlProps,
-    className: joinClassNames("marathon-graph-canvas__controls", controlProps?.className),
+    className: joinClassNames("signal-ui-graph-canvas__controls", controlProps?.className),
   };
   const rootStyle = { ...defaultRootStyle, ...style };
   const resolvedNodeTypes = useMemo(
@@ -178,7 +178,7 @@ export function GraphCanvas<NodeType extends Node = Node, EdgeType extends Edge 
   );
   const resolvedMiniMapProps = {
     bgColor: "#060606",
-    className: "marathon-graph-canvas__minimap",
+    className: "signal-ui-graph-canvas__minimap",
     maskColor: "rgba(5, 5, 5, 0.72)",
     maskStrokeColor: "rgba(192, 254, 4, 0.38)",
     maskStrokeWidth: 1,
@@ -202,10 +202,10 @@ export function GraphCanvas<NodeType extends Node = Node, EdgeType extends Edge 
         : null;
 
   return (
-    <div className={joinClassNames("marathon-graph-canvas", className)} style={rootStyle}>
+    <div className={joinClassNames("signal-ui-graph-canvas", className)} style={rootStyle}>
       <ReactFlowProvider>
         <ReactFlow<NodeType, EdgeType>
-          className="marathon-graph-canvas__surface"
+          className="signal-ui-graph-canvas__surface"
           colorMode={colorMode}
           edgeTypes={resolvedEdgeTypes}
           edges={edges}

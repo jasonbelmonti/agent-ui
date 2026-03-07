@@ -2,7 +2,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import { AdditiveBlending, Color, MathUtils, Quaternion, Vector3 } from "three";
-import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { signalPalette } from "../theme/signalTheme.js";
 const signalTraceCoordinates = [
     [
         [0, 0, 0],
@@ -44,15 +44,15 @@ const signalTraceCoordinates = [
 const latticeData = createLatticeData();
 const toneClassName = {
     primary: undefined,
-    violet: "marathon-signal-wireframe--violet",
+    violet: "signal-ui-signal-wireframe--violet",
 };
 const upAxis = new Vector3(0, 1, 0);
 export function SignalWireframe({ animated = true, className, detail = "orthogonal beam lattice", height = 420, label, showLegend = true, style, title = "wire trace field", tone = "primary", usage = "decorative", ...props }) {
-    const rootClassName = ["marathon-signal-wireframe", toneClassName[tone], className]
+    const rootClassName = ["signal-ui-signal-wireframe", toneClassName[tone], className]
         .filter(Boolean)
         .join(" ");
     const rootStyle = {
-        "--marathon-signal-wireframe-height": `${height}px`,
+        "--signal-ui-signal-wireframe-height": `${height}px`,
         ...style,
     };
     const accessibilityProps = usage === "graphic"
@@ -63,22 +63,22 @@ export function SignalWireframe({ animated = true, className, detail = "orthogon
         : {
             "aria-hidden": true,
         };
-    return (_jsxs("div", { className: rootClassName, style: rootStyle, ...accessibilityProps, ...props, children: [_jsx("div", { "aria-hidden": "true", className: "marathon-signal-wireframe__viewport", children: _jsx(Canvas, { camera: { fov: 34, position: [0, 0.4, 10.25] }, dpr: [1, 2], frameloop: animated ? "always" : "demand", gl: { alpha: true, antialias: true, powerPreference: "high-performance" }, style: { width: "100%", height: "100%" }, children: _jsx(SignalWireframeScene, { animated: animated, tone: tone }) }) }), showLegend ? (_jsxs("div", { className: "marathon-signal-wireframe__legend", children: [_jsx("span", { className: "marathon-signal-wireframe__label", children: title }), _jsxs("span", { className: "marathon-signal-wireframe__detail", children: [detail, _jsx("span", { "aria-hidden": "true", className: "marathon-signal-wireframe__cursor" })] })] })) : null] }));
+    return (_jsxs("div", { className: rootClassName, style: rootStyle, ...accessibilityProps, ...props, children: [_jsx("div", { "aria-hidden": "true", className: "signal-ui-signal-wireframe__viewport", children: _jsx(Canvas, { camera: { fov: 34, position: [0, 0.4, 10.25] }, dpr: [1, 2], frameloop: animated ? "always" : "demand", gl: { alpha: true, antialias: true, powerPreference: "high-performance" }, style: { width: "100%", height: "100%" }, children: _jsx(SignalWireframeScene, { animated: animated, tone: tone }) }) }), showLegend ? (_jsxs("div", { className: "signal-ui-signal-wireframe__legend", children: [_jsx("span", { className: "signal-ui-signal-wireframe__label", children: title }), _jsxs("span", { className: "signal-ui-signal-wireframe__detail", children: [detail, _jsx("span", { "aria-hidden": "true", className: "signal-ui-signal-wireframe__cursor" })] })] })) : null] }));
 }
 function SignalWireframeScene({ animated, tone, }) {
     const sceneRef = useRef(null);
     const toneColors = useMemo(() => {
         if (tone === "violet") {
             return {
-                accent: marathonDosPalette.accentViolet,
+                accent: signalPalette.accentViolet,
                 base: "#6d2fd0",
                 node: "#d7b8ff",
                 tail: "#7d55d7",
             };
         }
         return {
-            accent: marathonDosPalette.primary,
-            base: marathonDosPalette.primaryDeep,
+            accent: signalPalette.primary,
+            base: signalPalette.primaryDeep,
             node: "#f7ffd7",
             tail: "#8fcb1c",
         };

@@ -3,13 +3,13 @@ import { Card } from "antd";
 export const panelCutCornerPresets = {
     tactical: {
         cutCorner: "accent",
-        cutCornerColor: "var(--marathon-primary)",
+        cutCornerColor: "var(--signal-ui-primary)",
         cutCornerPlacement: "top-right",
         cutCornerSize: 26,
     },
     architectural: {
         cutCorner: "notch",
-        cutCornerColor: "var(--marathon-primary)",
+        cutCornerColor: "var(--signal-ui-primary)",
         cutCornerPlacement: "bottom-left",
         cutCornerSize: 24,
     },
@@ -26,17 +26,17 @@ function joinClassNames(...classNames) {
 export function Panel({ className, cutCorner, cutCornerColor, cutCornerPreset, cutCornerPlacement, cutCornerSize, style, ...cardProps }) {
     const preset = cutCornerPreset ? panelCutCornerPresets[cutCornerPreset] : undefined;
     const resolvedCutCorner = cutCorner ?? preset?.cutCorner;
-    const resolvedCutCornerColor = cutCornerColor ?? preset?.cutCornerColor ?? "var(--marathon-primary)";
+    const resolvedCutCornerColor = cutCornerColor ?? preset?.cutCornerColor ?? "var(--signal-ui-primary)";
     const resolvedCutCornerPlacement = cutCornerPlacement ?? preset?.cutCornerPlacement ?? "top-right";
     const resolvedCutCornerSize = cutCornerSize ?? preset?.cutCornerSize ?? 26;
     const panelStyle = {
         ...style,
         ...(resolvedCutCorner
             ? {
-                "--marathon-panel-cut-color": resolvedCutCornerColor,
-                "--marathon-panel-cut-size": toCssLength(resolvedCutCornerSize) ?? "26px",
+                "--signal-ui-panel-cut-color": resolvedCutCornerColor,
+                "--signal-ui-panel-cut-size": toCssLength(resolvedCutCornerSize) ?? "26px",
             }
             : {}),
     };
-    return (_jsx(Card, { ...cardProps, className: joinClassNames("marathon-panel", resolvedCutCorner ? `marathon-panel--cut-${resolvedCutCorner}` : undefined, resolvedCutCorner ? `marathon-panel--corner-${resolvedCutCornerPlacement}` : undefined, className), style: panelStyle }));
+    return (_jsx(Card, { ...cardProps, className: joinClassNames("signal-ui-panel", resolvedCutCorner ? `signal-ui-panel--cut-${resolvedCutCorner}` : undefined, resolvedCutCorner ? `signal-ui-panel--corner-${resolvedCutCornerPlacement}` : undefined, className), style: panelStyle }));
 }

@@ -25,7 +25,7 @@ function joinClassNames(...classNames) {
     return classNames.filter(Boolean).join(" ");
 }
 function renderOverlay(content, stateLabel) {
-    return (_jsx("div", { "aria-live": "polite", className: "marathon-graph-canvas__overlay", children: _jsx("div", { "aria-label": stateLabel, className: "marathon-graph-canvas__overlay-card", role: "status", children: content }) }));
+    return (_jsx("div", { "aria-live": "polite", className: "signal-ui-graph-canvas__overlay", children: _jsx("div", { "aria-label": stateLabel, className: "signal-ui-graph-canvas__overlay-card", role: "status", children: content }) }));
 }
 function getNodeTone(node) {
     if (typeof node.data !== "object" || node.data === null) {
@@ -37,13 +37,13 @@ export function GraphCanvas({ backgroundProps, children, className, colorMode = 
     const backgroundConfig = {
         ...defaultBackgroundProps,
         ...backgroundProps,
-        className: joinClassNames("marathon-graph-canvas__background", backgroundProps?.className),
-        patternClassName: joinClassNames("marathon-graph-canvas__background-pattern", backgroundProps?.patternClassName),
+        className: joinClassNames("signal-ui-graph-canvas__background", backgroundProps?.className),
+        patternClassName: joinClassNames("signal-ui-graph-canvas__background-pattern", backgroundProps?.patternClassName),
     };
     const controlsConfig = {
         ...defaultControlProps,
         ...controlProps,
-        className: joinClassNames("marathon-graph-canvas__controls", controlProps?.className),
+        className: joinClassNames("signal-ui-graph-canvas__controls", controlProps?.className),
     };
     const rootStyle = { ...defaultRootStyle, ...style };
     const resolvedNodeTypes = useMemo(() => ({
@@ -56,7 +56,7 @@ export function GraphCanvas({ backgroundProps, children, className, colorMode = 
     }), [edgeTypes]);
     const resolvedMiniMapProps = {
         bgColor: "#060606",
-        className: "marathon-graph-canvas__minimap",
+        className: "signal-ui-graph-canvas__minimap",
         maskColor: "rgba(5, 5, 5, 0.72)",
         maskStrokeColor: "rgba(192, 254, 4, 0.38)",
         maskStrokeWidth: 1,
@@ -75,5 +75,5 @@ export function GraphCanvas({ backgroundProps, children, className, colorMode = 
         : !loading && nodes.length === 0 && emptyState !== null
             ? renderOverlay(emptyState ?? "No Graph Data", "Empty graph")
             : null;
-    return (_jsxs("div", { className: joinClassNames("marathon-graph-canvas", className), style: rootStyle, children: [_jsx(ReactFlowProvider, { children: _jsxs(ReactFlow, { className: "marathon-graph-canvas__surface", colorMode: colorMode, edgeTypes: resolvedEdgeTypes, edges: edges, elementsSelectable: true, fitView: fitView, fitViewOptions: fitViewOptions, maxZoom: 1.6, minZoom: 0.25, nodeTypes: resolvedNodeTypes, nodes: nodes, nodesConnectable: false, nodesDraggable: false, onEdgeClick: onEdgeClick, onEdgesChange: onEdgesChange, onNodeClick: onNodeClick, onNodesChange: onNodesChange, onSelectionChange: onSelectionChange, panOnDrag: true, zoomOnDoubleClick: false, ...reactFlowProps, children: [showBackground ? _jsx(Background, { ...backgroundConfig }) : null, showControls ? _jsx(Controls, { ...controlsConfig }) : null, showMiniMap ? _jsx(MiniMap, { ...resolvedMiniMapProps }) : null, children] }) }), overlay] }));
+    return (_jsxs("div", { className: joinClassNames("signal-ui-graph-canvas", className), style: rootStyle, children: [_jsx(ReactFlowProvider, { children: _jsxs(ReactFlow, { className: "signal-ui-graph-canvas__surface", colorMode: colorMode, edgeTypes: resolvedEdgeTypes, edges: edges, elementsSelectable: true, fitView: fitView, fitViewOptions: fitViewOptions, maxZoom: 1.6, minZoom: 0.25, nodeTypes: resolvedNodeTypes, nodes: nodes, nodesConnectable: false, nodesDraggable: false, onEdgeClick: onEdgeClick, onEdgesChange: onEdgesChange, onNodeClick: onNodeClick, onNodesChange: onNodesChange, onSelectionChange: onSelectionChange, panOnDrag: true, zoomOnDoubleClick: false, ...reactFlowProps, children: [showBackground ? _jsx(Background, { ...backgroundConfig }) : null, showControls ? _jsx(Controls, { ...controlsConfig }) : null, showMiniMap ? _jsx(MiniMap, { ...resolvedMiniMapProps }) : null, children] }) }), overlay] }));
 }

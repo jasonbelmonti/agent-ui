@@ -1,6 +1,6 @@
 # agent-ui
 
-Marathon-themed React and Ant Design UI package for the desktop agent apps.
+Signal-driven React and Ant Design UI package for desktop apps.
 
 ## Development
 

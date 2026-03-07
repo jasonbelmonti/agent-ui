@@ -12,7 +12,7 @@ import {
 
 export type PixelCubePathTone = "primary" | "violet";
 
-type PathStyle = CSSProperties & Record<`--marathon-cube-path-${string}`, string | number>;
+type PathStyle = CSSProperties & Record<`--signal-ui-cube-path-${string}`, string | number>;
 
 type PixelCubePathBaseProps = Omit<
   ComponentPropsWithoutRef<"div">,
@@ -62,19 +62,19 @@ export function PixelCubePath({
     seed: getPixelCubePathAnimationSeed(instanceId),
   });
   const rootStyle: PathStyle = {
-    "--marathon-cube-path-cell-size": `${cellSize}px`,
-    "--marathon-cube-path-count": cubeCoordinates.length,
-    "--marathon-cube-path-cycle": `${animationProfile.cycleMs}ms`,
-    "--marathon-cube-path-gap": `${gapSize}px`,
-    "--marathon-cube-path-perspective": `${perspective}px`,
-    "--marathon-cube-path-scene-height": `${sceneHeight}px`,
-    "--marathon-cube-path-scene-width": `${sceneWidth}px`,
-    "--marathon-cube-path-scene-z": `${Math.round(stepSize * -1.45)}px`,
-    "--marathon-cube-path-size": `${size}px`,
-    "--marathon-cube-path-step": `${stepSize}px`,
+    "--signal-ui-cube-path-cell-size": `${cellSize}px`,
+    "--signal-ui-cube-path-count": cubeCoordinates.length,
+    "--signal-ui-cube-path-cycle": `${animationProfile.cycleMs}ms`,
+    "--signal-ui-cube-path-gap": `${gapSize}px`,
+    "--signal-ui-cube-path-perspective": `${perspective}px`,
+    "--signal-ui-cube-path-scene-height": `${sceneHeight}px`,
+    "--signal-ui-cube-path-scene-width": `${sceneWidth}px`,
+    "--signal-ui-cube-path-scene-z": `${Math.round(stepSize * -1.45)}px`,
+    "--signal-ui-cube-path-size": `${size}px`,
+    "--signal-ui-cube-path-step": `${stepSize}px`,
     ...style,
   };
-  const rootClassName = ["marathon-pixel-cube-path", toneClassName[tone], className]
+  const rootClassName = ["signal-ui-pixel-cube-path", toneClassName[tone], className]
     .filter(Boolean)
     .join(" ");
   const accessibilityProps =
@@ -90,18 +90,18 @@ export function PixelCubePath({
 
   return (
     <div className={rootClassName} style={rootStyle} {...accessibilityProps} {...props}>
-      <div aria-hidden="true" className="marathon-pixel-cube-path__viewport">
-        <div className="marathon-pixel-cube-path__scene">
+      <div aria-hidden="true" className="signal-ui-pixel-cube-path__viewport">
+        <div className="signal-ui-pixel-cube-path__scene">
           {cubeCoordinates.map((cube) => (
             <span
-              className="marathon-pixel-cube-path__cube"
+              className="signal-ui-pixel-cube-path__cube"
               data-surface={cube.surface ? "true" : "false"}
               key={cube.index}
               style={getCubeStyle(cube, animationProfile.delaysMs)}
             >
-              <span className="marathon-pixel-cube-path__face marathon-pixel-cube-path__face--front" />
-              <span className="marathon-pixel-cube-path__face marathon-pixel-cube-path__face--right" />
-              <span className="marathon-pixel-cube-path__face marathon-pixel-cube-path__face--top" />
+              <span className="signal-ui-pixel-cube-path__face signal-ui-pixel-cube-path__face--front" />
+              <span className="signal-ui-pixel-cube-path__face signal-ui-pixel-cube-path__face--right" />
+              <span className="signal-ui-pixel-cube-path__face signal-ui-pixel-cube-path__face--top" />
             </span>
           ))}
         </div>
@@ -112,7 +112,7 @@ export function PixelCubePath({
 
 const toneClassName: Record<PixelCubePathTone, string | undefined> = {
   primary: undefined,
-  violet: "marathon-pixel-cube-path--violet",
+  violet: "signal-ui-pixel-cube-path--violet",
 };
 
 function getCubeStyle(cube: PixelCubePathCubeCoordinate, delaysMs: number[]): CubeStyle {
@@ -123,9 +123,9 @@ function getCubeStyle(cube: PixelCubePathCubeCoordinate, delaysMs: number[]): Cu
   const delayMs = delaysMs[cube.pathIndex] ?? 0;
 
   return {
-    "--marathon-cube-path-cube-x": `calc(${x} * var(--marathon-cube-path-step))`,
-    "--marathon-cube-path-cube-y": `calc(${y} * var(--marathon-cube-path-step))`,
-    "--marathon-cube-path-cube-z": `calc(${z} * var(--marathon-cube-path-step))`,
-    "--marathon-cube-path-delay": `${delayMs * -1}ms`,
+    "--signal-ui-cube-path-cube-x": `calc(${x} * var(--signal-ui-cube-path-step))`,
+    "--signal-ui-cube-path-cube-y": `calc(${y} * var(--signal-ui-cube-path-step))`,
+    "--signal-ui-cube-path-cube-z": `calc(${z} * var(--signal-ui-cube-path-step))`,
+    "--signal-ui-cube-path-delay": `${delayMs * -1}ms`,
   };
 }

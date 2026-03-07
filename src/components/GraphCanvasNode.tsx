@@ -30,13 +30,13 @@ function joinClassNames(...classNames: Array<string | false | null | undefined>)
 function getBadgeClassName(tone: GraphCanvasBadge["tone"]) {
   switch (tone) {
     case "error":
-      return "marathon-graph-node__badge--error";
+      return "signal-ui-graph-node__badge--error";
     case "neutral":
-      return "marathon-graph-node__badge--neutral";
+      return "signal-ui-graph-node__badge--neutral";
     case "violet":
-      return "marathon-graph-node__badge--violet";
+      return "signal-ui-graph-node__badge--violet";
     case "warning":
-      return "marathon-graph-node__badge--warning";
+      return "signal-ui-graph-node__badge--warning";
     default:
       return undefined;
   }
@@ -45,13 +45,13 @@ function getBadgeClassName(tone: GraphCanvasBadge["tone"]) {
 function getToneClassName(tone: GraphCanvasNodeData["tone"]) {
   switch (resolveGraphCanvasTone(tone)) {
     case "error":
-      return "marathon-graph-node--error";
+      return "signal-ui-graph-node--error";
     case "neutral":
-      return "marathon-graph-node--neutral";
+      return "signal-ui-graph-node--neutral";
     case "violet":
-      return "marathon-graph-node--violet";
+      return "signal-ui-graph-node--violet";
     case "warning":
-      return "marathon-graph-node--warning";
+      return "signal-ui-graph-node--warning";
     default:
       return undefined;
   }
@@ -68,30 +68,30 @@ export function GraphCanvasNode({
   return (
     <div
       className={joinClassNames(
-        "marathon-graph-node",
+        "signal-ui-graph-node",
         getToneClassName(data?.tone),
-        selected && "marathon-graph-node--selected",
+        selected && "signal-ui-graph-node--selected",
       )}
     >
       {targetPosition ? (
         <Handle
-          className="marathon-graph-node__handle marathon-graph-node__handle--target"
+          className="signal-ui-graph-node__handle signal-ui-graph-node__handle--target"
           isConnectable={false}
           position={targetPosition}
           type="target"
         />
       ) : null}
 
-      <div className="marathon-graph-node__frame">
-        {data?.eyebrow ? <div className="marathon-graph-node__eyebrow">{data.eyebrow}</div> : null}
-        <div className="marathon-graph-node__title">{title}</div>
-        {data?.detail ? <div className="marathon-graph-node__detail">{data.detail}</div> : null}
+      <div className="signal-ui-graph-node__frame">
+        {data?.eyebrow ? <div className="signal-ui-graph-node__eyebrow">{data.eyebrow}</div> : null}
+        <div className="signal-ui-graph-node__title">{title}</div>
+        {data?.detail ? <div className="signal-ui-graph-node__detail">{data.detail}</div> : null}
         {data?.badges?.length ? (
-          <div className="marathon-graph-node__badges">
+          <div className="signal-ui-graph-node__badges">
             {data.badges.map((badge) => (
               <span
                 className={joinClassNames(
-                  "marathon-graph-node__badge",
+                  "signal-ui-graph-node__badge",
                   getBadgeClassName(badge.tone),
                 )}
                 key={`${badge.label}-${badge.tone ?? "primary"}`}
@@ -105,7 +105,7 @@ export function GraphCanvasNode({
 
       {sourcePosition ? (
         <Handle
-          className="marathon-graph-node__handle marathon-graph-node__handle--source"
+          className="signal-ui-graph-node__handle signal-ui-graph-node__handle--source"
           isConnectable={false}
           position={sourcePosition}
           type="source"

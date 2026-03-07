@@ -3,14 +3,14 @@
 - Repo started as a minimal `bun init` scaffold with no React, Storybook, or Ant Design setup.
 - Repo now has a React 19 + Ant Design 6 + Storybook 10 (React/Webpack) bootstrap on branch `codex/bel-270-bootstrap-react-storybook`.
 - Preferred initial direction for `agent-ui` is Storybook-first, not a separate app shell.
-- Locked visual direction is a modernized MS-DOS / hacker aesthetic with palette inspiration from Marathon (`#000000`, `#1c1c1c`, `#717171`, `#c0fe04`, `#f24723`), open-source fonts, and restrained terminal effects.
+- Locked visual direction is a modernized MS-DOS / hacker aesthetic with a lime-on-charcoal signal palette (`#000000`, `#1c1c1c`, `#717171`, `#c0fe04`, `#f24723`), open-source fonts, and restrained terminal effects.
 - Current font direction is `Oxanium` for display headings and `Azeret Mono` for UI/body copy.
 - Theme assets that depend on global CSS or font-face imports need a first-class consumer entry, not just Storybook preview; for packaged use, an explicit `styles.css` export is safer than hiding global side effects in `src/index.ts`.
 - For a checked-in TypeScript `dist/` package that ships as Node ESM, source-level relative imports/exports should already use `.js` specifiers; otherwise `tsc` preserves extensionless paths and the published package breaks at runtime.
 - If Storybook webpack consumes TS source files that use explicit `.js` specifiers for ESM-correct package output, `.storybook/main.ts` needs `resolve.extensionAlias` so `.js` can map back to `.ts/.tsx` during local story resolution.
 - Theme motion effects should be exposed as opt-in CSS utilities plus Storybook demos, not forced into Ant Design token config.
 - User prefers motion texture with rapid but subtle "zzt zzt" energy rather than slow ambient shimmer.
-- User is interested in folding more stylized pixel/display fonts into the Marathon theme when they are applied as purposeful accents rather than indiscriminate body copy.
+- User is interested in folding more stylized pixel/display fonts into the shared theme when they are applied as purposeful accents rather than indiscriminate body copy.
 - Micro 5 was rejected after preview; preferred hierarchy is `Oxanium` for top-level headings and `Doto` only for secondary headline/display accents.
 - If a visual effect is intended to carry the aesthetic, the default treatment needs to be visibly legible without requiring users to hunt for it.
 - For textured signal text, clipped grain/raster needs to be visible at normal viewing scale; ultra-fine noise disappears even when the animation is technically present.
@@ -18,7 +18,7 @@
 - User is exploring whether vivid purple should exist as a contrast accent to the highlight lime, with a preference for preserving core semantic tokens unless the new hue earns a distinct role.
 - User is interested in optional 45 degree panel corner treatments, especially either a bold accent triangle or a clipped/notched corner to add diagonal rhythm without changing every surface by default.
 - User prefers stylized treatments to have named presets when possible so the system can stay consistent without requiring repeated hand-tuning of low-level props.
-- User likes Marathon-style flat areas of color and is considering them as sparse, clean accents, especially around headings or section punctuation rather than as broad background treatment.
+- User likes flat areas of color as sparse, clean accents, especially around headings or section punctuation rather than as broad background treatment.
 - User responds well to bold CTA treatments when the motion feels intentional and crunchy, especially fill-based effects with visible pixel creep/flicker and layered text.
 - User notices when visual compositing is only approximated; prefers text/effect treatments to be driven by the same live source rather than loosely synchronized CSS stand-ins.
 - User likes interaction effects that escalate through readable payoff phases, such as fill, saturation/wake-up, then a short burst event, rather than remaining in a single ambient loop.

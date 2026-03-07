@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import type { CSSProperties } from "react";
 
 import { PixelCubeLoader } from "../components/PixelCubeLoader.js";
-import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { signalPalette } from "../theme/signalTheme.js";
 
 const meta = {
   title: "Effects/Pixel Cube Loader",
@@ -25,7 +25,7 @@ const meta = {
         <Flex gap={32} wrap="wrap" align="center" justify="space-between">
           <Space direction="vertical" size={10} style={{ flex: "1 1 420px", maxWidth: 620 }}>
             <Typography.Text style={eyebrowStyle}>Loading / Dimensional Reveal</Typography.Text>
-            <Typography.Title level={1} className="marathon-text-display" style={titleStyle}>
+            <Typography.Title level={1} className="signal-ui-text-display" style={titleStyle}>
               Collapse. Expand. Snap.
             </Typography.Title>
             <Typography.Paragraph style={copyStyle}>
@@ -72,14 +72,14 @@ const meta = {
             />
 
             <Space direction="vertical" size={6} style={{ maxWidth: 360 }}>
-              <Typography.Text style={{ ...eyebrowStyle, color: marathonDosPalette.accentViolet }}>
+              <Typography.Text style={{ ...eyebrowStyle, color: signalPalette.accentViolet }}>
                 Secondary Tone
               </Typography.Text>
               <Typography.Paragraph style={copyStyle}>
                 The same voxel rig can ride the violet event channel when it needs to signal a
                 distinct feed without replacing the default lime interaction language.
               </Typography.Paragraph>
-              <Typography.Text style={{ ...statusStyle, color: marathonDosPalette.accentViolet }}>
+              <Typography.Text style={{ ...statusStyle, color: signalPalette.accentViolet }}>
                 Slipstream cache / face rotation locked
               </Typography.Text>
             </Space>
@@ -120,7 +120,7 @@ export const DefaultPixelCubeLoader: Story = {};
 
 const eyebrowStyle: CSSProperties = {
   display: "block",
-  color: marathonDosPalette.primary,
+  color: signalPalette.primary,
   fontSize: 11,
   letterSpacing: "0.16em",
   marginBottom: 2,
@@ -139,7 +139,7 @@ const copyStyle: CSSProperties = {
 };
 
 const statusStyle: CSSProperties = {
-  color: marathonDosPalette.primary,
+  color: signalPalette.primary,
   fontSize: 11,
   letterSpacing: "0.14em",
   textTransform: "uppercase",

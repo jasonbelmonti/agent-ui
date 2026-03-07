@@ -4,12 +4,12 @@ import { useMemo, useRef } from "react";
 import { AdditiveBlending, Color, MathUtils, Quaternion, Vector3 } from "three";
 import type { Group, Mesh, MeshBasicMaterial } from "three";
 
-import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { signalPalette } from "../theme/signalTheme.js";
 
 export type SignalWireframeTone = "primary" | "violet";
 
 type SignalWireframeStyle = CSSProperties &
-  Record<`--marathon-signal-wireframe-${string}`, string | number>;
+  Record<`--signal-ui-signal-wireframe-${string}`, string | number>;
 
 type SignalWireframeBaseProps = Omit<
   ComponentPropsWithoutRef<"div">,
@@ -115,7 +115,7 @@ const signalTraceCoordinates: GridCoordinate[][] = [
 const latticeData = createLatticeData();
 const toneClassName: Record<SignalWireframeTone, string | undefined> = {
   primary: undefined,
-  violet: "marathon-signal-wireframe--violet",
+  violet: "signal-ui-signal-wireframe--violet",
 };
 const upAxis = new Vector3(0, 1, 0);
 
@@ -132,11 +132,11 @@ export function SignalWireframe({
   usage = "decorative",
   ...props
 }: SignalWireframeProps) {
-  const rootClassName = ["marathon-signal-wireframe", toneClassName[tone], className]
+  const rootClassName = ["signal-ui-signal-wireframe", toneClassName[tone], className]
     .filter(Boolean)
     .join(" ");
   const rootStyle: SignalWireframeStyle = {
-    "--marathon-signal-wireframe-height": `${height}px`,
+    "--signal-ui-signal-wireframe-height": `${height}px`,
     ...style,
   };
   const accessibilityProps =
@@ -151,7 +151,7 @@ export function SignalWireframe({
 
   return (
     <div className={rootClassName} style={rootStyle} {...accessibilityProps} {...props}>
-      <div aria-hidden="true" className="marathon-signal-wireframe__viewport">
+      <div aria-hidden="true" className="signal-ui-signal-wireframe__viewport">
         <Canvas
           camera={{ fov: 34, position: [0, 0.4, 10.25] }}
           dpr={[1, 2]}
@@ -164,11 +164,11 @@ export function SignalWireframe({
       </div>
 
       {showLegend ? (
-        <div className="marathon-signal-wireframe__legend">
-          <span className="marathon-signal-wireframe__label">{title}</span>
-          <span className="marathon-signal-wireframe__detail">
+        <div className="signal-ui-signal-wireframe__legend">
+          <span className="signal-ui-signal-wireframe__label">{title}</span>
+          <span className="signal-ui-signal-wireframe__detail">
             {detail}
-            <span aria-hidden="true" className="marathon-signal-wireframe__cursor" />
+            <span aria-hidden="true" className="signal-ui-signal-wireframe__cursor" />
           </span>
         </div>
       ) : null}
@@ -187,7 +187,7 @@ function SignalWireframeScene({
   const toneColors = useMemo(() => {
     if (tone === "violet") {
       return {
-        accent: marathonDosPalette.accentViolet,
+        accent: signalPalette.accentViolet,
         base: "#6d2fd0",
         node: "#d7b8ff",
         tail: "#7d55d7",
@@ -195,8 +195,8 @@ function SignalWireframeScene({
     }
 
     return {
-      accent: marathonDosPalette.primary,
-      base: marathonDosPalette.primaryDeep,
+      accent: signalPalette.primary,
+      base: signalPalette.primaryDeep,
       node: "#f7ffd7",
       tail: "#8fcb1c",
     };

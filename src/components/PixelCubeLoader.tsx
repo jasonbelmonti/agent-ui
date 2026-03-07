@@ -6,7 +6,7 @@ export type PixelCubeLoaderGridSize = 2 | 3;
 export type PixelCubeLoaderTone = "primary" | "violet";
 export type PixelCubeLoaderRootElement = "div" | "span";
 
-type LoaderStyle = CSSProperties & Record<`--marathon-loader-${string}`, string | number>;
+type LoaderStyle = CSSProperties & Record<`--signal-ui-loader-${string}`, string | number>;
 
 export type PixelCubeLoaderProps = Omit<HTMLAttributes<HTMLElement>, "children" | "style"> & {
   as?: PixelCubeLoaderRootElement;
@@ -50,20 +50,20 @@ export function PixelCubeLoader({
   const Root = as ?? (showLegend ? "div" : "span");
   const Wrapper = Root === "span" ? "span" : "div";
   const loaderClassName = [
-    "marathon-pixel-cube-loader",
+    "signal-ui-pixel-cube-loader",
     toneClassName[tone],
-    showLegend ? undefined : "marathon-pixel-cube-loader--mini",
+    showLegend ? undefined : "signal-ui-pixel-cube-loader--mini",
     className,
   ]
     .filter(Boolean)
     .join(" ");
   const rootStyle: LoaderStyle = {
-    "--marathon-loader-cell-size": `${cellSize}px`,
-    "--marathon-loader-depth-origin": `${depthOrigin}px`,
-    "--marathon-loader-gap": `${gapSize}px`,
-    "--marathon-loader-grid": gridSize,
-    "--marathon-loader-size": `${size}px`,
-    "--marathon-loader-step": `${stepSize}px`,
+    "--signal-ui-loader-cell-size": `${cellSize}px`,
+    "--signal-ui-loader-depth-origin": `${depthOrigin}px`,
+    "--signal-ui-loader-gap": `${gapSize}px`,
+    "--signal-ui-loader-grid": gridSize,
+    "--signal-ui-loader-size": `${size}px`,
+    "--signal-ui-loader-step": `${stepSize}px`,
     ...style,
   };
 
@@ -76,27 +76,27 @@ export function PixelCubeLoader({
       style={rootStyle}
       {...props}
     >
-      <Wrapper className="marathon-pixel-cube-loader__stage">
-        <Wrapper className="marathon-pixel-cube-loader__viewport">
-          <Wrapper className="marathon-pixel-cube-loader__scene-anchor">
-            <Wrapper className="marathon-pixel-cube-loader__scene">
-              <Wrapper className="marathon-pixel-cube-loader__scene-spin">
+      <Wrapper className="signal-ui-pixel-cube-loader__stage">
+        <Wrapper className="signal-ui-pixel-cube-loader__viewport">
+          <Wrapper className="signal-ui-pixel-cube-loader__scene-anchor">
+            <Wrapper className="signal-ui-pixel-cube-loader__scene">
+              <Wrapper className="signal-ui-pixel-cube-loader__scene-spin">
                 {voxels.map((voxel) => (
                   <span
                     aria-hidden="true"
                     className={[
-                      "marathon-pixel-cube-loader__voxel",
+                      "signal-ui-pixel-cube-loader__voxel",
                       voxel.depth === 0
-                        ? "marathon-pixel-cube-loader__voxel--front"
-                        : "marathon-pixel-cube-loader__voxel--deep",
+                        ? "signal-ui-pixel-cube-loader__voxel--front"
+                        : "signal-ui-pixel-cube-loader__voxel--deep",
                     ].join(" ")}
                     data-tone={voxel.tone}
                     key={voxel.index}
                     style={getVoxelStyle(voxel)}
                   >
-                    <span className="marathon-pixel-cube-loader__voxel-face marathon-pixel-cube-loader__voxel-face--front" />
-                    <span className="marathon-pixel-cube-loader__voxel-face marathon-pixel-cube-loader__voxel-face--left" />
-                    <span className="marathon-pixel-cube-loader__voxel-face marathon-pixel-cube-loader__voxel-face--top" />
+                    <span className="signal-ui-pixel-cube-loader__voxel-face signal-ui-pixel-cube-loader__voxel-face--front" />
+                    <span className="signal-ui-pixel-cube-loader__voxel-face signal-ui-pixel-cube-loader__voxel-face--left" />
+                    <span className="signal-ui-pixel-cube-loader__voxel-face signal-ui-pixel-cube-loader__voxel-face--top" />
                   </span>
                 ))}
               </Wrapper>
@@ -106,11 +106,11 @@ export function PixelCubeLoader({
       </Wrapper>
 
       {showLegend ? (
-        <Wrapper className="marathon-pixel-cube-loader__legend">
-          <span className="marathon-pixel-cube-loader__label">{label}</span>
-          <span className="marathon-pixel-cube-loader__detail">
+        <Wrapper className="signal-ui-pixel-cube-loader__legend">
+          <span className="signal-ui-pixel-cube-loader__label">{label}</span>
+          <span className="signal-ui-pixel-cube-loader__detail">
             {detail}
-            <span aria-hidden="true" className="marathon-pixel-cube-loader__cursor" />
+            <span aria-hidden="true" className="signal-ui-pixel-cube-loader__cursor" />
           </span>
         </Wrapper>
       ) : null}
@@ -120,7 +120,7 @@ export function PixelCubeLoader({
 
 const toneClassName: Record<PixelCubeLoaderTone, string | undefined> = {
   primary: undefined,
-  violet: "marathon-pixel-cube-loader--violet",
+  violet: "signal-ui-pixel-cube-loader--violet",
 };
 
 function createVoxelDescriptors(gridSize: PixelCubeLoaderGridSize): VoxelDescriptor[] {
@@ -154,8 +154,8 @@ function createVoxelDescriptors(gridSize: PixelCubeLoaderGridSize): VoxelDescrip
 
 function getVoxelStyle(voxel: VoxelDescriptor): LoaderStyle {
   return {
-    "--marathon-loader-x": voxel.x,
-    "--marathon-loader-y": voxel.y,
-    "--marathon-loader-z": voxel.z,
+    "--signal-ui-loader-x": voxel.x,
+    "--signal-ui-loader-y": voxel.y,
+    "--signal-ui-loader-z": voxel.z,
   };
 }

@@ -1,5 +1,5 @@
 import type { CSSProperties, HTMLAttributes } from "react";
-type HashCubeStyle = CSSProperties & Record<`--marathon-hash-cube-${string}`, string | number>;
+type HashCubeStyle = CSSProperties & Record<`--signal-ui-hash-cube-${string}`, string | number>;
 export type HashCubeTone = "primary" | "violet";
 export type HashCubeProps = Omit<HTMLAttributes<HTMLDivElement>, "children" | "style"> & {
     detail?: string;

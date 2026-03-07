@@ -19,4 +19,4 @@ export { SignalWireframe } from "./components/SignalWireframe.js";
 export type { PixelCubePathProps, PixelCubePathTone, } from "./components/PixelCubePath.js";
 export type { PixelCubeLoaderGridSize, PixelCubeLoaderProps, PixelCubeLoaderTone, } from "./components/PixelCubeLoader.js";
 export type { SignalWireframeProps, SignalWireframeTone, } from "./components/SignalWireframe.js";
-export { marathonDosFontStacks, marathonDosPalette, marathonDosTheme } from "./theme/marathonDosTheme.js";
+export { signalFontStacks, signalPalette, signalTheme } from "./theme/signalTheme.js";

@@ -1,8 +1,8 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { App, ConfigProvider } from "antd";
-import { marathonDosTheme } from "../theme/marathonDosTheme.js";
+import { signalTheme } from "../theme/signalTheme.js";
 export function AntdThemeProvider({ children }) {
-    return (_jsx(ConfigProvider, { theme: marathonDosTheme, children: _jsx(App, { children: children }) }));
+    return (_jsx(ConfigProvider, { theme: signalTheme, children: _jsx(App, { children: children }) }));
 }
 export function installStaticAntdTheme() {
     ConfigProvider.config({

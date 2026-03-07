@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import type { CSSProperties } from "react";
 
 import { HashCube } from "../components/HashCube.js";
-import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { signalPalette } from "../theme/signalTheme.js";
 
 const defaultHash = "8d7994e7c26d7594e54d314668f1b83e8f0d9d02";
 const nearbyHash = "8d7994e7c26d7594e54d314668f1b83e8f0d9df0";
@@ -28,7 +28,7 @@ const meta = {
         <Flex gap={32} wrap="wrap" align="center" justify="space-between">
           <Space direction="vertical" size={10} style={{ flex: "1 1 440px", maxWidth: 620 }}>
             <Typography.Text style={eyebrowStyle}>Deterministic Hash Geometry</Typography.Text>
-            <Typography.Title level={1} className="marathon-text-display" style={titleStyle}>
+            <Typography.Title level={1} className="signal-ui-text-display" style={titleStyle}>
               Let the hash become the artifact.
             </Typography.Title>
             <Typography.Paragraph style={copyStyle}>
@@ -75,7 +75,7 @@ const meta = {
 
         <Card title="Alternate Event Channel" style={violetCardStyle}>
           <Space direction="vertical" size={12}>
-            <Typography.Text style={{ ...eyebrowStyle, color: marathonDosPalette.accentViolet }}>
+            <Typography.Text style={{ ...eyebrowStyle, color: signalPalette.accentViolet }}>
               Secondary Tone
             </Typography.Text>
             <HashCube hash={alertHash} label="alert signature" size={176} tone="violet" />
@@ -98,7 +98,7 @@ export const DefaultHashCube: Story = {};
 
 const eyebrowStyle: CSSProperties = {
   display: "block",
-  color: marathonDosPalette.primary,
+  color: signalPalette.primary,
   fontSize: 11,
   letterSpacing: "0.16em",
   marginBottom: 2,

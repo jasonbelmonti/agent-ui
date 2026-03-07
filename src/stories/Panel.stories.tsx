@@ -2,7 +2,7 @@ import { Col, Row, Space, Typography } from "antd";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 import { Panel } from "../components/Panel.js";
-import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { signalPalette } from "../theme/signalTheme.js";
 
 const meta = {
   title: "Components/Panel",
@@ -73,7 +73,7 @@ export const PresetPairs: Story = {
         <Panel
           title="Architectural Preset"
           cutCornerPreset="architectural"
-          cutCornerColor={marathonDosPalette.accentViolet}
+          cutCornerColor={signalPalette.accentViolet}
           style={{ height: "100%" }}
         >
           <Typography.Paragraph style={{ margin: 0 }}>
@@ -112,7 +112,7 @@ export const CornerRhythm: Story = {
 const eyebrowStyle = {
   display: "block",
   marginBottom: 6,
-  color: marathonDosPalette.primary,
+  color: signalPalette.primary,
   fontSize: 11,
   letterSpacing: "0.16em",
   textTransform: "uppercase" as const,
@@ -124,7 +124,7 @@ const cornerPanels = [
     cutCornerPreset: "tactical" as const,
     cutCorner: "accent" as const,
     cutCornerPlacement: "top-right" as const,
-    cutCornerColor: marathonDosPalette.primary,
+    cutCornerColor: signalPalette.primary,
     copy: "Reads like a tactical tag bolted onto the panel frame.",
   },
   {
@@ -132,7 +132,7 @@ const cornerPanels = [
     cutCornerPreset: "tactical" as const,
     cutCorner: "accent" as const,
     cutCornerPlacement: "top-left" as const,
-    cutCornerColor: marathonDosPalette.warning,
+    cutCornerColor: signalPalette.warning,
     copy: "Good when a stack needs a directional lean without changing the whole shape.",
   },
   {
@@ -140,7 +140,7 @@ const cornerPanels = [
     cutCornerPreset: "architectural" as const,
     cutCorner: "notch" as const,
     cutCornerPlacement: "bottom-right" as const,
-    cutCornerColor: marathonDosPalette.primary,
+    cutCornerColor: signalPalette.primary,
     copy: "Feels more architectural than decorative and keeps the panel quieter.",
   },
   {
@@ -148,7 +148,7 @@ const cornerPanels = [
     cutCornerPreset: "architectural" as const,
     cutCorner: "notch" as const,
     cutCornerPlacement: "bottom-left" as const,
-    cutCornerColor: marathonDosPalette.accentViolet,
+    cutCornerColor: signalPalette.accentViolet,
     copy: "Lets violet behave like a special-state accent instead of a default token.",
   },
 ];

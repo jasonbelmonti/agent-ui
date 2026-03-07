@@ -5,7 +5,7 @@ import { startTransition, useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 
 import { SignalButton } from "../components/SignalButton.js";
-import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { signalPalette } from "../theme/signalTheme.js";
 
 const meta = {
   title: "Components/SignalButton",
@@ -131,7 +131,7 @@ export const HoldToTrigger: Story = {
           <Typography.Text style={{ ...eyebrowStyle, color: "#54ecff" }}>
             Intended Interaction
           </Typography.Text>
-          <Typography.Title level={2} className="marathon-text-display" style={{ margin: 0 }}>
+          <Typography.Title level={2} className="signal-ui-text-display" style={{ margin: 0 }}>
             Hold to arm, release to cancel
           </Typography.Title>
           <Typography.Paragraph style={copyStyle}>
@@ -158,7 +158,7 @@ export const CreepingLoop: Story = {
       >
         <Space direction="vertical" size={12}>
           <Typography.Text style={eyebrowStyle}>Reactive CTA / Creeping Fill</Typography.Text>
-          <Typography.Title level={2} className="marathon-text-display" style={{ margin: 0 }}>
+          <Typography.Title level={2} className="signal-ui-text-display" style={{ margin: 0 }}>
             A bright fill with a twitchy pixel front edge
           </Typography.Title>
           <Typography.Paragraph style={copyStyle}>
@@ -656,7 +656,7 @@ function isSameHoldToTriggerState(
 
 const eyebrowStyle: CSSProperties = {
   display: "block",
-  color: marathonDosPalette.primary,
+  color: signalPalette.primary,
   fontSize: 11,
   letterSpacing: "0.16em",
   marginBottom: 2,

@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useSignalButtonCanvas } from "./signalButton/useSignalButtonCanvas.js";
 import { blendChannels, clamp, formatRgbChannels, joinClassNames, resolveRewardChannels, toCssLength, toneAccentChannels, toneClassName, } from "./signalButton/utils.js";
 function renderSignalContent(icon, children) {
-    return (_jsxs("span", { className: "marathon-signal-button__content", children: [icon ? _jsx("span", { className: "marathon-signal-button__icon", children: icon }) : null, _jsx("span", { className: "marathon-signal-button__text", children: children })] }));
+    return (_jsxs("span", { className: "signal-ui-signal-button__content", children: [icon ? _jsx("span", { className: "signal-ui-signal-button__icon", children: icon }) : null, _jsx("span", { className: "signal-ui-signal-button__text", children: children })] }));
 }
 export function SignalButton({ children, className, cooldownPercent = 0, edgeWidth = 24, fillPercent = 64, icon, pulseBurst = 0, rewardColor, style, tone = "primary", wakePercent = 0, ...buttonProps }) {
     const canvasRef = useRef(null);
@@ -30,12 +30,12 @@ export function SignalButton({ children, className, cooldownPercent = 0, edgeWid
     });
     const signalButtonStyle = {
         ...style,
-        "--marathon-signal-button-accent-rgb": formatRgbChannels(accentChannels),
-        "--marathon-signal-button-burst-flash": `${burstFlash}`,
-        "--marathon-signal-button-cooldown": `${cooldownMix}`,
-        "--marathon-signal-button-edge-width": toCssLength(edgeWidth) ?? "24px",
-        "--marathon-signal-button-fill-size": `${resolvedFillPercent}%`,
-        "--marathon-signal-button-shake-amp": `${burstFlash * 1.65}px`,
+        "--signal-ui-signal-button-accent-rgb": formatRgbChannels(accentChannels),
+        "--signal-ui-signal-button-burst-flash": `${burstFlash}`,
+        "--signal-ui-signal-button-cooldown": `${cooldownMix}`,
+        "--signal-ui-signal-button-edge-width": toCssLength(edgeWidth) ?? "24px",
+        "--signal-ui-signal-button-fill-size": `${resolvedFillPercent}%`,
+        "--signal-ui-signal-button-shake-amp": `${burstFlash * 1.65}px`,
     };
-    return (_jsxs(Button, { ...buttonProps, className: joinClassNames("marathon-signal-button", toneClassName[tone], className), style: signalButtonStyle, children: [_jsxs("span", { "aria-hidden": "true", className: "marathon-signal-button__surface", children: [_jsx("canvas", { ref: canvasRef, className: "marathon-signal-button__canvas" }), _jsx("span", { className: "marathon-signal-button__sheen" })] }), _jsx("span", { className: "marathon-signal-button__label", children: renderSignalContent(icon, children) })] }));
+    return (_jsxs(Button, { ...buttonProps, className: joinClassNames("signal-ui-signal-button", toneClassName[tone], className), style: signalButtonStyle, children: [_jsxs("span", { "aria-hidden": "true", className: "signal-ui-signal-button__surface", children: [_jsx("canvas", { ref: canvasRef, className: "signal-ui-signal-button__canvas" }), _jsx("span", { className: "signal-ui-signal-button__sheen" })] }), _jsx("span", { className: "signal-ui-signal-button__label", children: renderSignalContent(icon, children) })] }));
 }
