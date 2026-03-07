@@ -20,6 +20,7 @@
   "scripts": {
     "build": "bun run clean && bun x tsc -p tsconfig.build.json && bun run scripts/build-css.ts",
     "clean": "rm -rf dist",
+    "prepare": "bun run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "typecheck": "bun x tsc --noEmit"

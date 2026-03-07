@@ -17,6 +17,10 @@ bun run build
 - `dist/index.d.ts`
 - `dist/styles.css`
 
+`dist/` is checked into the repo on purpose so Bun consumers using
+`"agent-ui": "file:../agent-ui"` can install the package from a fresh clone without
+depending on blocked lifecycle scripts.
+
 ## Consumption
 
 Add the package as a sibling file dependency:
