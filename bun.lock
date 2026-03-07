@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "agent-ui",
+      "name": "@jasonbelmonti/signal-ui",
       "dependencies": {
         "@dagrejs/dagre": "^2.0.4",
         "@fontsource/azeret-mono": "5.2.11",

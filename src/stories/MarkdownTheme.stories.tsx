@@ -16,7 +16,7 @@ interface MarkdownThemeStoryProps {
 const wrapperCode = `import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
-import { MarkdownTheme, Panel } from "agent-ui";
+import { MarkdownTheme, Panel } from "@jasonbelmonti/signal-ui";
 
 <Panel title="Ops Runbook">
   <MarkdownTheme>
@@ -79,7 +79,7 @@ Use this wrapper around \`react-markdown\`, \`marked\`, or MDX when you want lon
 \`\`\`bash
 bun install
 bun run build-storybook
-rsync -av ./storybook-static/ /srv/agent-ui/docs/
+rsync -av ./storybook-static/ /srv/signal-ui/docs/
 transmission: 418 files synced
 status: green-line stable
 \`\`\`

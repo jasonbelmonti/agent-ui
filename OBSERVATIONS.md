@@ -2,7 +2,7 @@
 
 - Repo started as a minimal `bun init` scaffold with no React, Storybook, or Ant Design setup.
 - Repo now has a React 19 + Ant Design 6 + Storybook 10 (React/Webpack) bootstrap on branch `codex/bel-270-bootstrap-react-storybook`.
-- Preferred initial direction for `agent-ui` is Storybook-first, not a separate app shell.
+- Preferred initial direction for `signal-ui` is Storybook-first, not a separate app shell.
 - Locked visual direction is a modernized MS-DOS / hacker aesthetic with a lime-on-charcoal signal palette (`#000000`, `#1c1c1c`, `#717171`, `#c0fe04`, `#f24723`), open-source fonts, and restrained terminal effects.
 - Current font direction is `Oxanium` for display headings and `Azeret Mono` for UI/body copy.
 - Theme assets that depend on global CSS or font-face imports need a first-class consumer entry, not just Storybook preview; for packaged use, an explicit `styles.css` export is safer than hiding global side effects in `src/index.ts`.
@@ -44,7 +44,7 @@
 - User wants visually expressive encodings to be defensible and meaningfully distinct, not just aesthetically novel.
 - For graph work, the user wants the React Flow chrome and styling to live in reusable package-owned primitives rather than story-local or app-local overrides.
 - User expects a self-review pass on visual changes before considering the PR ready.
-- User wants graph visualization in `agent-ui` to land as a reusable package capability rather than agent-console-specific glue, with a layered `GraphCanvas` plus `WorkflowDag` API, read-only v1 behavior, canvas-first ownership, and dagre-based auto-layout.
+- User wants graph visualization in `signal-ui` to land as a reusable package capability rather than agent-console-specific glue, with a layered `GraphCanvas` plus `WorkflowDag` API, read-only v1 behavior, canvas-first ownership, and dagre-based auto-layout.
 - User is interested in deterministic hash-driven 3D cube visualizations that mix wireframe, solid, and color-coded voxel states instead of flat text-only identifiers.
 - User is interested in adding an opt-in Three.js layer for bold graph/hero visuals, especially wireframes traced by Tron-style beam motion rather than generic floating 3D decoration.
 - Local shell setup can expose Homebrew Node 16 in login/non-interactive sessions unless `nvm` is initialized from `~/.zprofile`; interactive `~/.zshrc` alone is not enough for toolchain commands.
