@@ -8,7 +8,12 @@ import "@fontsource/oxanium/700.css";
 import "./styles/theme.css";
 
 export { AntdThemeProvider, installStaticAntdTheme } from "./providers/AntdThemeProvider";
+export { HashCube } from "./components/HashCube";
 export { Panel, panelCutCornerPresets } from "./components/Panel";
+export type {
+  HashCubeProps,
+  HashCubeTone,
+} from "./components/HashCube";
 export type {
   PanelCutCorner,
   PanelCutCornerPlacement,
