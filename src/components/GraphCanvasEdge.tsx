@@ -1,4 +1,5 @@
 import { BaseEdge, getSmoothStepPath } from "@xyflow/react";
+import { useId } from "react";
 import type { CSSProperties } from "react";
 import type { Edge, EdgeProps } from "@xyflow/react";
 
@@ -25,8 +26,8 @@ type EdgeStyle = CSSProperties & {
   "--marathon-graph-edge-stroke"?: string;
 };
 
-function sanitizeMarkerId(edgeId: string) {
-  return edgeId.replace(/[^a-zA-Z0-9_-]/g, "-");
+function encodeMarkerIdPart(value: string) {
+  return encodeURIComponent(value).replace(/%/g, "_");
 }
 
 export function GraphCanvasEdge({
@@ -44,8 +45,9 @@ export function GraphCanvasEdge({
   targetX,
   targetY,
 }: EdgeProps<GraphCanvasEdgeRendererDefinition>) {
+  const edgeInstanceId = useId();
   const tone = resolveGraphCanvasTone(data?.tone);
-  const markerId = `marathon-graph-edge-arrow-${sanitizeMarkerId(id)}`;
+  const markerId = `marathon-graph-edge-arrow-${encodeMarkerIdPart(edgeInstanceId)}-${encodeMarkerIdPart(id)}`;
   const markerColor = selected ? graphCanvasToneAccentColor.primary : graphCanvasToneAccentColor[tone];
   const [path, labelX, labelY] = getSmoothStepPath({
     sourcePosition,
