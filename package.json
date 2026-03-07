@@ -28,6 +28,7 @@
   "dependencies": {
     "@fontsource/azeret-mono": "5.2.11",
     "@fontsource/doto": "^5.2.10",
+    "@fontsource/micro-5": "^5.2.7",
     "@fontsource/oxanium": "5.2.8",
     "@dagrejs/dagre": "^2.0.4",
     "@react-three/fiber": "9.5.0",

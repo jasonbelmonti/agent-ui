@@ -1,40 +1,46 @@
 import type { SignalButtonTone } from "./types.js";
 import { drawPixel, rgba } from "./color.js";
 import { hash } from "./noise.js";
-import { clamp, toneAccentChannels } from "./utils.js";
+import { blendChannels, clamp, type RgbChannels, toneAccentChannels } from "./utils.js";
 
 type SignalButtonBufferOptions = {
   ctx: CanvasRenderingContext2D;
   cols: number;
-  rows: number;
-  fillPercent: number;
+  cooldownPercent: number;
+  disabled?: boolean;
   edgeWidthPx: number;
-  sparkBurst: number;
+  fillPercent: number;
+  pulseBurst: number;
+  rewardChannels: RgbChannels;
+  rows: number;
   tone: SignalButtonTone;
   timeMs: number;
   wakePercent: number;
-  disabled?: boolean;
 };
 
 export function renderSignalButtonBuffer({
   ctx,
   cols,
-  rows,
-  fillPercent,
+  cooldownPercent,
+  disabled = false,
   edgeWidthPx,
-  sparkBurst,
+  fillPercent,
+  pulseBurst,
+  rewardChannels,
+  rows,
   tone,
   timeMs,
   wakePercent,
-  disabled = false,
 }: SignalButtonBufferOptions) {
-  const accent = toneAccentChannels[tone];
   const frame = Math.floor(timeMs / 70);
   const front = clamp((fillPercent / 100) * cols, 0, cols);
   const edgeCells = Math.max(2, Math.round(edgeWidthPx / 6));
   const gradientCells = edgeCells + 3;
-  const burstLevel = clamp(sparkBurst / 100, 0, 1);
+  const burstLevel = clamp(pulseBurst / 100, 0, 1);
+  const cooldownLevel = clamp(cooldownPercent / 100, 0, 1);
   const wakeLevel = clamp(wakePercent / 100, 0, 1);
+  const baseAccent = toneAccentChannels[tone];
+  const surfaceAccent = blendChannels(baseAccent, rewardChannels, cooldownLevel);
 
   ctx.clearRect(0, 0, cols, rows);
 
@@ -52,6 +58,9 @@ export function renderSignalButtonBuffer({
       const wakeSeed = hash((x + 5) * 7, (y + 3) * 11, 97);
       const bodyBlend = clamp((gradientCells - Math.abs(distance - 0.5)) / gradientCells, 0, 1);
       const edgeGlow = bodyBlend * bodyBlend;
+      const outcomeBlend = getPulseOutcomeBlend(x, y, cols, rows, burstLevel, cooldownLevel);
+      const pixelAccent =
+        outcomeBlend > 0 ? blendChannels(baseAccent, rewardChannels, outcomeBlend) : surfaceAccent;
 
       if (distance > 0.25) {
         const fillDepth = clamp(distance / Math.max(front, 1), 0, 1);
@@ -64,7 +73,7 @@ export function renderSignalButtonBuffer({
         );
 
         if (wakeProgress >= 0.995) {
-          drawPixel(ctx, x, y, accent, 1, 0.02, disabled ? 0.34 : 1);
+          drawPixel(ctx, x, y, pixelAccent, 1, 0.02, disabled ? 0.34 : 1);
           continue;
         }
 
@@ -82,7 +91,7 @@ export function renderSignalButtonBuffer({
             ((x + y + frame) % 4 === 0 ? 0.06 : 0);
           const saturation = 0.82 + signalNoise * 0.14 + edgeGlow * 0.2 + wakeProgress * 0.2;
 
-          drawPixel(ctx, x, y, accent, saturation, lift, alpha);
+          drawPixel(ctx, x, y, pixelAccent, saturation, lift, alpha);
         }
 
         continue;
@@ -99,7 +108,7 @@ export function renderSignalButtonBuffer({
             0.08 + edgeProximity * 0.22 + bodyBlend * 0.08 + (stableNoise > 0.82 ? 0.14 : 0);
           const saturation = 0.9 + edgeProximity * 0.18 + bodyBlend * 0.08;
 
-          drawPixel(ctx, x, y, accent, saturation, lift, alpha);
+          drawPixel(ctx, x, y, pixelAccent, saturation, lift, alpha);
           continue;
         }
 
@@ -109,7 +118,7 @@ export function renderSignalButtonBuffer({
             ctx,
             x,
             y,
-            accent,
+            pixelAccent,
             0.72 + bodyBlend * 0.12,
             0.04 + edgeProximity * 0.06,
             alpha,
@@ -119,10 +128,10 @@ export function renderSignalButtonBuffer({
     }
   }
 
-  drawFrontierBloom(ctx, front, rows, edgeCells, accent, disabled);
+  drawFrontierBloom(ctx, front, rows, edgeCells, surfaceAccent, disabled);
 
   if (burstLevel > 0.01) {
-    drawPulseRings(ctx, cols, rows, accent, burstLevel, disabled);
+    drawPulseRings(ctx, cols, rows, baseAccent, rewardChannels, burstLevel, disabled);
   }
 }
 
@@ -161,11 +170,32 @@ function getWakeProgress(wakeLevel: number, wakeSeed: number) {
   return clamp((wakeLevel - start) / 0.18, 0, 1);
 }
 
+function getPulseOutcomeBlend(
+  x: number,
+  y: number,
+  cols: number,
+  rows: number,
+  burstLevel: number,
+  cooldownLevel: number,
+) {
+  if (burstLevel <= 0.01) {
+    return cooldownLevel;
+  }
+
+  const radial = getPulseRadial(x, y, cols, rows);
+  const pulseFront = easeOutCubic(burstLevel) * 3.08;
+  const wakeBand = clamp((pulseFront - radial + 0.16) / 0.56, 0, 1);
+  const pulseResolve = easeOutCubic(wakeBand) * (0.92 - cooldownLevel * 0.18);
+
+  return Math.max(cooldownLevel, pulseResolve);
+}
+
 function drawPulseRings(
   ctx: CanvasRenderingContext2D,
   cols: number,
   rows: number,
-  accent: [number, number, number],
+  accent: RgbChannels,
+  rewardChannels: RgbChannels,
   burstLevel: number,
   disabled: boolean,
 ) {
@@ -177,9 +207,7 @@ function drawPulseRings(
 
   for (let y = 0; y < rows; y += 1) {
     for (let x = 0; x < cols; x += 1) {
-      const offsetX = (x + 0.5 - centerX) / Math.max(cols * 0.18, 1);
-      const offsetY = (y + 0.5 - centerY) / Math.max(rows * 0.52, 1);
-      const radial = Math.sqrt(offsetX * offsetX + offsetY * offsetY);
+      const radial = getPulseRadial(x, y, cols, rows, centerX, centerY);
       const centerFade = clamp(radial / 0.68, 0, 1);
 
       let brightEnergy = 0;
@@ -225,11 +253,13 @@ function drawPulseRings(
       }
 
       if (brightEnergy > 0.04) {
+        const ringAccent = blendChannels(accent, rewardChannels, clamp(0.58 + brightEnergy * 0.34, 0, 1));
+
         drawPixel(
           ctx,
           x,
           y,
-          accent,
+          ringAccent,
           1.02,
           0.22 + brightEnergy * 0.32,
           clamp(baseAlpha + brightEnergy * 0.22, 0, 1),
@@ -237,6 +267,20 @@ function drawPulseRings(
       }
     }
   }
+}
+
+function getPulseRadial(
+  x: number,
+  y: number,
+  cols: number,
+  rows: number,
+  centerX = cols / 2,
+  centerY = rows / 2,
+) {
+  const offsetX = (x + 0.5 - centerX) / Math.max(cols * 0.18, 1);
+  const offsetY = (y + 0.5 - centerY) / Math.max(rows * 0.52, 1);
+
+  return Math.sqrt(offsetX * offsetX + offsetY * offsetY);
 }
 
 function easeOutCubic(value: number) {

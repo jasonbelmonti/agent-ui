@@ -22,6 +22,12 @@
 - User responds well to bold CTA treatments when the motion feels intentional and crunchy, especially fill-based effects with visible pixel creep/flicker and layered text.
 - User notices when visual compositing is only approximated; prefers text/effect treatments to be driven by the same live source rather than loosely synchronized CSS stand-ins.
 - User likes interaction effects that escalate through readable payoff phases, such as fill, saturation/wake-up, then a short burst event, rather than remaining in a single ambient loop.
+- For post-payoff states, user prefers a distinct confirmation cooldown or color-resolve phase instead of leaving the control parked on the same peak-effect color.
+- User wants payoff endpoint colors to stay configurable, not locked to a hidden default, and expects pulse effects to visibly drive that outcome color onto the surface.
+- User wants Storybook examples to demonstrate the intended real interaction model, especially hold-to-trigger flows that reverse on early release and clamp on success.
+- For expressive CTAs, user still prioritizes headline readability; blend effects should interact with the live surface without sacrificing legibility at a glance.
+- User is open to `Micro 5` specifically for button/CTA label treatments when it reads intentional and crisp, not as a general-purpose display font.
+- For high-stakes CTA buttons, user wants the default label size to skew large and unmistakable rather than merely balanced.
 - For payoff motion, user prefers tangible geometry leaving the control or a strong flash/glow event over subtle particle noise that stays visually inside the button.
 - When a burst gimmick feels wrong, user prefers pivoting back to internal procedural motion, like rings or surface pulses, plus symmetric vibration instead of directional recoil.
 - User is interested in loader motion that begins as raw CLI/pixel assembly, then reveals a sharper 3D form such as a rotating cube without losing the low-fi terminal texture.
@@ -38,3 +44,8 @@
 - User wants visually expressive encodings to be defensible and meaningfully distinct, not just aesthetically novel.
 - For graph work, the user wants the React Flow chrome and styling to live in reusable package-owned primitives rather than story-local or app-local overrides.
 - User expects a self-review pass on visual changes before considering the PR ready.
+- User wants graph visualization in `agent-ui` to land as a reusable package capability rather than agent-console-specific glue, with a layered `GraphCanvas` plus `WorkflowDag` API, read-only v1 behavior, canvas-first ownership, and dagre-based auto-layout.
+- User is interested in deterministic hash-driven 3D cube visualizations that mix wireframe, solid, and color-coded voxel states instead of flat text-only identifiers.
+- User is interested in adding an opt-in Three.js layer for bold graph/hero visuals, especially wireframes traced by Tron-style beam motion rather than generic floating 3D decoration.
+- Local shell setup can expose Homebrew Node 16 in login/non-interactive sessions unless `nvm` is initialized from `~/.zprofile`; interactive `~/.zshrc` alone is not enough for toolchain commands.
+- User is evaluating runtime Ant Design theme customization and is interested in letting end users control a constrained set of brand colors rather than opening up the full token surface.

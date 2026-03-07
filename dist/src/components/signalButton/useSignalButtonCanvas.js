@@ -1,7 +1,7 @@
 import { useEffect, useEffectEvent } from "react";
 import { renderSignalButtonBuffer } from "./renderSignalButtonBuffer.js";
 import { clamp, toPixelLength } from "./utils.js";
-export function useSignalButtonCanvas({ canvasRef, disabled, edgeWidth, fillPercent, sparkBurst, tone, wakePercent, }) {
+export function useSignalButtonCanvas({ canvasRef, cooldownPercent, disabled, edgeWidth, fillPercent, pulseBurst, rewardChannels, tone, wakePercent, }) {
     const drawFrame = useEffectEvent((timeMs) => {
         const canvas = canvasRef.current;
         if (!canvas) {
@@ -11,7 +11,7 @@ export function useSignalButtonCanvas({ canvasRef, disabled, edgeWidth, fillPerc
         if (rect.width <= 0 || rect.height <= 0) {
             return;
         }
-        const pixelDensity = sparkBurst > 0 ? 8 : 6;
+        const pixelDensity = pulseBurst > 0 ? 8 : 6;
         const pixelSize = clamp(Math.round(rect.height / pixelDensity), 3, 8);
         const cols = Math.max(1, Math.ceil(rect.width / pixelSize));
         const rows = Math.max(1, Math.ceil(rect.height / pixelSize));
@@ -23,11 +23,13 @@ export function useSignalButtonCanvas({ canvasRef, disabled, edgeWidth, fillPerc
         renderSignalButtonBuffer({
             ctx,
             cols,
+            cooldownPercent,
             rows,
             disabled,
             edgeWidthPx: toPixelLength(edgeWidth, 24),
             fillPercent,
-            sparkBurst,
+            pulseBurst,
+            rewardChannels,
             timeMs,
             tone,
             wakePercent,
@@ -76,7 +78,17 @@ export function useSignalButtonCanvas({ canvasRef, disabled, edgeWidth, fillPerc
     }, [canvasRef, drawFrame]);
     useEffect(() => {
         drawFrame(performance.now());
-    }, [disabled, drawFrame, edgeWidth, fillPercent, sparkBurst, tone, wakePercent]);
+    }, [
+        cooldownPercent,
+        disabled,
+        drawFrame,
+        edgeWidth,
+        fillPercent,
+        pulseBurst,
+        rewardChannels,
+        tone,
+        wakePercent,
+    ]);
 }
 function getCanvasContext(canvas, cols, rows) {
     if (canvas.width !== cols || canvas.height !== rows) {

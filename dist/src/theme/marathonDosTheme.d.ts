@@ -20,5 +20,6 @@ export declare const marathonDosFontStacks: {
     readonly ui: "\"Azeret Mono\", \"SFMono-Regular\", \"Menlo\", monospace";
     readonly display: "\"Oxanium\", \"Azeret Mono\", sans-serif";
     readonly displaySecondary: "\"Doto\", \"Oxanium\", \"Azeret Mono\", sans-serif";
+    readonly pixel: "\"Micro 5\", \"Oxanium\", \"Azeret Mono\", sans-serif";
 };
 export declare const marathonDosTheme: ThemeConfig;

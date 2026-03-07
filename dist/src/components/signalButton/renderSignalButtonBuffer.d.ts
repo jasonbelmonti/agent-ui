@@ -1,15 +1,18 @@
 import type { SignalButtonTone } from "./types.js";
+import { type RgbChannels } from "./utils.js";
 type SignalButtonBufferOptions = {
     ctx: CanvasRenderingContext2D;
     cols: number;
-    rows: number;
-    fillPercent: number;
+    cooldownPercent: number;
+    disabled?: boolean;
     edgeWidthPx: number;
-    sparkBurst: number;
+    fillPercent: number;
+    pulseBurst: number;
+    rewardChannels: RgbChannels;
+    rows: number;
     tone: SignalButtonTone;
     timeMs: number;
     wakePercent: number;
-    disabled?: boolean;
 };
-export declare function renderSignalButtonBuffer({ ctx, cols, rows, fillPercent, edgeWidthPx, sparkBurst, tone, timeMs, wakePercent, disabled, }: SignalButtonBufferOptions): void;
+export declare function renderSignalButtonBuffer({ ctx, cols, cooldownPercent, disabled, edgeWidthPx, fillPercent, pulseBurst, rewardChannels, rows, tone, timeMs, wakePercent, }: SignalButtonBufferOptions): void;
 export {};

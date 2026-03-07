@@ -3,24 +3,28 @@ import type { RefObject } from "react";
 
 import type { SignalButtonTone } from "./types.js";
 import { renderSignalButtonBuffer } from "./renderSignalButtonBuffer.js";
-import { clamp, toPixelLength } from "./utils.js";
+import { clamp, type RgbChannels, toPixelLength } from "./utils.js";
 
 type UseSignalButtonCanvasOptions = {
   canvasRef: RefObject<HTMLCanvasElement | null>;
+  cooldownPercent: number;
   disabled?: boolean;
   edgeWidth?: number | string;
   fillPercent: number;
-  sparkBurst: number;
+  pulseBurst: number;
+  rewardChannels: RgbChannels;
   tone: SignalButtonTone;
   wakePercent: number;
 };
 
 export function useSignalButtonCanvas({
   canvasRef,
+  cooldownPercent,
   disabled,
   edgeWidth,
   fillPercent,
-  sparkBurst,
+  pulseBurst,
+  rewardChannels,
   tone,
   wakePercent,
 }: UseSignalButtonCanvasOptions) {
@@ -37,7 +41,7 @@ export function useSignalButtonCanvas({
       return;
     }
 
-    const pixelDensity = sparkBurst > 0 ? 8 : 6;
+    const pixelDensity = pulseBurst > 0 ? 8 : 6;
     const pixelSize = clamp(Math.round(rect.height / pixelDensity), 3, 8);
     const cols = Math.max(1, Math.ceil(rect.width / pixelSize));
     const rows = Math.max(1, Math.ceil(rect.height / pixelSize));
@@ -53,11 +57,13 @@ export function useSignalButtonCanvas({
     renderSignalButtonBuffer({
       ctx,
       cols,
+      cooldownPercent,
       rows,
       disabled,
       edgeWidthPx: toPixelLength(edgeWidth, 24),
       fillPercent,
-      sparkBurst,
+      pulseBurst,
+      rewardChannels,
       timeMs,
       tone,
       wakePercent,
@@ -121,7 +127,17 @@ export function useSignalButtonCanvas({
 
   useEffect(() => {
     drawFrame(performance.now());
-  }, [disabled, drawFrame, edgeWidth, fillPercent, sparkBurst, tone, wakePercent]);
+  }, [
+    cooldownPercent,
+    disabled,
+    drawFrame,
+    edgeWidth,
+    fillPercent,
+    pulseBurst,
+    rewardChannels,
+    tone,
+    wakePercent,
+  ]);
 }
 
 function getCanvasContext(canvas: HTMLCanvasElement, cols: number, rows: number) {
