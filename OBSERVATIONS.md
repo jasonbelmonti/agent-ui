@@ -14,3 +14,8 @@
 - For textured signal text, clipped grain/raster needs to be visible at normal viewing scale; ultra-fine noise disappears even when the animation is technically present.
 - Requested work items should include materially verifiable success criteria, ideally commands, named stories, or clearly observable UI states.
 - User is exploring whether vivid purple should exist as a contrast accent to the highlight lime, with a preference for preserving core semantic tokens unless the new hue earns a distinct role.
+- User likes Marathon-style flat areas of color and is considering them as sparse, clean accents, especially around headings or section punctuation rather than as broad background treatment.
+- User is interested in loader motion that begins as raw CLI/pixel assembly, then reveals a sharper 3D form such as a rotating cube without losing the low-fi terminal texture.
+- Preferred loader expression is a low-count 2x2 or 3x3 front grid with mostly solid theme color, using smooth real 3D transforms and voxel/cube reference motion rather than dense noisy particle fields.
+- Current loader preference is a square-framed, faster mechanical loop with a small settle jolt and a reusable legendless mini variant that can sit inline with text.
+- User notices small alignment drift quickly and prefers motion components to be geometrically centered rather than visually "close enough."
