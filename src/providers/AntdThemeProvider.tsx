@@ -33,13 +33,9 @@ function resolveAntdTheme(
   theme: ThemeConfig | undefined,
   themePreferences: SignalThemePreferences | undefined,
 ) {
-  if (!themePreferences) {
-    return theme ?? signalTheme;
-  }
+  const baseTheme = themePreferences ? createSignalTheme(themePreferences) : signalTheme;
 
-  const generatedTheme = createSignalTheme(themePreferences);
-
-  return theme ? mergeThemeConfig(generatedTheme, theme) : generatedTheme;
+  return theme ? mergeThemeConfig(baseTheme, theme) : baseTheme;
 }
 
 function syncDocumentThemeVariables() {

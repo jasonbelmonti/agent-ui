@@ -18,6 +18,10 @@ function resolveBorderRadius(borderRadius = 2) {
   return Math.max(Math.round(borderRadius), 0);
 }
 
+function resolveSignalInkColor(text: string) {
+  return text === signalPalette.text ? "#f9ffef" : lightenHexColor(text, 0.02);
+}
+
 function resolveHexOverride(color: string | undefined, fallback: ResolvedSignalPalette[keyof ResolvedSignalPalette]) {
   const normalized = normalizeHexColor(color);
 
@@ -92,6 +96,7 @@ export function createSignalThemeCssVariables(
   const palette = resolveSignalPalette(preferences);
   const primaryRgb = toRgbTriplet(palette.primary) ?? "192 254 4";
   const accentRgb = toRgbTriplet(palette.accentViolet) ?? "159 77 255";
+  const signalInk = resolveSignalInkColor(palette.text);
 
   return {
     "--signal-ui-black": palette.black,
@@ -116,7 +121,7 @@ export function createSignalThemeCssVariables(
     "--signal-ui-font-display": signalFontStacks.display,
     "--signal-ui-font-display-secondary": signalFontStacks.displaySecondary,
     "--signal-ui-font-pixel": signalFontStacks.pixel,
-    "--signal-ui-fx-signal-ink": lightenHexColor(palette.text, 0.02),
+    "--signal-ui-fx-signal-ink": signalInk,
     "--signal-ui-fx-signal-accent": palette.fieldPrimary,
     "--signal-ui-fx-signal-glow": withAlpha(palette.primary, 0.42),
     "--signal-ui-fx-signal-alt-accent": palette.accentViolet,
