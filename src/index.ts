@@ -8,4 +8,15 @@ import "@fontsource/oxanium/700.css";
 import "./styles/theme.css";
 
 export { AntdThemeProvider, installStaticAntdTheme } from "./providers/AntdThemeProvider";
+export { PixelCubePath } from "./components/PixelCubePath";
+export { PixelCubeLoader } from "./components/PixelCubeLoader";
+export type {
+  PixelCubePathProps,
+  PixelCubePathTone,
+} from "./components/PixelCubePath";
+export type {
+  PixelCubeLoaderGridSize,
+  PixelCubeLoaderProps,
+  PixelCubeLoaderTone,
+} from "./components/PixelCubeLoader";
 export { marathonDosFontStacks, marathonDosPalette, marathonDosTheme } from "./theme/marathonDosTheme";
