@@ -102,6 +102,215 @@ select {
   text-shadow: none;
 }
 
+.marathon-signal-button.ant-btn {
+  --marathon-signal-button-accent-rgb: 192 254 4;
+  --marathon-signal-button-burst-flash: 0;
+  --marathon-signal-button-edge-width: 24px;
+  --marathon-signal-button-fill-size: 64%;
+  --marathon-signal-button-shake-amp: 0px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  overflow: visible;
+  isolation: isolate;
+  border-color: rgb(var(--marathon-signal-button-accent-rgb) / 0.34);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent 52%),
+    linear-gradient(135deg, rgb(var(--marathon-signal-button-accent-rgb) / 0.12), transparent 32%),
+    rgba(8, 8, 8, 0.96);
+  color: rgb(var(--marathon-signal-button-accent-rgb) / 0.96);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 0 0 1px rgba(0, 0, 0, 0.54),
+    0 10px 24px rgba(0, 0, 0, 0.28),
+    0 0 calc(12px + var(--marathon-signal-button-burst-flash) * 34px)
+      rgb(var(--marathon-signal-button-accent-rgb) / calc(0.08 + var(--marathon-signal-button-burst-flash) * 0.38));
+  filter: brightness(calc(1 + var(--marathon-signal-button-burst-flash) * 0.18));
+  text-shadow: 0 0 0.5em rgb(var(--marathon-signal-button-accent-rgb) / 0.18);
+  transform-origin: center;
+  will-change: transform;
+  animation: marathon-signal-button-vibrate 78ms steps(1, end) infinite;
+  transition:
+    border-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+.marathon-signal-button.ant-btn::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  z-index: 0;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+}
+
+.marathon-signal-button.ant-btn::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: calc(var(--marathon-signal-button-burst-flash) * 0.74);
+  background:
+    radial-gradient(
+      circle at center,
+      rgb(255 255 255 / calc(var(--marathon-signal-button-burst-flash) * 0.14)) 0 24%,
+      rgb(var(--marathon-signal-button-accent-rgb) / calc(var(--marathon-signal-button-burst-flash) * 0.28))
+        24% 58%,
+      transparent 72%
+    );
+  mix-blend-mode: screen;
+}
+
+.marathon-signal-button__surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at center,
+      rgb(255 255 255 / calc(var(--marathon-signal-button-burst-flash) * 0.18)) 0 16%,
+      rgb(var(--marathon-signal-button-accent-rgb) / calc(var(--marathon-signal-button-burst-flash) * 0.2))
+        16% 46%,
+      transparent 64%
+    );
+  mix-blend-mode: screen;
+  opacity: calc(var(--marathon-signal-button-burst-flash) * 0.72);
+}
+
+.marathon-signal-button.ant-btn:not(:disabled):hover,
+.marathon-signal-button.ant-btn:not(:disabled):focus-visible {
+  border-color: rgb(var(--marathon-signal-button-accent-rgb) / 0.56);
+  color: var(--marathon-fx-signal-ink);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 0 1px rgb(var(--marathon-signal-button-accent-rgb) / 0.18),
+    0 0 24px rgb(var(--marathon-signal-button-accent-rgb) / 0.18);
+}
+
+.marathon-signal-button.ant-btn:active {
+  border-color: rgb(var(--marathon-signal-button-accent-rgb) / 0.62);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 52%),
+    linear-gradient(135deg, rgb(var(--marathon-signal-button-accent-rgb) / 0.16), transparent 32%),
+    rgba(5, 5, 5, 0.98);
+}
+
+.marathon-signal-button.ant-btn:disabled,
+.marathon-signal-button.ant-btn.ant-btn-disabled {
+  color: rgb(var(--marathon-signal-button-accent-rgb) / 0.56);
+  border-color: rgb(var(--marathon-signal-button-accent-rgb) / 0.2);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02),
+    0 0 0 1px rgba(0, 0, 0, 0.48);
+  filter: saturate(0.72);
+}
+
+.marathon-signal-button.ant-btn:disabled .marathon-signal-button__surface,
+.marathon-signal-button.ant-btn.ant-btn-disabled .marathon-signal-button__surface {
+  opacity: 0.48;
+}
+
+.marathon-signal-button__surface {
+  position: absolute;
+  inset: 1px;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 52%),
+    rgba(6, 6, 6, 0.9);
+}
+
+.marathon-signal-button__surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04) 0,
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px,
+      transparent 2px
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 48%);
+  mix-blend-mode: screen;
+  opacity: 0.24;
+}
+
+.marathon-signal-button__canvas,
+.marathon-signal-button__sheen {
+  position: absolute;
+  inset: 0;
+}
+
+.marathon-signal-button__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.marathon-signal-button__sheen {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 46%),
+    linear-gradient(
+      90deg,
+      transparent 0 78%,
+      rgb(var(--marathon-signal-button-accent-rgb) / 0.08) 78% 92%,
+      rgb(var(--marathon-signal-button-accent-rgb) / 0.14) 92% 100%
+    );
+  mix-blend-mode: screen;
+  opacity: 0.42;
+}
+
+.marathon-signal-button__label {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 100%;
+  color: var(--marathon-fx-signal-ink);
+  text-shadow: 0 0 0.45em rgb(0 0 0 / 0.22);
+}
+
+.marathon-signal-button__content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.68em;
+  inline-size: 100%;
+}
+
+.marathon-signal-button__icon {
+  display: inline-flex;
+  font-size: 1.04em;
+}
+
+.marathon-signal-button__text {
+  font-family: var(--marathon-font-display-secondary);
+  font-size: 1em;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+@supports (mix-blend-mode: difference) {
+  .marathon-signal-button__label {
+    color: #fff;
+    text-shadow: none;
+    mix-blend-mode: difference;
+  }
+}
+
 .ant-btn:not(:disabled):hover,
 .ant-btn:not(:disabled):focus-visible,
 .ant-input:hover,
@@ -389,6 +598,396 @@ h6.ant-typography {
   box-shadow:
     inset 0 0 0 1px rgba(159, 77, 255, 0.42),
     0 0 0 1px rgba(159, 77, 255, 0.18);
+}
+
+.marathon-graph-canvas {
+  --marathon-graph-edge-selected-stroke: var(--marathon-primary);
+  --marathon-graph-node-accent: var(--marathon-primary);
+  --marathon-graph-node-accent-glow: rgba(192, 254, 4, 0.16);
+  --marathon-graph-node-muted: rgba(245, 245, 240, 0.58);
+  --marathon-graph-node-stroke: rgba(245, 245, 240, 0.14);
+  --marathon-graph-panel-bg: rgba(10, 10, 10, 0.96);
+  isolation: isolate;
+  position: relative;
+}
+
+.marathon-graph-canvas__surface.react-flow {
+  overflow: hidden;
+  border: 1px solid rgba(245, 245, 240, 0.08);
+  background:
+    radial-gradient(circle at top, rgba(192, 254, 4, 0.08), transparent 42%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 55%),
+    #080808;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 0 0 1px rgba(192, 254, 4, 0.08);
+}
+
+.marathon-graph-canvas__surface::before,
+.marathon-graph-canvas__surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.marathon-graph-canvas__surface::before {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.18;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 92%);
+}
+
+.marathon-graph-canvas__surface::after {
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02) 0,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 5px
+  );
+  opacity: 0.2;
+}
+
+.marathon-graph-canvas__surface .react-flow__renderer,
+.marathon-graph-canvas__surface .react-flow__selection {
+  position: relative;
+  z-index: 1;
+}
+
+.marathon-graph-canvas__surface .react-flow__controls,
+.marathon-graph-canvas__surface .react-flow__minimap,
+.marathon-graph-canvas__surface .react-flow__panel {
+  z-index: 1;
+}
+
+.marathon-graph-canvas__background {
+  opacity: 0.88;
+}
+
+.marathon-graph-canvas__background-pattern.lines line {
+  stroke: rgba(245, 245, 240, 0.16);
+}
+
+.marathon-graph-canvas__surface .react-flow__pane {
+  cursor: grab;
+}
+
+.marathon-graph-canvas__surface .react-flow__pane.dragging {
+  cursor: grabbing;
+}
+
+.marathon-graph-canvas__surface .react-flow__selection,
+.marathon-graph-canvas__surface .react-flow__nodesselection-rect {
+  background: rgba(192, 254, 4, 0.05);
+  border: 1px solid rgba(192, 254, 4, 0.48);
+}
+
+.marathon-graph-canvas__surface .react-flow__node {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.marathon-graph-canvas__surface .react-flow__node:focus,
+.marathon-graph-canvas__surface .react-flow__node:focus-visible {
+  outline: 1px solid rgba(192, 254, 4, 0.74);
+  outline-offset: 4px;
+}
+
+.marathon-graph-canvas__surface .react-flow__edge:focus,
+.marathon-graph-canvas__surface .react-flow__edge:focus-visible {
+  outline: none;
+}
+
+.marathon-graph-canvas__surface .react-flow__node.selected {
+  z-index: 3;
+}
+
+.marathon-graph-node {
+  --marathon-graph-node-accent: var(--marathon-primary);
+  --marathon-graph-node-accent-glow: rgba(192, 254, 4, 0.16);
+  --marathon-graph-node-badge-bg: var(--marathon-field-primary);
+  --marathon-graph-node-badge-fg: var(--marathon-field-ink);
+  --marathon-graph-node-handle: rgba(192, 254, 4, 0.94);
+  position: relative;
+  min-width: 176px;
+  max-width: 236px;
+  padding: 16px 18px 14px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 58%),
+    linear-gradient(135deg, var(--marathon-graph-node-accent-glow), transparent 34%),
+    var(--marathon-graph-panel-bg);
+  border: 1px solid var(--marathon-graph-node-stroke);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 0 0 1px rgba(192, 254, 4, 0.08);
+  color: var(--marathon-text);
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+.marathon-graph-node::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 74px;
+  height: 10px;
+  background: var(--marathon-graph-node-accent);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.35);
+}
+
+.marathon-graph-node--violet {
+  --marathon-graph-node-accent: var(--marathon-field-violet);
+  --marathon-graph-node-accent-glow: rgba(159, 77, 255, 0.18);
+  --marathon-graph-node-badge-bg: var(--marathon-field-violet);
+}
+
+.marathon-graph-node--warning {
+  --marathon-graph-node-accent: var(--marathon-warning);
+  --marathon-graph-node-accent-glow: rgba(255, 155, 47, 0.18);
+  --marathon-graph-node-badge-bg: var(--marathon-warning);
+}
+
+.marathon-graph-node--error {
+  --marathon-graph-node-accent: var(--marathon-error);
+  --marathon-graph-node-accent-glow: rgba(242, 71, 35, 0.18);
+  --marathon-graph-node-badge-bg: var(--marathon-error);
+}
+
+.marathon-graph-node--neutral {
+  --marathon-graph-node-accent: #b0b0aa;
+  --marathon-graph-node-accent-glow: rgba(176, 176, 170, 0.14);
+  --marathon-graph-node-badge-bg: #b0b0aa;
+  --marathon-graph-node-handle: rgba(176, 176, 170, 0.9);
+}
+
+.marathon-graph-canvas__surface .react-flow__node.selected .marathon-graph-node,
+.marathon-graph-canvas__surface .react-flow__node:focus .marathon-graph-node,
+.marathon-graph-canvas__surface .react-flow__node:focus-visible .marathon-graph-node,
+.marathon-graph-node--selected {
+  border-color: rgba(192, 254, 4, 0.54);
+  box-shadow:
+    0 0 0 1px rgba(192, 254, 4, 0.2),
+    0 0 20px rgba(192, 254, 4, 0.14),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.marathon-graph-node__frame {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.marathon-graph-node__eyebrow {
+  color: var(--marathon-graph-node-accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1;
+}
+
+.marathon-graph-node__title {
+  font-family: var(--marathon-font-display);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.02;
+}
+
+.marathon-graph-node__detail {
+  color: var(--marathon-graph-node-muted);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+}
+
+.marathon-graph-node__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.marathon-graph-node__badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 0.24rem 0.56rem 0.16rem;
+  background: var(--marathon-graph-node-badge-bg);
+  color: var(--marathon-graph-node-badge-fg);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  box-shadow:
+    inset -1px 0 0 rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.marathon-graph-node__badge--violet {
+  background: var(--marathon-field-violet);
+}
+
+.marathon-graph-node__badge--warning {
+  background: var(--marathon-warning);
+}
+
+.marathon-graph-node__badge--error {
+  background: var(--marathon-error);
+}
+
+.marathon-graph-node__badge--neutral {
+  background: #b0b0aa;
+}
+
+.marathon-graph-node__handle {
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 0;
+  background: var(--marathon-graph-node-handle);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 10px var(--marathon-graph-node-accent-glow);
+}
+
+.marathon-graph-canvas__surface .marathon-graph-edge__path {
+  stroke: var(--marathon-graph-edge-stroke, rgba(192, 254, 4, 0.5));
+  stroke-width: 1.45;
+  filter: drop-shadow(0 0 8px var(--marathon-graph-edge-glow, rgba(192, 254, 4, 0.14)));
+  transition:
+    stroke 140ms ease,
+    stroke-width 140ms ease,
+    filter 140ms ease;
+}
+
+.marathon-graph-canvas__surface .react-flow__edge.selected .marathon-graph-edge__path,
+.marathon-graph-canvas__surface .react-flow__edge.selectable:hover .marathon-graph-edge__path,
+.marathon-graph-canvas__surface .react-flow__edge.selectable:focus .marathon-graph-edge__path,
+.marathon-graph-canvas__surface .react-flow__edge.selectable:focus-visible .marathon-graph-edge__path {
+  stroke: var(--marathon-graph-edge-selected-stroke);
+  stroke-width: 1.75;
+  filter: drop-shadow(0 0 10px rgba(192, 254, 4, 0.18));
+}
+
+.marathon-graph-canvas__surface .react-flow__edge-text {
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.marathon-graph-canvas__surface .react-flow__controls {
+  overflow: hidden;
+  margin: 14px;
+  border: 1px solid rgba(245, 245, 240, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 62%),
+    rgba(8, 8, 8, 0.94);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 0 0 1px rgba(192, 254, 4, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.marathon-graph-canvas__surface .react-flow__controls-button {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-bottom: 1px solid rgba(245, 245, 240, 0.08);
+  background: transparent;
+  color: rgba(245, 245, 240, 0.72);
+}
+
+.marathon-graph-canvas__surface .react-flow__controls-button:last-child {
+  border-bottom: 0;
+}
+
+.marathon-graph-canvas__surface .react-flow__controls.horizontal .react-flow__controls-button {
+  border-right: 1px solid rgba(245, 245, 240, 0.08);
+  border-bottom: 0;
+}
+
+.marathon-graph-canvas__surface
+  .react-flow__controls.horizontal
+  .react-flow__controls-button:last-child {
+  border-right: 0;
+}
+
+.marathon-graph-canvas__surface .react-flow__controls-button:hover,
+.marathon-graph-canvas__surface .react-flow__controls-button:focus-visible {
+  background: rgba(192, 254, 4, 0.08);
+  color: var(--marathon-primary);
+}
+
+.marathon-graph-canvas__surface .react-flow__controls-button svg {
+  max-width: 14px;
+  max-height: 14px;
+  fill: currentColor;
+}
+
+.marathon-graph-canvas__surface .react-flow__minimap {
+  overflow: hidden;
+  margin: 14px;
+  border: 1px solid rgba(245, 245, 240, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 58%),
+    rgba(6, 6, 6, 0.94);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 0 0 1px rgba(192, 254, 4, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.marathon-graph-canvas__surface .react-flow__minimap-mask {
+  fill: rgba(5, 5, 5, 0.72);
+  stroke: rgba(192, 254, 4, 0.34);
+}
+
+.marathon-graph-canvas__surface .react-flow__minimap-node {
+  opacity: 0.94;
+}
+
+.marathon-graph-canvas__surface .react-flow__attribution {
+  border: 1px solid rgba(245, 245, 240, 0.08);
+  background: rgba(6, 6, 6, 0.76);
+  color: rgba(245, 245, 240, 0.54);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.marathon-graph-canvas__surface .react-flow__attribution a {
+  color: inherit;
+}
+
+.marathon-graph-canvas__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.marathon-graph-canvas__overlay-card {
+  max-width: 280px;
+  padding: 14px 18px;
+  border: 1px solid rgba(245, 245, 240, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 58%),
+    rgba(10, 10, 10, 0.92);
+  color: rgba(245, 245, 240, 0.78);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 0 0 1px rgba(192, 254, 4, 0.08);
 }
 
 .marathon-pixel-cube-path {
@@ -762,9 +1361,34 @@ h6.ant-typography {
     opacity: 1;
     will-change: auto;
   }
+
+  .marathon-signal-button.ant-btn {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
 }
 
 @media (forced-colors: active) {
+  .marathon-signal-button.ant-btn {
+    color: ButtonText;
+    border-color: ButtonText;
+    background: Canvas;
+    box-shadow: none;
+  }
+
+  .marathon-signal-button__surface,
+  .marathon-signal-button.ant-btn::before,
+  .marathon-signal-button.ant-btn::after {
+    display: none;
+  }
+
+  .marathon-signal-button__label {
+    color: ButtonText;
+    mix-blend-mode: normal;
+    text-shadow: none;
+  }
+
   .marathon-signal-text {
     background: none;
     color: CanvasText;
@@ -832,6 +1456,45 @@ h6.ant-typography {
       0 0,
       0 0,
       50% 50%;
+  }
+}
+
+@keyframes marathon-signal-button-vibrate {
+  0% {
+    transform: translate3d(calc(var(--marathon-signal-button-shake-amp) * -0.8), 0, 0)
+      scale(calc(1 + var(--marathon-signal-button-burst-flash) * 0.008));
+  }
+
+  25% {
+    transform: translate3d(
+        calc(var(--marathon-signal-button-shake-amp) * 0.7),
+        calc(var(--marathon-signal-button-shake-amp) * -0.55),
+        0
+      )
+      scale(calc(1 + var(--marathon-signal-button-burst-flash) * 0.008));
+  }
+
+  50% {
+    transform: translate3d(
+        calc(var(--marathon-signal-button-shake-amp) * -0.5),
+        calc(var(--marathon-signal-button-shake-amp) * 0.72),
+        0
+      )
+      scale(calc(1 + var(--marathon-signal-button-burst-flash) * 0.008));
+  }
+
+  75% {
+    transform: translate3d(
+        calc(var(--marathon-signal-button-shake-amp) * 0.55),
+        calc(var(--marathon-signal-button-shake-amp) * 0.46),
+        0
+      )
+      scale(calc(1 + var(--marathon-signal-button-burst-flash) * 0.008));
+  }
+
+  100% {
+    transform: translate3d(calc(var(--marathon-signal-button-shake-amp) * -0.35), 0, 0)
+      scale(calc(1 + var(--marathon-signal-button-burst-flash) * 0.008));
   }
 }
 
@@ -2228,4 +2891,367 @@ h6.ant-typography {
   height: 12px;
   background: rgb(var(--marathon-signal-wireframe-accent-rgb) / 0.88);
   animation: marathon-loader-cursor 960ms steps(1, end) infinite;
+}
+
+.marathon-markdown {
+  color: rgba(245, 245, 240, 0.88);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.marathon-markdown > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.marathon-markdown > * + * {
+  margin-top: 1.15rem;
+}
+
+.marathon-markdown > :first-child {
+  margin-top: 0;
+}
+
+.marathon-markdown > :last-child {
+  margin-bottom: 0;
+}
+
+.marathon-markdown :where(p, li) {
+  max-width: 72ch;
+}
+
+.marathon-markdown :where(h1, h2, h3, h4, h5, h6) {
+  margin-top: 2.3rem;
+  color: var(--marathon-text);
+  font-family: var(--marathon-font-display);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.marathon-markdown h1 {
+  margin-top: 0.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(192, 254, 4, 0.26);
+  box-shadow: inset 0 -3px 0 rgba(192, 254, 4, 0.08);
+  font-size: clamp(2.3rem, 4.3vw, 3.6rem);
+}
+
+.marathon-markdown h2 {
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(192, 254, 4, 0.16);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+}
+
+.marathon-markdown h3 {
+  font-size: clamp(1.05rem, 1.6vw, 1.26rem);
+}
+
+.marathon-markdown h4,
+.marathon-markdown h5,
+.marathon-markdown h6 {
+  font-size: 0.95rem;
+  font-family: var(--marathon-font-ui);
+  letter-spacing: 0.12em;
+}
+
+.marathon-markdown :where(h1, h2, h3, h4, h5, h6) + * {
+  margin-top: 0.7rem;
+}
+
+.marathon-markdown strong {
+  color: var(--marathon-field-primary);
+}
+
+.marathon-markdown em {
+  color: rgba(245, 245, 240, 0.96);
+}
+
+.marathon-markdown a {
+  color: var(--marathon-primary);
+  text-decoration: none;
+  box-shadow: inset 0 -1px 0 rgba(192, 254, 4, 0.38);
+  transition:
+    color 140ms ease,
+    background-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.marathon-markdown a:hover,
+.marathon-markdown a:focus-visible {
+  color: var(--marathon-field-primary);
+  background: rgba(192, 254, 4, 0.08);
+  box-shadow: inset 0 -1px 0 rgba(217, 255, 103, 0.7);
+}
+
+.marathon-markdown ul,
+.marathon-markdown ol {
+  padding-left: 1.4rem;
+}
+
+.marathon-markdown li + li {
+  margin-top: 0.45rem;
+}
+
+.marathon-markdown li::marker {
+  color: var(--marathon-primary);
+  font-weight: 700;
+}
+
+.marathon-markdown blockquote {
+  margin-right: 0;
+  margin-left: 0;
+  padding: 1rem 1.2rem 1rem 1.4rem;
+  border-left: 4px solid var(--marathon-primary);
+  background:
+    linear-gradient(135deg, rgba(192, 254, 4, 0.1), transparent 38%),
+    rgba(9, 9, 9, 0.9);
+  box-shadow:
+    inset 0 0 0 1px rgba(192, 254, 4, 0.14),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.marathon-markdown blockquote > * + * {
+  margin-top: 0.7rem;
+}
+
+.marathon-markdown code,
+.marathon-markdown kbd {
+  display: inline-block;
+  padding: 0.12rem 0.42rem;
+  border: 1px solid rgba(192, 254, 4, 0.18);
+  background: rgba(8, 8, 8, 0.95);
+  color: var(--marathon-field-primary);
+  font-family: var(--marathon-font-ui);
+  font-size: 0.92em;
+  line-height: 1.35;
+  vertical-align: baseline;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.marathon-markdown pre {
+  margin: 1.45rem 0;
+  padding: 1rem 1.15rem 1rem 1.3rem;
+  overflow-x: auto;
+  border: 1px solid rgba(192, 254, 4, 0.16);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 46%),
+    linear-gradient(90deg, rgba(192, 254, 4, 0.08), transparent 22%),
+    rgba(9, 9, 9, 0.98);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 18px 34px rgba(0, 0, 0, 0.26);
+}
+
+.marathon-markdown pre code {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.marathon-markdown pre code:not(.hljs) {
+  color: rgba(245, 245, 240, 0.9);
+}
+
+.marathon-markdown pre code.hljs {
+  color: rgba(245, 245, 240, 0.9);
+  white-space: pre;
+}
+
+.marathon-markdown pre code .hljs-subst,
+.marathon-markdown pre code .hljs-punctuation {
+  color: rgba(245, 245, 240, 0.78);
+}
+
+.marathon-markdown pre code .hljs-comment,
+.marathon-markdown pre code .hljs-quote {
+  color: var(--marathon-muted);
+  font-style: italic;
+}
+
+.marathon-markdown pre code .hljs-keyword,
+.marathon-markdown pre code .hljs-literal,
+.marathon-markdown pre code .hljs-selector-tag,
+.marathon-markdown pre code .hljs-doctag,
+.marathon-markdown pre code .hljs-meta .hljs-keyword {
+  color: var(--marathon-accent-violet);
+}
+
+.marathon-markdown pre code .hljs-string,
+.marathon-markdown pre code .hljs-regexp,
+.marathon-markdown pre code .hljs-attr,
+.marathon-markdown pre code .hljs-template-variable {
+  color: var(--marathon-field-primary);
+}
+
+.marathon-markdown pre code .hljs-title,
+.marathon-markdown pre code .hljs-title.class_,
+.marathon-markdown pre code .hljs-title.function_,
+.marathon-markdown pre code .hljs-type,
+.marathon-markdown pre code .hljs-property {
+  color: var(--marathon-text);
+}
+
+.marathon-markdown pre code .hljs-number,
+.marathon-markdown pre code .hljs-symbol,
+.marathon-markdown pre code .hljs-bullet,
+.marathon-markdown pre code .hljs-variable,
+.marathon-markdown pre code .hljs-template-tag,
+.marathon-markdown pre code .hljs-meta,
+.marathon-markdown pre code .hljs-link {
+  color: var(--marathon-warning);
+}
+
+.marathon-markdown pre code .hljs-built_in,
+.marathon-markdown pre code .hljs-params,
+.marathon-markdown pre code .hljs-operator {
+  color: rgba(245, 245, 240, 0.84);
+}
+
+.marathon-markdown pre code .hljs-addition {
+  color: var(--marathon-field-primary);
+  background: rgba(192, 254, 4, 0.08);
+}
+
+.marathon-markdown pre code .hljs-deletion {
+  color: var(--marathon-error);
+  background: rgba(242, 71, 35, 0.08);
+}
+
+.marathon-markdown pre code .hljs-emphasis {
+  font-style: italic;
+}
+
+.marathon-markdown pre code .hljs-strong {
+  font-weight: 700;
+}
+
+.marathon-markdown hr {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, rgba(192, 254, 4, 0.64), transparent 88%);
+  opacity: 0.82;
+}
+
+.marathon-markdown table {
+  display: block;
+  width: 100%;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  border-collapse: collapse;
+  background: rgba(10, 10, 10, 0.9);
+}
+
+.marathon-markdown thead {
+  background: rgba(192, 254, 4, 0.08);
+}
+
+.marathon-markdown tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.marathon-markdown th,
+.marathon-markdown td {
+  padding: 0.8rem 0.95rem;
+  border: 1px solid rgba(192, 254, 4, 0.12);
+  text-align: left;
+  vertical-align: top;
+}
+
+.marathon-markdown th {
+  color: var(--marathon-field-primary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.marathon-markdown mark {
+  padding: 0 0.22em;
+  background: var(--marathon-primary);
+  color: var(--marathon-black);
+}
+
+.marathon-markdown img {
+  display: block;
+  max-width: 100%;
+  border: 1px solid rgba(192, 254, 4, 0.16);
+}
+
+.marathon-markdown figure {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.marathon-markdown figcaption {
+  margin-top: 0.65rem;
+  color: var(--marathon-muted);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.marathon-markdown details,
+.marathon-markdown-callout,
+.marathon-markdown [data-callout] {
+  padding: 1rem 1.05rem;
+  border: 1px solid rgba(192, 254, 4, 0.16);
+  background:
+    linear-gradient(135deg, rgba(192, 254, 4, 0.06), transparent 44%),
+    rgba(10, 10, 10, 0.92);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.marathon-markdown summary {
+  cursor: pointer;
+  color: var(--marathon-text);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.marathon-markdown summary + * {
+  margin-top: 0.9rem;
+}
+
+.marathon-markdown-callout,
+.marathon-markdown [data-callout] {
+  position: relative;
+  padding-top: 1.9rem;
+}
+
+.marathon-markdown-callout::before,
+.marathon-markdown [data-callout]::before {
+  content: "callout";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  min-height: 26px;
+  align-items: center;
+  padding: 0 0.7rem;
+  background: var(--marathon-field-primary);
+  color: var(--marathon-field-ink);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.3);
+}
+
+.marathon-markdown [data-callout]::before {
+  content: attr(data-callout);
+}
+
+.marathon-markdown [data-callout="warning"]::before {
+  background: var(--marathon-warning);
+}
+
+.marathon-markdown [data-callout="critical"]::before,
+.marathon-markdown [data-callout="danger"]::before {
+  background: var(--marathon-error);
+  color: var(--marathon-text);
 }
