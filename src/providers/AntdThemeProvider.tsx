@@ -1,7 +1,7 @@
 import { App, ConfigProvider } from "antd";
 import type { PropsWithChildren } from "react";
 
-import { marathonDosTheme } from "../theme/marathonDosTheme";
+import { marathonDosTheme } from "../theme/marathonDosTheme.js";
 
 export function AntdThemeProvider({ children }: PropsWithChildren) {
   return (

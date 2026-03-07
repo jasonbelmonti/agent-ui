@@ -3,7 +3,7 @@ import type { Preview } from "@storybook/react-webpack5";
 import "../src/styles.css";
 import "../src/styles/storybook.css";
 
-import { AntdThemeProvider } from "../src";
+import { AntdThemeProvider } from "../src/index.js";
 
 const preview: Preview = {
   decorators: [
