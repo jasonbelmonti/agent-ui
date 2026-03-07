@@ -10,7 +10,7 @@ export function MarkdownTheme({ className, ...articleProps }: MarkdownThemeProps
   return (
     <article
       {...articleProps}
-      className={joinClassNames("marathon-markdown", className)}
+      className={joinClassNames("signal-ui-markdown", className)}
     />
   );
 }

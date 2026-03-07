@@ -18,19 +18,19 @@ import {
 export type { SignalButtonProps, SignalButtonTone } from "./signalButton/types.js";
 
 type SignalButtonStyle = CSSProperties & {
-  "--marathon-signal-button-accent-rgb"?: string;
-  "--marathon-signal-button-burst-flash"?: string;
-  "--marathon-signal-button-cooldown"?: string;
-  "--marathon-signal-button-edge-width"?: string;
-  "--marathon-signal-button-fill-size"?: string;
-  "--marathon-signal-button-shake-amp"?: string;
+  "--signal-ui-signal-button-accent-rgb"?: string;
+  "--signal-ui-signal-button-burst-flash"?: string;
+  "--signal-ui-signal-button-cooldown"?: string;
+  "--signal-ui-signal-button-edge-width"?: string;
+  "--signal-ui-signal-button-fill-size"?: string;
+  "--signal-ui-signal-button-shake-amp"?: string;
 };
 
 function renderSignalContent(icon: ReactNode, children: ReactNode) {
   return (
-    <span className="marathon-signal-button__content">
-      {icon ? <span className="marathon-signal-button__icon">{icon}</span> : null}
-      <span className="marathon-signal-button__text">{children}</span>
+    <span className="signal-ui-signal-button__content">
+      {icon ? <span className="signal-ui-signal-button__icon">{icon}</span> : null}
+      <span className="signal-ui-signal-button__text">{children}</span>
     </span>
   );
 }
@@ -74,25 +74,25 @@ export function SignalButton({
 
   const signalButtonStyle: SignalButtonStyle = {
     ...style,
-    "--marathon-signal-button-accent-rgb": formatRgbChannels(accentChannels),
-    "--marathon-signal-button-burst-flash": `${burstFlash}`,
-    "--marathon-signal-button-cooldown": `${cooldownMix}`,
-    "--marathon-signal-button-edge-width": toCssLength(edgeWidth) ?? "24px",
-    "--marathon-signal-button-fill-size": `${resolvedFillPercent}%`,
-    "--marathon-signal-button-shake-amp": `${burstFlash * 1.65}px`,
+    "--signal-ui-signal-button-accent-rgb": formatRgbChannels(accentChannels),
+    "--signal-ui-signal-button-burst-flash": `${burstFlash}`,
+    "--signal-ui-signal-button-cooldown": `${cooldownMix}`,
+    "--signal-ui-signal-button-edge-width": toCssLength(edgeWidth) ?? "24px",
+    "--signal-ui-signal-button-fill-size": `${resolvedFillPercent}%`,
+    "--signal-ui-signal-button-shake-amp": `${burstFlash * 1.65}px`,
   };
 
   return (
     <Button
       {...buttonProps}
-      className={joinClassNames("marathon-signal-button", toneClassName[tone], className)}
+      className={joinClassNames("signal-ui-signal-button", toneClassName[tone], className)}
       style={signalButtonStyle}
     >
-      <span aria-hidden="true" className="marathon-signal-button__surface">
-        <canvas ref={canvasRef} className="marathon-signal-button__canvas" />
-        <span className="marathon-signal-button__sheen" />
+      <span aria-hidden="true" className="signal-ui-signal-button__surface">
+        <canvas ref={canvasRef} className="signal-ui-signal-button__canvas" />
+        <span className="signal-ui-signal-button__sheen" />
       </span>
-      <span className="marathon-signal-button__label">{renderSignalContent(icon, children)}</span>
+      <span className="signal-ui-signal-button__label">{renderSignalContent(icon, children)}</span>
     </Button>
   );
 }

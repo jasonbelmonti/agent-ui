@@ -1,9 +1,9 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { signalPalette } from "../theme/signalTheme.js";
 const voxelCoordinates = createVoxelCoordinates();
 const toneClassName = {
     primary: undefined,
-    violet: "marathon-hash-cube--violet",
+    violet: "signal-ui-hash-cube--violet",
 };
 const toneChannels = {
     primary: ["primary", "warning", "violet", "text"],
@@ -11,19 +11,19 @@ const toneChannels = {
 };
 const channelPalettes = {
     primary: {
-        base: marathonDosPalette.primary,
-        highlight: marathonDosPalette.fieldPrimary,
+        base: signalPalette.primary,
+        highlight: signalPalette.fieldPrimary,
     },
     text: {
-        base: marathonDosPalette.text,
+        base: signalPalette.text,
         highlight: "#ffffff",
     },
     violet: {
-        base: marathonDosPalette.accentViolet,
+        base: signalPalette.accentViolet,
         highlight: "#ddc3ff",
     },
     warning: {
-        base: marathonDosPalette.warning,
+        base: signalPalette.warning,
         highlight: "#ffd9ad",
     },
 };
@@ -45,24 +45,24 @@ export function HashCube({ className, detail, hash, label = "hash cube", showLeg
     const counts = countVoxelModes(voxels);
     const resolvedDetail = detail ?? `${counts.solid} solid / ${counts.wire} wire / ${counts.ghost} ghost`;
     const rootClassName = [
-        "marathon-hash-cube",
+        "signal-ui-hash-cube",
         toneClassName[tone],
-        showLegend ? undefined : "marathon-hash-cube--mini",
+        showLegend ? undefined : "signal-ui-hash-cube--mini",
         className,
     ]
         .filter(Boolean)
         .join(" ");
     const rootStyle = {
-        "--marathon-hash-cube-cell-size": `${cellSize}px`,
-        "--marathon-hash-cube-gap": `${gapSize}px`,
-        "--marathon-hash-cube-perspective": `${perspective}px`,
-        "--marathon-hash-cube-scene-height": `${sceneHeight}px`,
-        "--marathon-hash-cube-scene-width": `${sceneWidth}px`,
-        "--marathon-hash-cube-size": `${size}px`,
-        "--marathon-hash-cube-step": `${stepSize}px`,
+        "--signal-ui-hash-cube-cell-size": `${cellSize}px`,
+        "--signal-ui-hash-cube-gap": `${gapSize}px`,
+        "--signal-ui-hash-cube-perspective": `${perspective}px`,
+        "--signal-ui-hash-cube-scene-height": `${sceneHeight}px`,
+        "--signal-ui-hash-cube-scene-width": `${sceneWidth}px`,
+        "--signal-ui-hash-cube-size": `${size}px`,
+        "--signal-ui-hash-cube-step": `${stepSize}px`,
         ...style,
     };
-    return (_jsxs("div", { "aria-label": `${label}: ${sourceHash}`, className: rootClassName, role: "img", style: rootStyle, ...props, children: [_jsx("div", { className: "marathon-hash-cube__stage", children: _jsx("div", { "aria-hidden": "true", className: "marathon-hash-cube__viewport", children: _jsx("div", { className: "marathon-hash-cube__scene", children: voxels.map((voxel) => (_jsxs("span", { className: "marathon-hash-cube__voxel", "data-mode": voxel.mode, "data-surface": voxel.surface ? "true" : "false", style: getVoxelStyle(voxel), children: [_jsx("span", { className: "marathon-hash-cube__face marathon-hash-cube__face--front" }), _jsx("span", { className: "marathon-hash-cube__face marathon-hash-cube__face--right" }), _jsx("span", { className: "marathon-hash-cube__face marathon-hash-cube__face--top" })] }, voxel.index))) }) }) }), showLegend ? (_jsxs("div", { className: "marathon-hash-cube__legend", children: [_jsxs("div", { className: "marathon-hash-cube__legend-row", children: [_jsx("span", { className: "marathon-hash-cube__label", children: label }), _jsx("span", { className: "marathon-hash-cube__signature", children: formatHashSignature(sourceHash) })] }), _jsx("span", { className: "marathon-hash-cube__detail", children: resolvedDetail })] })) : null] }));
+    return (_jsxs("div", { "aria-label": `${label}: ${sourceHash}`, className: rootClassName, role: "img", style: rootStyle, ...props, children: [_jsx("div", { className: "signal-ui-hash-cube__stage", children: _jsx("div", { "aria-hidden": "true", className: "signal-ui-hash-cube__viewport", children: _jsx("div", { className: "signal-ui-hash-cube__scene", children: voxels.map((voxel) => (_jsxs("span", { className: "signal-ui-hash-cube__voxel", "data-mode": voxel.mode, "data-surface": voxel.surface ? "true" : "false", style: getVoxelStyle(voxel), children: [_jsx("span", { className: "signal-ui-hash-cube__face signal-ui-hash-cube__face--front" }), _jsx("span", { className: "signal-ui-hash-cube__face signal-ui-hash-cube__face--right" }), _jsx("span", { className: "signal-ui-hash-cube__face signal-ui-hash-cube__face--top" })] }, voxel.index))) }) }) }), showLegend ? (_jsxs("div", { className: "signal-ui-hash-cube__legend", children: [_jsxs("div", { className: "signal-ui-hash-cube__legend-row", children: [_jsx("span", { className: "signal-ui-hash-cube__label", children: label }), _jsx("span", { className: "signal-ui-hash-cube__signature", children: formatHashSignature(sourceHash) })] }), _jsx("span", { className: "signal-ui-hash-cube__detail", children: resolvedDetail })] })) : null] }));
 }
 function createHashCubeVoxels(hash, tone) {
     const normalizedHash = hash.trim().toLowerCase() || "0";
@@ -150,17 +150,17 @@ function getVoxelStyle(voxel) {
     const palette = channelPalettes[voxel.channel];
     const colors = channelStyles[voxel.channel];
     return {
-        "--marathon-hash-cube-front": colors.front,
-        "--marathon-hash-cube-glow": rgba(palette.base, voxel.glow),
-        "--marathon-hash-cube-lift": `${voxel.lift}px`,
-        "--marathon-hash-cube-opacity": voxel.opacity,
-        "--marathon-hash-cube-scale": voxel.scale,
-        "--marathon-hash-cube-side": colors.side,
-        "--marathon-hash-cube-top": colors.top,
-        "--marathon-hash-cube-wire": colors.wire,
-        "--marathon-hash-cube-x": `calc(${voxel.x} * var(--marathon-hash-cube-step))`,
-        "--marathon-hash-cube-y": `calc(${voxel.y} * var(--marathon-hash-cube-step))`,
-        "--marathon-hash-cube-z": `calc(${voxel.z} * var(--marathon-hash-cube-step))`,
+        "--signal-ui-hash-cube-front": colors.front,
+        "--signal-ui-hash-cube-glow": rgba(palette.base, voxel.glow),
+        "--signal-ui-hash-cube-lift": `${voxel.lift}px`,
+        "--signal-ui-hash-cube-opacity": voxel.opacity,
+        "--signal-ui-hash-cube-scale": voxel.scale,
+        "--signal-ui-hash-cube-side": colors.side,
+        "--signal-ui-hash-cube-top": colors.top,
+        "--signal-ui-hash-cube-wire": colors.wire,
+        "--signal-ui-hash-cube-x": `calc(${voxel.x} * var(--signal-ui-hash-cube-step))`,
+        "--signal-ui-hash-cube-y": `calc(${voxel.y} * var(--signal-ui-hash-cube-step))`,
+        "--signal-ui-hash-cube-z": `calc(${voxel.z} * var(--signal-ui-hash-cube-step))`,
     };
 }
 function createNibbleStream(source, count) {

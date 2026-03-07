@@ -1,5 +1,5 @@
 import type { ThemeConfig } from "antd";
-export declare const marathonDosPalette: {
+export declare const signalPalette: {
     readonly black: "#000000";
     readonly void: "#050505";
     readonly panel: "#0f0f0f";
@@ -16,10 +16,10 @@ export declare const marathonDosPalette: {
     readonly warning: "#ff9b2f";
     readonly error: "#f24723";
 };
-export declare const marathonDosFontStacks: {
+export declare const signalFontStacks: {
     readonly ui: "\"Azeret Mono\", \"SFMono-Regular\", \"Menlo\", monospace";
     readonly display: "\"Oxanium\", \"Azeret Mono\", sans-serif";
     readonly displaySecondary: "\"Doto\", \"Oxanium\", \"Azeret Mono\", sans-serif";
     readonly pixel: "\"Micro 5\", \"Oxanium\", \"Azeret Mono\", sans-serif";
 };
-export declare const marathonDosTheme: ThemeConfig;
+export declare const signalTheme: ThemeConfig;

@@ -1,7 +1,7 @@
 import { theme } from "antd";
 import type { ThemeConfig } from "antd";
 
-export const marathonDosPalette = {
+export const signalPalette = {
   black: "#000000",
   void: "#050505",
   panel: "#0f0f0f",
@@ -19,34 +19,34 @@ export const marathonDosPalette = {
   error: "#f24723",
 } as const;
 
-export const marathonDosFontStacks = {
+export const signalFontStacks = {
   ui: "\"Azeret Mono\", \"SFMono-Regular\", \"Menlo\", monospace",
   display: "\"Oxanium\", \"Azeret Mono\", sans-serif",
   displaySecondary: "\"Doto\", \"Oxanium\", \"Azeret Mono\", sans-serif",
   pixel: "\"Micro 5\", \"Oxanium\", \"Azeret Mono\", sans-serif",
 } as const;
 
-export const marathonDosTheme: ThemeConfig = {
+export const signalTheme: ThemeConfig = {
   algorithm: [theme.darkAlgorithm, theme.compactAlgorithm],
   token: {
-    colorPrimary: marathonDosPalette.primary,
-    colorInfo: marathonDosPalette.primary,
+    colorPrimary: signalPalette.primary,
+    colorInfo: signalPalette.primary,
     colorSuccess: "#94db19",
-    colorWarning: marathonDosPalette.warning,
-    colorError: marathonDosPalette.error,
-    colorLink: marathonDosPalette.primary,
-    colorTextBase: marathonDosPalette.text,
-    colorBgBase: marathonDosPalette.black,
-    colorBorder: marathonDosPalette.muted,
-    colorBorderSecondary: marathonDosPalette.grid,
-    colorSplit: marathonDosPalette.grid,
-    colorText: marathonDosPalette.text,
+    colorWarning: signalPalette.warning,
+    colorError: signalPalette.error,
+    colorLink: signalPalette.primary,
+    colorTextBase: signalPalette.text,
+    colorBgBase: signalPalette.black,
+    colorBorder: signalPalette.muted,
+    colorBorderSecondary: signalPalette.grid,
+    colorSplit: signalPalette.grid,
+    colorText: signalPalette.text,
     colorTextSecondary: "#a6a6a6",
-    colorTextTertiary: marathonDosPalette.muted,
+    colorTextTertiary: signalPalette.muted,
     colorTextQuaternary: "#5c5c5c",
-    colorBgContainer: marathonDosPalette.panel,
+    colorBgContainer: signalPalette.panel,
     colorBgElevated: "#131313",
-    colorBgLayout: marathonDosPalette.void,
+    colorBgLayout: signalPalette.void,
     colorFillSecondary: "rgba(192, 254, 4, 0.08)",
     colorFillTertiary: "rgba(192, 254, 4, 0.12)",
     colorFillQuaternary: "rgba(255, 255, 255, 0.05)",
@@ -56,8 +56,8 @@ export const marathonDosTheme: ThemeConfig = {
     controlOutline: "rgba(192, 254, 4, 0.26)",
     controlOutlineWidth: 1,
     lineWidth: 1,
-    fontFamily: marathonDosFontStacks.ui,
-    fontFamilyCode: marathonDosFontStacks.ui,
+    fontFamily: signalFontStacks.ui,
+    fontFamilyCode: signalFontStacks.ui,
     fontSize: 13,
     fontSizeHeading1: 42,
     fontSizeHeading2: 28,
@@ -82,15 +82,15 @@ export const marathonDosTheme: ThemeConfig = {
     Button: {
       fontWeight: 600,
       defaultBg: "#101010",
-      defaultColor: marathonDosPalette.text,
-      defaultBorderColor: marathonDosPalette.muted,
+      defaultColor: signalPalette.text,
+      defaultBorderColor: signalPalette.muted,
       defaultHoverBg: "#151515",
-      defaultHoverColor: marathonDosPalette.primary,
-      defaultHoverBorderColor: marathonDosPalette.primary,
+      defaultHoverColor: signalPalette.primary,
+      defaultHoverBorderColor: signalPalette.primary,
       defaultActiveBg: "#0d0d0d",
-      defaultActiveColor: marathonDosPalette.primary,
-      defaultActiveBorderColor: marathonDosPalette.primaryDeep,
-      primaryColor: marathonDosPalette.black,
+      defaultActiveColor: signalPalette.primary,
+      defaultActiveBorderColor: signalPalette.primaryDeep,
+      primaryColor: signalPalette.black,
       defaultShadow: "none",
       primaryShadow: "none",
       dangerShadow: "none",
@@ -107,8 +107,8 @@ export const marathonDosTheme: ThemeConfig = {
       addonBg: "#080808",
       hoverBg: "#101010",
       activeBg: "#101010",
-      hoverBorderColor: marathonDosPalette.primary,
-      activeBorderColor: marathonDosPalette.primary,
+      hoverBorderColor: signalPalette.primary,
+      activeBorderColor: signalPalette.primary,
       activeShadow: "0 0 0 2px rgba(192, 254, 4, 0.16)",
       errorActiveShadow: "0 0 0 2px rgba(242, 71, 35, 0.18)",
       warningActiveShadow: "0 0 0 2px rgba(255, 155, 47, 0.18)",
@@ -125,7 +125,7 @@ export const marathonDosTheme: ThemeConfig = {
     Card: {
       headerBg: "#090909",
       actionsBg: "#090909",
-      extraColor: marathonDosPalette.primary,
+      extraColor: signalPalette.primary,
       headerFontSize: 12,
       headerFontSizeSM: 11,
       headerHeight: 52,

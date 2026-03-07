@@ -18,8 +18,8 @@ export const toneCooldownChannels = {
 } satisfies Record<SignalButtonTone, RgbChannels>;
 
 export const toneClassName = {
-  primary: "marathon-signal-button--primary",
-  violet: "marathon-signal-button--violet",
+  primary: "signal-ui-signal-button--primary",
+  violet: "signal-ui-signal-button--violet",
 } satisfies Record<SignalButtonTone, string>;
 
 export function clamp(value: number, min: number, max: number) {

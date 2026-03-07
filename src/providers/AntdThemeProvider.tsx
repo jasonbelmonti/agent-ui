@@ -1,11 +1,11 @@
 import { App, ConfigProvider } from "antd";
 import type { PropsWithChildren } from "react";
 
-import { marathonDosTheme } from "../theme/marathonDosTheme.js";
+import { signalTheme } from "../theme/signalTheme.js";
 
 export function AntdThemeProvider({ children }: PropsWithChildren) {
   return (
-    <ConfigProvider theme={marathonDosTheme}>
+    <ConfigProvider theme={signalTheme}>
       <App>{children}</App>
     </ConfigProvider>
   );

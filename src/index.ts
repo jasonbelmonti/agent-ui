@@ -50,4 +50,4 @@ export type {
   SignalWireframeProps,
   SignalWireframeTone,
 } from "./components/SignalWireframe.js";
-export { marathonDosFontStacks, marathonDosPalette, marathonDosTheme } from "./theme/marathonDosTheme.js";
+export { signalFontStacks, signalPalette, signalTheme } from "./theme/signalTheme.js";

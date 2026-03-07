@@ -2,7 +2,7 @@ import { Card, Flex, Space, Typography } from "antd";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import type { CSSProperties } from "react";
 
-import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { signalPalette } from "../theme/signalTheme.js";
 
 const meta = {
   title: "Effects/Signal Text",
@@ -21,8 +21,8 @@ const meta = {
       >
         <Space direction="vertical" size={12}>
           <Typography.Text style={eyebrowStyle}>Motion Texture / Signal Type</Typography.Text>
-          <Typography.Title level={1} className="marathon-signal-text" style={heroStyle}>
-            LV-426 UPLINK ONLINE
+            <Typography.Title level={1} className="signal-ui-signal-text" style={heroStyle}>
+              GRID UPLINK ONLINE
           </Typography.Title>
           <Typography.Paragraph style={copyStyle}>
             Procedural scan grain and restrained flicker live in the shared theme stylesheet, so
@@ -38,7 +38,7 @@ const meta = {
             <Typography.Paragraph style={copyStyle}>
               Mission status:
               {" "}
-              <Typography.Text className="marathon-signal-text" style={inlineSignalStyle}>
+              <Typography.Text className="signal-ui-signal-text" style={inlineSignalStyle}>
                 GREEN-LINE STABLE
               </Typography.Text>
             </Typography.Paragraph>
@@ -52,8 +52,8 @@ const meta = {
         <Card title="Scoped Override" style={cardStyle}>
           <Space direction="vertical" size={10}>
             <Typography.Text style={eyebrowStyle}>Local CSS Vars</Typography.Text>
-            <Typography.Title level={2} className="marathon-signal-text" style={overrideStyle}>
-              NOSTROMO FEED SYNCED
+            <Typography.Title level={2} className="signal-ui-signal-text" style={overrideStyle}>
+              UPLINK FEED SYNCED
             </Typography.Title>
             <Typography.Paragraph style={copyStyle}>
               This example overrides only the local accent, glow, noise size, and flicker depth to
@@ -64,10 +64,10 @@ const meta = {
 
         <Card title="Violet Contrast Trial" style={violetCardStyle}>
           <Space direction="vertical" size={10}>
-            <Typography.Text style={{ ...eyebrowStyle, color: marathonDosPalette.accentViolet }}>
+            <Typography.Text style={{ ...eyebrowStyle, color: signalPalette.accentViolet }}>
               Secondary Accent
             </Typography.Text>
-            <Typography.Title level={2} className="marathon-signal-text" style={violetSignalStyle}>
+            <Typography.Title level={2} className="signal-ui-signal-text" style={violetSignalStyle}>
               SLIPSTREAM WINDOW OPEN
             </Typography.Title>
             <Typography.Paragraph style={copyStyle}>
@@ -88,11 +88,11 @@ type Story = StoryObj<typeof meta>;
 
 export const DefaultSignalText: Story = {};
 
-type SignalStyle = CSSProperties & Record<`--marathon-fx-signal-${string}`, string | number>;
+type SignalStyle = CSSProperties & Record<`--signal-ui-fx-signal-${string}`, string | number>;
 
 const eyebrowStyle: CSSProperties = {
   display: "block",
-  color: marathonDosPalette.primary,
+  color: signalPalette.primary,
   fontSize: 11,
   letterSpacing: "0.16em",
   marginBottom: 2,
@@ -131,16 +131,16 @@ const inlineSignalStyle: SignalStyle = {
 };
 
 const overrideStyle: SignalStyle = {
-  "--marathon-fx-signal-accent": "#74f1ff",
-  "--marathon-fx-signal-glow": "rgba(116, 241, 255, 0.34)",
-  "--marathon-fx-signal-noise-size": "108px",
-  "--marathon-fx-signal-flicker-depth": 0.04,
+  "--signal-ui-fx-signal-accent": "#74f1ff",
+  "--signal-ui-fx-signal-glow": "rgba(116, 241, 255, 0.34)",
+  "--signal-ui-fx-signal-noise-size": "108px",
+  "--signal-ui-fx-signal-flicker-depth": 0.04,
   margin: 0,
 };
 
 const violetSignalStyle: SignalStyle = {
-  "--marathon-fx-signal-accent": marathonDosPalette.accentViolet,
-  "--marathon-fx-signal-glow": "rgba(159, 77, 255, 0.38)",
-  "--marathon-fx-signal-noise-size": "92px",
+  "--signal-ui-fx-signal-accent": signalPalette.accentViolet,
+  "--signal-ui-fx-signal-glow": "rgba(159, 77, 255, 0.38)",
+  "--signal-ui-fx-signal-noise-size": "92px",
   margin: 0,
 };

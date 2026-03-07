@@ -1,11 +1,11 @@
 import type { CSSProperties, HTMLAttributes } from "react";
 
-import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { signalPalette } from "../theme/signalTheme.js";
 
 type HashCubeMode = "core" | "ghost" | "solid" | "wire";
 type HashCubeColorChannel = "primary" | "text" | "violet" | "warning";
 
-type HashCubeStyle = CSSProperties & Record<`--marathon-hash-cube-${string}`, string | number>;
+type HashCubeStyle = CSSProperties & Record<`--signal-ui-hash-cube-${string}`, string | number>;
 
 export type HashCubeTone = "primary" | "violet";
 
@@ -57,7 +57,7 @@ const voxelCoordinates = createVoxelCoordinates();
 
 const toneClassName: Record<HashCubeTone, string | undefined> = {
   primary: undefined,
-  violet: "marathon-hash-cube--violet",
+  violet: "signal-ui-hash-cube--violet",
 };
 
 const toneChannels: Record<HashCubeTone, HashCubeColorChannel[]> = {
@@ -67,19 +67,19 @@ const toneChannels: Record<HashCubeTone, HashCubeColorChannel[]> = {
 
 const channelPalettes: Record<HashCubeColorChannel, ChannelPalette> = {
   primary: {
-    base: marathonDosPalette.primary,
-    highlight: marathonDosPalette.fieldPrimary,
+    base: signalPalette.primary,
+    highlight: signalPalette.fieldPrimary,
   },
   text: {
-    base: marathonDosPalette.text,
+    base: signalPalette.text,
     highlight: "#ffffff",
   },
   violet: {
-    base: marathonDosPalette.accentViolet,
+    base: signalPalette.accentViolet,
     highlight: "#ddc3ff",
   },
   warning: {
-    base: marathonDosPalette.warning,
+    base: signalPalette.warning,
     highlight: "#ffd9ad",
   },
 };
@@ -142,21 +142,21 @@ export function HashCube({
   const resolvedDetail =
     detail ?? `${counts.solid} solid / ${counts.wire} wire / ${counts.ghost} ghost`;
   const rootClassName = [
-    "marathon-hash-cube",
+    "signal-ui-hash-cube",
     toneClassName[tone],
-    showLegend ? undefined : "marathon-hash-cube--mini",
+    showLegend ? undefined : "signal-ui-hash-cube--mini",
     className,
   ]
     .filter(Boolean)
     .join(" ");
   const rootStyle: HashCubeStyle = {
-    "--marathon-hash-cube-cell-size": `${cellSize}px`,
-    "--marathon-hash-cube-gap": `${gapSize}px`,
-    "--marathon-hash-cube-perspective": `${perspective}px`,
-    "--marathon-hash-cube-scene-height": `${sceneHeight}px`,
-    "--marathon-hash-cube-scene-width": `${sceneWidth}px`,
-    "--marathon-hash-cube-size": `${size}px`,
-    "--marathon-hash-cube-step": `${stepSize}px`,
+    "--signal-ui-hash-cube-cell-size": `${cellSize}px`,
+    "--signal-ui-hash-cube-gap": `${gapSize}px`,
+    "--signal-ui-hash-cube-perspective": `${perspective}px`,
+    "--signal-ui-hash-cube-scene-height": `${sceneHeight}px`,
+    "--signal-ui-hash-cube-scene-width": `${sceneWidth}px`,
+    "--signal-ui-hash-cube-size": `${size}px`,
+    "--signal-ui-hash-cube-step": `${stepSize}px`,
     ...style,
   };
 
@@ -168,20 +168,20 @@ export function HashCube({
       style={rootStyle}
       {...props}
     >
-      <div className="marathon-hash-cube__stage">
-        <div aria-hidden="true" className="marathon-hash-cube__viewport">
-          <div className="marathon-hash-cube__scene">
+      <div className="signal-ui-hash-cube__stage">
+        <div aria-hidden="true" className="signal-ui-hash-cube__viewport">
+          <div className="signal-ui-hash-cube__scene">
             {voxels.map((voxel) => (
               <span
-                className="marathon-hash-cube__voxel"
+                className="signal-ui-hash-cube__voxel"
                 data-mode={voxel.mode}
                 data-surface={voxel.surface ? "true" : "false"}
                 key={voxel.index}
                 style={getVoxelStyle(voxel)}
               >
-                <span className="marathon-hash-cube__face marathon-hash-cube__face--front" />
-                <span className="marathon-hash-cube__face marathon-hash-cube__face--right" />
-                <span className="marathon-hash-cube__face marathon-hash-cube__face--top" />
+                <span className="signal-ui-hash-cube__face signal-ui-hash-cube__face--front" />
+                <span className="signal-ui-hash-cube__face signal-ui-hash-cube__face--right" />
+                <span className="signal-ui-hash-cube__face signal-ui-hash-cube__face--top" />
               </span>
             ))}
           </div>
@@ -189,12 +189,12 @@ export function HashCube({
       </div>
 
       {showLegend ? (
-        <div className="marathon-hash-cube__legend">
-          <div className="marathon-hash-cube__legend-row">
-            <span className="marathon-hash-cube__label">{label}</span>
-            <span className="marathon-hash-cube__signature">{formatHashSignature(sourceHash)}</span>
+        <div className="signal-ui-hash-cube__legend">
+          <div className="signal-ui-hash-cube__legend-row">
+            <span className="signal-ui-hash-cube__label">{label}</span>
+            <span className="signal-ui-hash-cube__signature">{formatHashSignature(sourceHash)}</span>
           </div>
-          <span className="marathon-hash-cube__detail">{resolvedDetail}</span>
+          <span className="signal-ui-hash-cube__detail">{resolvedDetail}</span>
         </div>
       ) : null}
     </div>
@@ -300,17 +300,17 @@ function getVoxelStyle(voxel: HashCubeVoxel): HashCubeStyle {
   const colors = channelStyles[voxel.channel];
 
   return {
-    "--marathon-hash-cube-front": colors.front,
-    "--marathon-hash-cube-glow": rgba(palette.base, voxel.glow),
-    "--marathon-hash-cube-lift": `${voxel.lift}px`,
-    "--marathon-hash-cube-opacity": voxel.opacity,
-    "--marathon-hash-cube-scale": voxel.scale,
-    "--marathon-hash-cube-side": colors.side,
-    "--marathon-hash-cube-top": colors.top,
-    "--marathon-hash-cube-wire": colors.wire,
-    "--marathon-hash-cube-x": `calc(${voxel.x} * var(--marathon-hash-cube-step))`,
-    "--marathon-hash-cube-y": `calc(${voxel.y} * var(--marathon-hash-cube-step))`,
-    "--marathon-hash-cube-z": `calc(${voxel.z} * var(--marathon-hash-cube-step))`,
+    "--signal-ui-hash-cube-front": colors.front,
+    "--signal-ui-hash-cube-glow": rgba(palette.base, voxel.glow),
+    "--signal-ui-hash-cube-lift": `${voxel.lift}px`,
+    "--signal-ui-hash-cube-opacity": voxel.opacity,
+    "--signal-ui-hash-cube-scale": voxel.scale,
+    "--signal-ui-hash-cube-side": colors.side,
+    "--signal-ui-hash-cube-top": colors.top,
+    "--signal-ui-hash-cube-wire": colors.wire,
+    "--signal-ui-hash-cube-x": `calc(${voxel.x} * var(--signal-ui-hash-cube-step))`,
+    "--signal-ui-hash-cube-y": `calc(${voxel.y} * var(--signal-ui-hash-cube-step))`,
+    "--signal-ui-hash-cube-z": `calc(${voxel.z} * var(--signal-ui-hash-cube-step))`,
   };
 }
 

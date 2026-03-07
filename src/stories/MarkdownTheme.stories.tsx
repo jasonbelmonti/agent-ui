@@ -7,7 +7,7 @@ import remarkGfm from "remark-gfm";
 
 import { MarkdownTheme } from "../components/MarkdownTheme.js";
 import { Panel } from "../components/Panel.js";
-import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { signalPalette } from "../theme/signalTheme.js";
 
 interface MarkdownThemeStoryProps {
   markdown: string;
@@ -41,7 +41,7 @@ const trustedHtmlSchema = {
     ...defaultSchema.attributes,
     div: [
       ...(defaultSchema.attributes?.div ?? []),
-      ["className", "marathon-markdown-callout"],
+      ["className", "signal-ui-markdown-callout"],
       ["data-callout"],
     ],
   },
@@ -59,7 +59,7 @@ const trustedHtmlSchema = {
 </ReactMarkdown>`;
 
 const defaultMarkdown = String.raw`
-**Mission brief.** The markdown skin keeps plain semantic HTML, but gives docs, changelogs, and runbooks the same voice as the rest of the Marathon system.
+**Mission brief.** The markdown skin keeps plain semantic HTML, but gives docs, changelogs, and runbooks the same voice as the rest of the shared signal system.
 
 # Field Guide: Markdown Surfaces
 
@@ -130,16 +130,16 @@ function MarkdownThemeStory({ markdown }: MarkdownThemeStoryProps) {
       >
         <Space direction="vertical" size={10}>
           <div style={accentLabelRowStyle}>
-            <span className="marathon-accent-field">Markdown</span>
+            <span className="signal-ui-accent-field">Markdown</span>
             <Typography.Text style={{ ...eyebrowStyle, marginBottom: 0 }}>
               Paste Into Controls
             </Typography.Text>
           </div>
-          <div className="marathon-heading-lockup">
-            <span className="marathon-accent-bar" aria-hidden="true" />
-            <div className="marathon-heading-lockup__body">
-              <Typography.Title level={1} className="marathon-text-display" style={{ margin: 0 }}>
-                Marathon Markdown Theme
+          <div className="signal-ui-heading-lockup">
+            <span className="signal-ui-accent-bar" aria-hidden="true" />
+            <div className="signal-ui-heading-lockup__body">
+              <Typography.Title level={1} className="signal-ui-text-display" style={{ margin: 0 }}>
+                Signal Markdown Theme
               </Typography.Title>
               <Typography.Paragraph style={heroCopyStyle}>
                 This story renders a raw markdown string through <code>react-markdown</code>, so
@@ -205,7 +205,7 @@ function MarkdownThemeStory({ markdown }: MarkdownThemeStoryProps) {
             <Panel
               title="Consumer Usage"
               extra="Highlighted Default"
-              className="marathon-panel-tab"
+              className="signal-ui-panel-tab"
               style={usagePanelStyle}
             >
               <MarkdownTheme>
@@ -218,11 +218,11 @@ function MarkdownThemeStory({ markdown }: MarkdownThemeStoryProps) {
             <Panel
               title="Trusted HTML Add-Ons"
               extra="Optional"
-              className="marathon-panel-tab marathon-panel-tab--secondary"
+              className="signal-ui-panel-tab signal-ui-panel-tab--secondary"
               style={trustedHtmlPanelStyle}
             >
               <MarkdownTheme>
-                <div className="marathon-markdown-callout" data-callout="warning">
+                <div className="signal-ui-markdown-callout" data-callout="warning">
                   <p>
                     <strong>Trusted HTML only.</strong>
                     {" "}
@@ -286,7 +286,7 @@ const accentLabelRowStyle: CSSProperties = {
 
 const eyebrowStyle: CSSProperties = {
   display: "block",
-  color: marathonDosPalette.primary,
+  color: signalPalette.primary,
   fontSize: 11,
   letterSpacing: "0.16em",
   textTransform: "uppercase",
