@@ -9,12 +9,14 @@ import "./styles/theme.css";
 
 export { AntdThemeProvider, installStaticAntdTheme } from "./providers/AntdThemeProvider";
 export { Panel, panelCutCornerPresets } from "./components/Panel";
+export { SignalButton } from "./components/SignalButton";
 export type {
   PanelCutCorner,
   PanelCutCornerPlacement,
   PanelCutCornerPreset,
   PanelProps,
 } from "./components/Panel";
+export type { SignalButtonProps, SignalButtonTone } from "./components/SignalButton";
 export { PixelCubePath } from "./components/PixelCubePath";
 export { PixelCubeLoader } from "./components/PixelCubeLoader";
 export type {
