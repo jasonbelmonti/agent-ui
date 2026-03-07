@@ -1,29 +1,51 @@
 {
   "name": "agent-ui",
-  "module": "src/index.ts",
   "type": "module",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
   "private": true,
   "scripts": {
+    "build": "bun run clean && bun x tsc -p tsconfig.build.json && bun run scripts/build-css.ts",
+    "clean": "rm -rf dist",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "bun x tsc --noEmit"
   },
   "dependencies": {
-    "@ant-design/icons": "6.1.0",
     "@fontsource/azeret-mono": "5.2.11",
     "@fontsource/doto": "^5.2.10",
-    "@fontsource/oxanium": "5.2.8",
+    "@fontsource/oxanium": "5.2.8"
+  },
+  "peerDependencies": {
+    "@ant-design/icons": "6.1.0",
     "antd": "6.3.1",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react": "^18.3.1 || ^19.0.0",
+    "react-dom": "^18.3.1 || ^19.0.0"
   },
   "devDependencies": {
+    "@ant-design/icons": "6.1.0",
     "@storybook/addon-a11y": "10.2.16",
     "@storybook/addon-docs": "10.2.16",
     "@storybook/addon-webpack5-compiler-swc": "4.0.2",
     "@storybook/react-webpack5": "10.2.16",
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "antd": "6.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "storybook": "10.2.16",
     "typescript": "^5.9.3"
   }

@@ -5,7 +5,7 @@
 - Preferred initial direction for `agent-ui` is Storybook-first, not a separate app shell.
 - Locked visual direction is a modernized MS-DOS / hacker aesthetic with palette inspiration from Marathon (`#000000`, `#1c1c1c`, `#717171`, `#c0fe04`, `#f24723`), open-source fonts, and restrained terminal effects.
 - Current font direction is `Oxanium` for display headings and `Azeret Mono` for UI/body copy.
-- Theme assets that depend on global CSS or font-face imports should be wired through `src/index.ts`, not only Storybook preview, so package consumers match the stories.
+- Theme assets that depend on global CSS or font-face imports need a first-class consumer entry, not just Storybook preview; for packaged use, an explicit `styles.css` export is safer than hiding global side effects in `src/index.ts`.
 - Theme motion effects should be exposed as opt-in CSS utilities plus Storybook demos, not forced into Ant Design token config.
 - User prefers motion texture with rapid but subtle "zzt zzt" energy rather than slow ambient shimmer.
 - User is interested in folding more stylized pixel/display fonts into the Marathon theme when they are applied as purposeful accents rather than indiscriminate body copy.
