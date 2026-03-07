@@ -47,7 +47,8 @@ export function PixelCubeLoader({
   const stepSize = cellSize + gapSize;
   const depthOrigin = ((gridSize - 1) / 2) * stepSize;
   const voxels = createVoxelDescriptors(gridSize);
-  const Root = showLegend ? "div" : (as ?? "span");
+  const Root = as ?? (showLegend ? "div" : "span");
+  const Wrapper = Root === "span" ? "span" : "div";
   const loaderClassName = [
     "marathon-pixel-cube-loader",
     toneClassName[tone],
@@ -75,11 +76,11 @@ export function PixelCubeLoader({
       style={rootStyle}
       {...props}
     >
-      <div className="marathon-pixel-cube-loader__stage">
-        <div className="marathon-pixel-cube-loader__viewport">
-          <div className="marathon-pixel-cube-loader__scene-anchor">
-            <div className="marathon-pixel-cube-loader__scene">
-              <div className="marathon-pixel-cube-loader__scene-spin">
+      <Wrapper className="marathon-pixel-cube-loader__stage">
+        <Wrapper className="marathon-pixel-cube-loader__viewport">
+          <Wrapper className="marathon-pixel-cube-loader__scene-anchor">
+            <Wrapper className="marathon-pixel-cube-loader__scene">
+              <Wrapper className="marathon-pixel-cube-loader__scene-spin">
                 {voxels.map((voxel) => (
                   <span
                     aria-hidden="true"
@@ -98,20 +99,20 @@ export function PixelCubeLoader({
                     <span className="marathon-pixel-cube-loader__voxel-face marathon-pixel-cube-loader__voxel-face--top" />
                   </span>
                 ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              </Wrapper>
+            </Wrapper>
+          </Wrapper>
+        </Wrapper>
+      </Wrapper>
 
       {showLegend ? (
-        <div className="marathon-pixel-cube-loader__legend">
+        <Wrapper className="marathon-pixel-cube-loader__legend">
           <span className="marathon-pixel-cube-loader__label">{label}</span>
           <span className="marathon-pixel-cube-loader__detail">
             {detail}
             <span aria-hidden="true" className="marathon-pixel-cube-loader__cursor" />
           </span>
-        </div>
+        </Wrapper>
       ) : null}
     </Root>
   );
