@@ -22,3 +22,5 @@
 - Current loader preference is a square-framed, faster mechanical loop with a small settle jolt and a reusable legendless mini variant that can sit inline with text.
 - User notices small alignment drift quickly and prefers motion components to be geometrically centered rather than visually "close enough."
 - When building new effect work in a separate git worktree, check whether the main worktree carries uncommitted visual-system changes first; syncing those files can matter more than starting from clean `HEAD`.
+- User often frames visual-system requests as terse outcome statements, so the most useful default is a reusable exported primitive plus a Storybook demo rather than only isolated CSS.
+- User prefers visual-system stories to accept real content through Storybook controls when evaluating a surface, rather than only static hand-authored demo markup.
