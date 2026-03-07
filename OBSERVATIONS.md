@@ -36,3 +36,8 @@
 - User wants visually expressive encodings to be defensible and meaningfully distinct, not just aesthetically novel.
 - For graph work, the user wants the React Flow chrome and styling to live in reusable package-owned primitives rather than story-local or app-local overrides.
 - User expects a self-review pass on visual changes before considering the PR ready.
+- User wants graph visualization in `agent-ui` to land as a reusable package capability rather than agent-console-specific glue, with a layered `GraphCanvas` plus `WorkflowDag` API, read-only v1 behavior, canvas-first ownership, and dagre-based auto-layout.
+- User is interested in deterministic hash-driven 3D cube visualizations that mix wireframe, solid, and color-coded voxel states instead of flat text-only identifiers.
+- User is interested in adding an opt-in Three.js layer for bold graph/hero visuals, especially wireframes traced by Tron-style beam motion rather than generic floating 3D decoration.
+- Local shell setup can expose Homebrew Node 16 in login/non-interactive sessions unless `nvm` is initialized from `~/.zprofile`; interactive `~/.zshrc` alone is not enough for toolchain commands.
+- User is evaluating runtime Ant Design theme customization and is interested in letting end users control a constrained set of brand colors rather than opening up the full token surface.
