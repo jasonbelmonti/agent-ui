@@ -1,5 +1,6 @@
 import { Col, Flex, Row, Space, Typography } from "antd";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
+import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import type { CSSProperties } from "react";
 import ReactMarkdown from "react-markdown";
@@ -14,22 +15,27 @@ interface MarkdownThemeStoryProps {
 }
 
 const wrapperCode = `import ReactMarkdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import { MarkdownTheme, Panel } from "agent-ui";
 
 <Panel title="Ops Runbook">
   <MarkdownTheme>
-    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeHighlight]}
+    >
       {markdown}
     </ReactMarkdown>
   </MarkdownTheme>
 </Panel>`;
 
-const trustedHtmlCode = `import rehypeRaw from "rehype-raw";
+const trustedHtmlCode = `import rehypeHighlight from "rehype-highlight";
+import rehypeRaw from "rehype-raw";
 
 <ReactMarkdown
   remarkPlugins={[remarkGfm]}
-  rehypePlugins={[rehypeRaw]}
+  rehypePlugins={[rehypeRaw, rehypeHighlight]}
 >
   {trustedMarkdown}
 </ReactMarkdown>`;
@@ -58,6 +64,18 @@ bun run build-storybook
 rsync -av ./storybook-static/ /srv/agent-ui/docs/
 transmission: 418 files synced
 status: green-line stable
+\`\`\`
+
+## TypeScript sample
+
+\`\`\`typescript
+const foo = "test";
+
+type SignalState = "idle" | "live";
+
+export function collectSignal(channel: string, state: SignalState) {
+  return \`\${channel}:\${state}:\${foo}\`.toUpperCase();
+}
 \`\`\`
 
 ## Release checklist
@@ -124,10 +142,14 @@ function MarkdownThemeStory({ markdown }: MarkdownThemeStoryProps) {
 
       <Row gutter={[24, 24]} align="top">
         <Col xs={24} xl={16}>
-          <Panel title="Rendered Document" extra="Story Args + GFM" cutCornerPreset="architectural">
+          <Panel
+            title="Rendered Document"
+            extra="Story Args + GFM + HLJS"
+            cutCornerPreset="architectural"
+          >
             <MarkdownTheme>
               <ReactMarkdown
-                rehypePlugins={[rehypeRaw]}
+                rehypePlugins={[rehypeRaw, rehypeHighlight]}
                 remarkPlugins={[remarkGfm]}
               >
                 {markdown}
@@ -156,20 +178,21 @@ function MarkdownThemeStory({ markdown }: MarkdownThemeStoryProps) {
                 <ul>
                   <li>Standard markdown headings, lists, links, emphasis, and code fences</li>
                   <li>GFM tables, task lists, and strikethrough via <code>remark-gfm</code></li>
+                  <li>Syntax-highlighted fenced blocks via <code>rehype-highlight</code></li>
                   <li>Trusted inline HTML blocks via <code>rehype-raw</code></li>
                 </ul>
 
                 <h3>Consumer rule</h3>
                 <p>
                   The package exports only the wrapper and CSS skin. Consumers still choose their
-                  own markdown renderer and trust policy.
+                  own markdown renderer, highlight plugin, and trust policy.
                 </p>
               </MarkdownTheme>
             </Panel>
 
             <Panel
               title="Consumer Usage"
-              extra="Safe Default"
+              extra="Highlighted Default"
               className="marathon-panel-tab"
               style={usagePanelStyle}
             >
@@ -211,7 +234,7 @@ const meta = {
   argTypes: {
     markdown: {
       control: "text",
-      description: "Raw markdown rendered through react-markdown with GFM support.",
+      description: "Raw markdown rendered through react-markdown with GFM and syntax highlighting.",
     },
   },
   parameters: {

@@ -1699,8 +1699,84 @@ h6.ant-typography {
   padding: 0;
   border: 0;
   background: transparent;
-  color: rgba(245, 245, 240, 0.9);
   box-shadow: none;
+}
+
+.marathon-markdown pre code:not(.hljs) {
+  color: rgba(245, 245, 240, 0.9);
+}
+
+.marathon-markdown pre code.hljs {
+  color: rgba(245, 245, 240, 0.9);
+  white-space: pre;
+}
+
+.marathon-markdown pre code .hljs-subst,
+.marathon-markdown pre code .hljs-punctuation {
+  color: rgba(245, 245, 240, 0.78);
+}
+
+.marathon-markdown pre code .hljs-comment,
+.marathon-markdown pre code .hljs-quote {
+  color: var(--marathon-muted);
+  font-style: italic;
+}
+
+.marathon-markdown pre code .hljs-keyword,
+.marathon-markdown pre code .hljs-literal,
+.marathon-markdown pre code .hljs-selector-tag,
+.marathon-markdown pre code .hljs-doctag,
+.marathon-markdown pre code .hljs-meta .hljs-keyword {
+  color: var(--marathon-accent-violet);
+}
+
+.marathon-markdown pre code .hljs-string,
+.marathon-markdown pre code .hljs-regexp,
+.marathon-markdown pre code .hljs-attr,
+.marathon-markdown pre code .hljs-template-variable {
+  color: var(--marathon-field-primary);
+}
+
+.marathon-markdown pre code .hljs-title,
+.marathon-markdown pre code .hljs-title.class_,
+.marathon-markdown pre code .hljs-title.function_,
+.marathon-markdown pre code .hljs-type,
+.marathon-markdown pre code .hljs-property {
+  color: var(--marathon-text);
+}
+
+.marathon-markdown pre code .hljs-number,
+.marathon-markdown pre code .hljs-symbol,
+.marathon-markdown pre code .hljs-bullet,
+.marathon-markdown pre code .hljs-variable,
+.marathon-markdown pre code .hljs-template-tag,
+.marathon-markdown pre code .hljs-meta,
+.marathon-markdown pre code .hljs-link {
+  color: var(--marathon-warning);
+}
+
+.marathon-markdown pre code .hljs-built_in,
+.marathon-markdown pre code .hljs-params,
+.marathon-markdown pre code .hljs-operator {
+  color: rgba(245, 245, 240, 0.84);
+}
+
+.marathon-markdown pre code .hljs-addition {
+  color: var(--marathon-field-primary);
+  background: rgba(192, 254, 4, 0.08);
+}
+
+.marathon-markdown pre code .hljs-deletion {
+  color: var(--marathon-error);
+  background: rgba(242, 71, 35, 0.08);
+}
+
+.marathon-markdown pre code .hljs-emphasis {
+  font-style: italic;
+}
+
+.marathon-markdown pre code .hljs-strong {
+  font-weight: 700;
 }
 
 .marathon-markdown hr {
