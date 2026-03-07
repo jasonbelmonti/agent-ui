@@ -9,9 +9,14 @@ import "@xyflow/react/dist/base.css";
 import "./styles/theme.css";
 
 export { AntdThemeProvider, installStaticAntdTheme } from "./providers/AntdThemeProvider";
+export { HashCube } from "./components/HashCube";
 export { GraphCanvas } from "./components/GraphCanvas";
 export type { GraphCanvasProps, GraphCanvasReactFlowProps } from "./components/GraphCanvas";
 export { Panel, panelCutCornerPresets } from "./components/Panel";
+export type {
+  HashCubeProps,
+  HashCubeTone,
+} from "./components/HashCube";
 export type {
   PanelCutCorner,
   PanelCutCornerPlacement,
