@@ -1,6 +1,6 @@
 import type { CSSProperties, HTMLAttributes } from "react";
 
-import { marathonDosPalette } from "../theme/marathonDosTheme";
+import { marathonDosPalette } from "../theme/marathonDosTheme.js";
 
 type HashCubeMode = "core" | "ghost" | "solid" | "wire";
 type HashCubeColorChannel = "primary" | "text" | "violet" | "warning";

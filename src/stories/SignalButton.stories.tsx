@@ -4,8 +4,8 @@ import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { startTransition, useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 
-import { SignalButton } from "../components/SignalButton";
-import { marathonDosPalette } from "../theme/marathonDosTheme";
+import { SignalButton } from "../components/SignalButton.js";
+import { marathonDosPalette } from "../theme/marathonDosTheme.js";
 
 const meta = {
   title: "Components/SignalButton",

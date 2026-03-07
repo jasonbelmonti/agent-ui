@@ -4,11 +4,11 @@ import { useId } from "react";
 import {
   createPixelCubePathAnimationProfile,
   getPixelCubePathAnimationSeed,
-} from "./pixelCubePath/animation";
+} from "./pixelCubePath/animation.js";
 import {
   createPixelCubePathCubeCoordinates,
   type PixelCubePathCubeCoordinate,
-} from "./pixelCubePath/geometry";
+} from "./pixelCubePath/geometry.js";
 
 export type PixelCubePathTone = "primary" | "violet";
 

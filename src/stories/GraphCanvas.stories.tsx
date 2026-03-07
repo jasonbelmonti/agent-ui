@@ -3,13 +3,13 @@ import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Position } from "@xyflow/react";
 import type { CSSProperties } from "react";
 
-import { GraphCanvas } from "../components/GraphCanvas";
-import type { GraphCanvasProps } from "../components/GraphCanvas";
-import { GRAPH_CANVAS_EDGE_TYPE } from "../components/GraphCanvasEdge";
-import type { GraphCanvasEdgeDefinition } from "../components/GraphCanvasEdge";
-import { GRAPH_CANVAS_NODE_TYPE } from "../components/GraphCanvasNode";
-import type { GraphCanvasNodeDefinition } from "../components/GraphCanvasNode";
-import { marathonDosPalette } from "../theme/marathonDosTheme";
+import { GraphCanvas } from "../components/GraphCanvas.js";
+import type { GraphCanvasProps } from "../components/GraphCanvas.js";
+import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { GRAPH_CANVAS_EDGE_TYPE } from "../components/GraphCanvasEdge.js";
+import type { GraphCanvasEdgeDefinition } from "../components/GraphCanvasEdge.js";
+import { GRAPH_CANVAS_NODE_TYPE } from "../components/GraphCanvasNode.js";
+import type { GraphCanvasNodeDefinition } from "../components/GraphCanvasNode.js";
 
 type GraphCanvasStoryArgs = GraphCanvasProps<GraphCanvasNodeDefinition, GraphCanvasEdgeDefinition>;
 

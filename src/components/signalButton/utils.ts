@@ -1,4 +1,4 @@
-import type { SignalButtonColor, SignalButtonTone } from "./types";
+import type { SignalButtonColor, SignalButtonTone } from "./types.js";
 
 export type RgbChannels = [number, number, number];
 

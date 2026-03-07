@@ -2,8 +2,8 @@ import { Card, Flex, Space, Typography } from "antd";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import type { CSSProperties } from "react";
 
-import { PixelCubePath } from "../components/PixelCubePath";
-import { marathonDosPalette } from "../theme/marathonDosTheme";
+import { PixelCubePath } from "../components/PixelCubePath.js";
+import { marathonDosPalette } from "../theme/marathonDosTheme.js";
 
 const meta = {
   title: "Effects/Pixel Cube Path",

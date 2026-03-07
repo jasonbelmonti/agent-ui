@@ -3,13 +3,13 @@ import { useId } from "react";
 import type { CSSProperties } from "react";
 import type { Edge, EdgeProps } from "@xyflow/react";
 
-import type { GraphCanvasTone } from "./graphCanvasTheme";
+import type { GraphCanvasTone } from "./graphCanvasTheme.js";
 import {
   graphCanvasToneAccentColor,
   graphCanvasToneGlowColor,
   graphCanvasToneStrokeColor,
   resolveGraphCanvasTone,
-} from "./graphCanvasTheme";
+} from "./graphCanvasTheme.js";
 
 export const GRAPH_CANVAS_EDGE_TYPE = "graph-canvas-edge";
 

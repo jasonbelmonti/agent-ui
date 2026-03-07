@@ -1,9 +1,9 @@
 import { useEffect, useEffectEvent } from "react";
 import type { RefObject } from "react";
 
-import type { SignalButtonTone } from "./types";
-import { renderSignalButtonBuffer } from "./renderSignalButtonBuffer";
-import { clamp, type RgbChannels, toPixelLength } from "./utils";
+import type { SignalButtonTone } from "./types.js";
+import { renderSignalButtonBuffer } from "./renderSignalButtonBuffer.js";
+import { clamp, type RgbChannels, toPixelLength } from "./utils.js";
 
 type UseSignalButtonCanvasOptions = {
   canvasRef: RefObject<HTMLCanvasElement | null>;

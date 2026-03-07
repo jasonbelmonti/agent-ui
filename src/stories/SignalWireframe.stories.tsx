@@ -2,9 +2,9 @@ import { Card, Flex, Space, Typography } from "antd";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import type { CSSProperties } from "react";
 
-import { Panel } from "../components/Panel";
-import { SignalWireframe } from "../components/SignalWireframe";
-import { marathonDosPalette } from "../theme/marathonDosTheme";
+import { Panel } from "../components/Panel.js";
+import { SignalWireframe } from "../components/SignalWireframe.js";
+import { marathonDosPalette } from "../theme/marathonDosTheme.js";
 
 const meta = {
   title: "Effects/Signal Wireframe",

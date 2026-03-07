@@ -2,8 +2,8 @@ import { Button } from "antd";
 import type { CSSProperties, ReactNode } from "react";
 import { useRef } from "react";
 
-import type { SignalButtonProps } from "./signalButton/types";
-import { useSignalButtonCanvas } from "./signalButton/useSignalButtonCanvas";
+import type { SignalButtonProps } from "./signalButton/types.js";
+import { useSignalButtonCanvas } from "./signalButton/useSignalButtonCanvas.js";
 import {
   blendChannels,
   clamp,
@@ -13,9 +13,9 @@ import {
   toCssLength,
   toneAccentChannels,
   toneClassName,
-} from "./signalButton/utils";
+} from "./signalButton/utils.js";
 
-export type { SignalButtonProps, SignalButtonTone } from "./signalButton/types";
+export type { SignalButtonProps, SignalButtonTone } from "./signalButton/types.js";
 
 type SignalButtonStyle = CSSProperties & {
   "--marathon-signal-button-accent-rgb"?: string;

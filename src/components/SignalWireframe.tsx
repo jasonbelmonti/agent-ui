@@ -4,7 +4,7 @@ import { useMemo, useRef } from "react";
 import { AdditiveBlending, Color, MathUtils, Quaternion, Vector3 } from "three";
 import type { Group, Mesh, MeshBasicMaterial } from "three";
 
-import { marathonDosPalette } from "../theme/marathonDosTheme";
+import { marathonDosPalette } from "../theme/marathonDosTheme.js";
 
 export type SignalWireframeTone = "primary" | "violet";
 

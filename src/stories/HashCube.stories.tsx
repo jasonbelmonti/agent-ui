@@ -2,8 +2,8 @@ import { Card, Flex, Space, Typography } from "antd";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import type { CSSProperties } from "react";
 
-import { HashCube } from "../components/HashCube";
-import { marathonDosPalette } from "../theme/marathonDosTheme";
+import { HashCube } from "../components/HashCube.js";
+import { marathonDosPalette } from "../theme/marathonDosTheme.js";
 
 const defaultHash = "8d7994e7c26d7594e54d314668f1b83e8f0d9d02";
 const nearbyHash = "8d7994e7c26d7594e54d314668f1b83e8f0d9df0";

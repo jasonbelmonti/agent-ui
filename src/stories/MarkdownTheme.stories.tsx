@@ -5,9 +5,9 @@ import type { CSSProperties } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import { MarkdownTheme } from "../components/MarkdownTheme";
-import { Panel } from "../components/Panel";
-import { marathonDosPalette } from "../theme/marathonDosTheme";
+import { MarkdownTheme } from "../components/MarkdownTheme.js";
+import { Panel } from "../components/Panel.js";
+import { marathonDosPalette } from "../theme/marathonDosTheme.js";
 
 interface MarkdownThemeStoryProps {
   markdown: string;

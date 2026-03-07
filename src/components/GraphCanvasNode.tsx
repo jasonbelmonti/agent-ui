@@ -1,8 +1,8 @@
 import { Handle } from "@xyflow/react";
 import type { Node, NodeProps } from "@xyflow/react";
 
-import type { GraphCanvasTone } from "./graphCanvasTheme";
-import { resolveGraphCanvasTone } from "./graphCanvasTheme";
+import type { GraphCanvasTone } from "./graphCanvasTheme.js";
+import { resolveGraphCanvasTone } from "./graphCanvasTheme.js";
 
 export const GRAPH_CANVAS_NODE_TYPE = "graph-canvas-node";
 

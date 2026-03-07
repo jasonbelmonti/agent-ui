@@ -1,7 +1,7 @@
-import type { SignalButtonTone } from "./types";
-import { drawPixel, rgba } from "./color";
-import { hash } from "./noise";
-import { blendChannels, clamp, type RgbChannels, toneAccentChannels } from "./utils";
+import type { SignalButtonTone } from "./types.js";
+import { drawPixel, rgba } from "./color.js";
+import { hash } from "./noise.js";
+import { blendChannels, clamp, type RgbChannels, toneAccentChannels } from "./utils.js";
 
 type SignalButtonBufferOptions = {
   ctx: CanvasRenderingContext2D;

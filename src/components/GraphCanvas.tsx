@@ -17,13 +17,13 @@ import type {
 import type { CSSProperties, ReactNode } from "react";
 import { useMemo } from "react";
 
-import { GRAPH_CANVAS_EDGE_TYPE, GraphCanvasEdge } from "./GraphCanvasEdge";
-import { GRAPH_CANVAS_NODE_TYPE, GraphCanvasNode } from "./GraphCanvasNode";
+import { GRAPH_CANVAS_EDGE_TYPE, GraphCanvasEdge } from "./GraphCanvasEdge.js";
+import { GRAPH_CANVAS_NODE_TYPE, GraphCanvasNode } from "./GraphCanvasNode.js";
 import {
   graphCanvasToneAccentColor,
   graphCanvasToneStrokeColor,
   resolveGraphCanvasTone,
-} from "./graphCanvasTheme";
+} from "./graphCanvasTheme.js";
 
 type ReservedReactFlowProps =
   | "children"
