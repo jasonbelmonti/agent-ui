@@ -1,5 +1,7 @@
 export { AntdThemeProvider, installStaticAntdTheme } from "./providers/AntdThemeProvider.js";
 export { Panel, panelCutCornerPresets } from "./components/Panel.js";
+export { GraphCanvas } from "./components/GraphCanvas.js";
+export type { GraphCanvasProps, GraphCanvasReactFlowProps } from "./components/GraphCanvas.js";
 export type {
   PanelCutCorner,
   PanelCutCornerPlacement,

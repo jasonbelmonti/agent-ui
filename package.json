@@ -28,7 +28,9 @@
   "dependencies": {
     "@fontsource/azeret-mono": "5.2.11",
     "@fontsource/doto": "^5.2.10",
-    "@fontsource/oxanium": "5.2.8"
+    "@fontsource/oxanium": "5.2.8",
+    "@dagrejs/dagre": "^2.0.4",
+    "@xyflow/react": "^12.10.1"
   },
   "peerDependencies": {
     "@ant-design/icons": "6.1.0",
