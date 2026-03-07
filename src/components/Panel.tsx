@@ -20,8 +20,8 @@ export interface PanelProps extends CardProps {
 }
 
 type PanelStyle = CSSProperties & {
-  "--marathon-panel-cut-color"?: string;
-  "--marathon-panel-cut-size"?: string;
+  "--signal-ui-panel-cut-color"?: string;
+  "--signal-ui-panel-cut-size"?: string;
 };
 
 type PanelCutCornerPresetDefinition = {
@@ -34,13 +34,13 @@ type PanelCutCornerPresetDefinition = {
 export const panelCutCornerPresets = {
   tactical: {
     cutCorner: "accent",
-    cutCornerColor: "var(--marathon-primary)",
+    cutCornerColor: "var(--signal-ui-primary)",
     cutCornerPlacement: "top-right",
     cutCornerSize: 26,
   },
   architectural: {
     cutCorner: "notch",
-    cutCornerColor: "var(--marathon-primary)",
+    cutCornerColor: "var(--signal-ui-primary)",
     cutCornerPlacement: "bottom-left",
     cutCornerSize: 24,
   },
@@ -70,15 +70,15 @@ export function Panel({
 }: PanelProps) {
   const preset = cutCornerPreset ? panelCutCornerPresets[cutCornerPreset] : undefined;
   const resolvedCutCorner = cutCorner ?? preset?.cutCorner;
-  const resolvedCutCornerColor = cutCornerColor ?? preset?.cutCornerColor ?? "var(--marathon-primary)";
+  const resolvedCutCornerColor = cutCornerColor ?? preset?.cutCornerColor ?? "var(--signal-ui-primary)";
   const resolvedCutCornerPlacement = cutCornerPlacement ?? preset?.cutCornerPlacement ?? "top-right";
   const resolvedCutCornerSize = cutCornerSize ?? preset?.cutCornerSize ?? 26;
   const panelStyle: PanelStyle = {
     ...style,
     ...(resolvedCutCorner
       ? {
-          "--marathon-panel-cut-color": resolvedCutCornerColor,
-          "--marathon-panel-cut-size": toCssLength(resolvedCutCornerSize) ?? "26px",
+          "--signal-ui-panel-cut-color": resolvedCutCornerColor,
+          "--signal-ui-panel-cut-size": toCssLength(resolvedCutCornerSize) ?? "26px",
         }
       : {}),
   };
@@ -87,9 +87,9 @@ export function Panel({
     <Card
       {...cardProps}
       className={joinClassNames(
-        "marathon-panel",
-        resolvedCutCorner ? `marathon-panel--cut-${resolvedCutCorner}` : undefined,
-        resolvedCutCorner ? `marathon-panel--corner-${resolvedCutCornerPlacement}` : undefined,
+        "signal-ui-panel",
+        resolvedCutCorner ? `signal-ui-panel--cut-${resolvedCutCorner}` : undefined,
+        resolvedCutCorner ? `signal-ui-panel--corner-${resolvedCutCornerPlacement}` : undefined,
         className,
       )}
       style={panelStyle}

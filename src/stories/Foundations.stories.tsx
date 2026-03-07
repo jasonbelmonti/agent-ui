@@ -2,7 +2,7 @@ import { Button, Card, Col, Flex, Input, Row, Space, Typography } from "antd";
 import type { Meta, StoryObj } from "@storybook/react-webpack5";
 
 import { Panel } from "../components/Panel.js";
-import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { signalPalette } from "../theme/signalTheme.js";
 
 const meta = {
   title: "Foundations/Signal Deck",
@@ -14,21 +14,21 @@ const meta = {
     <Flex vertical gap={24} style={{ maxWidth: 1280, margin: "0 auto" }}>
       <Card
         style={{
-          borderColor: marathonDosPalette.primary,
+          borderColor: signalPalette.primary,
           background:
             "linear-gradient(135deg, rgba(192, 254, 4, 0.1), transparent 35%), #0b0b0b",
         }}
       >
         <Space direction="vertical" size={10}>
           <div style={accentLabelRowStyle}>
-            <span className="marathon-accent-field">Channel 06</span>
+            <span className="signal-ui-accent-field">Channel 06</span>
             <Typography.Text style={{ ...eyebrowStyle, marginBottom: 0 }}>Foundation Scan</Typography.Text>
           </div>
-          <div className="marathon-heading-lockup">
-            <span className="marathon-accent-bar" aria-hidden="true" />
-            <div className="marathon-heading-lockup__body">
-              <Typography.Title level={1} className="marathon-text-display" style={{ margin: 0 }}>
-                Marathon DOS Theme Deck
+          <div className="signal-ui-heading-lockup">
+            <span className="signal-ui-accent-bar" aria-hidden="true" />
+            <div className="signal-ui-heading-lockup__body">
+              <Typography.Title level={1} className="signal-ui-text-display" style={{ margin: 0 }}>
+                Signal UI Theme Deck
               </Typography.Title>
               <Typography.Paragraph style={{ margin: "8px 0 0", maxWidth: 760 }}>
                 A modernized terminal skin for Ant Design: phosphor-lime signals, hard-edge panels,
@@ -63,7 +63,7 @@ const meta = {
                 <Typography.Text style={eyebrowStyle}>Display</Typography.Text>
                 <Typography.Title
                   level={2}
-                  className="marathon-text-display-secondary"
+                  className="signal-ui-text-display-secondary"
                   style={{ marginBottom: 8 }}
                 >
                   Deep Signal Operator
@@ -77,11 +77,11 @@ const meta = {
               <div>
                 <Typography.Text style={eyebrowStyle}>Headline Pairing</Typography.Text>
                 <Space direction="vertical" size={4}>
-                  <Typography.Text className="marathon-text-display" style={fontSampleStyle}>
+                  <Typography.Text className="signal-ui-text-display" style={fontSampleStyle}>
                     Oxanium stays on the top-line headline
                   </Typography.Text>
                   <Typography.Text
-                    className="marathon-text-display-secondary"
+                    className="signal-ui-text-display-secondary"
                     style={fontSampleStyle}
                   >
                     Doto handles the secondary headline
@@ -115,7 +115,7 @@ const meta = {
                   size="small"
                   title="Primary Surface"
                   cutCornerPreset="tactical"
-                  className="marathon-panel-tab"
+                  className="signal-ui-panel-tab"
                   style={innerCardStyle}
                 >
                   <Typography.Paragraph style={{ margin: 0 }}>
@@ -129,8 +129,8 @@ const meta = {
                   size="small"
                   title="Elevated Surface"
                   cutCornerPreset="architectural"
-                  cutCornerColor={marathonDosPalette.accentViolet}
-                  className="marathon-panel-tab marathon-panel-tab--secondary"
+                  cutCornerColor={signalPalette.accentViolet}
+                  className="signal-ui-panel-tab signal-ui-panel-tab--secondary"
                   style={{
                     ...innerCardStyle,
                     background:
@@ -169,12 +169,12 @@ const meta = {
             <Space direction="vertical" size={18} style={{ width: "100%" }}>
               <div>
                 <div style={accentLabelRowStyle}>
-                  <span className="marathon-accent-field">Section Tag</span>
+                  <span className="signal-ui-accent-field">Section Tag</span>
                   <Typography.Text style={{ ...eyebrowStyle, marginBottom: 0 }}>
                     Use on eyebrow-tier labels, not body UI
                   </Typography.Text>
                 </div>
-                <Typography.Title level={3} className="marathon-text-display" style={{ margin: "12px 0 8px" }}>
+                <Typography.Title level={3} className="signal-ui-text-display" style={{ margin: "12px 0 8px" }}>
                   Flat color reads best when it cuts through the texture
                 </Typography.Title>
                 <Typography.Paragraph style={{ margin: 0, maxWidth: 640 }}>
@@ -183,22 +183,22 @@ const meta = {
                 </Typography.Paragraph>
               </div>
 
-              <div className="marathon-heading-lockup">
-                <span className="marathon-accent-bar marathon-accent-bar--secondary" aria-hidden="true" />
-                <div className="marathon-heading-lockup__body">
-                  <Typography.Text style={{ ...eyebrowStyle, color: marathonDosPalette.accentViolet }}>
+              <div className="signal-ui-heading-lockup">
+                <span className="signal-ui-accent-bar signal-ui-accent-bar--secondary" aria-hidden="true" />
+                <div className="signal-ui-heading-lockup__body">
+                  <Typography.Text style={{ ...eyebrowStyle, color: signalPalette.accentViolet }}>
                     Signal Bar
                   </Typography.Text>
                   <Typography.Title
                     level={3}
-                    className="marathon-text-display-secondary"
+                    className="signal-ui-text-display-secondary"
                     style={{ margin: "4px 0 8px" }}
                   >
                     Let the bar punctuate the heading, not decorate the whole panel
                   </Typography.Title>
                   <Typography.Paragraph style={{ margin: 0, maxWidth: 640 }}>
                     This works because the field is blunt, opaque, and quiet. The minute it picks
-                    up gradients or glow, it stops doing the Marathon thing.
+                    up gradients or glow, it stops doing the clean signal job.
                   </Typography.Paragraph>
                 </div>
               </div>
@@ -208,15 +208,15 @@ const meta = {
           <Col xs={24} lg={11}>
             <Space direction="vertical" size={14} style={{ width: "100%" }}>
               <div style={contrastChipRowStyle}>
-                <span className="marathon-accent-field">Navigation</span>
-                <span className="marathon-accent-field marathon-accent-field--secondary">
+                <span className="signal-ui-accent-field">Navigation</span>
+                <span className="signal-ui-accent-field signal-ui-accent-field--secondary">
                   Transmission
                 </span>
               </div>
               <Card
                 size="small"
                 title="Rare Callout"
-                className="marathon-panel-tab"
+                className="signal-ui-panel-tab"
                 style={{
                   ...innerCardStyle,
                   background:
@@ -224,7 +224,7 @@ const meta = {
                 }}
               >
                 <Space direction="vertical" size={10}>
-                  <span className="marathon-accent-field">Do Use</span>
+                  <span className="signal-ui-accent-field">Do Use</span>
                   <Typography.Paragraph style={{ margin: 0 }}>
                     Tags, bars, and tabs can punctuate a section transition or label a special
                     state. Keep them sparse so the field still feels like a deliberate interruption.
@@ -248,13 +248,13 @@ const meta = {
         <Row gutter={[24, 24]}>
           <Col xs={24} lg={14}>
             <Space direction="vertical" size={10}>
-              <Typography.Text style={{ ...eyebrowStyle, color: marathonDosPalette.accentViolet }}>
+              <Typography.Text style={{ ...eyebrowStyle, color: signalPalette.accentViolet }}>
                 Display Accent
               </Typography.Text>
               <Typography.Title
                 level={2}
-                className="marathon-text-display-secondary"
-                style={{ margin: 0, color: marathonDosPalette.accentViolet }}
+                className="signal-ui-text-display-secondary"
+                style={{ margin: 0, color: signalPalette.accentViolet }}
               >
                 Violet can cut through the phosphor stack
               </Typography.Title>
@@ -268,14 +268,14 @@ const meta = {
           <Col xs={24} lg={10}>
             <Space direction="vertical" size={12} style={{ width: "100%" }}>
               <div style={contrastChipRowStyle}>
-                <div style={{ ...contrastChipStyle, background: marathonDosPalette.primary }}>
+                <div style={{ ...contrastChipStyle, background: signalPalette.primary }}>
                   Lime Primary
                 </div>
                 <div
                   style={{
                     ...contrastChipStyle,
-                    background: marathonDosPalette.accentViolet,
-                    color: marathonDosPalette.fieldInk,
+                    background: signalPalette.accentViolet,
+                    color: signalPalette.fieldInk,
                   }}
                 >
                   Violet Accent
@@ -300,22 +300,22 @@ type Story = StoryObj<typeof meta>;
 export const ThemeFoundations: Story = {};
 
 const paletteEntries = Object.entries({
-  Primary: marathonDosPalette.primary,
-  "Field Lime": marathonDosPalette.fieldPrimary,
-  "Accent Violet": marathonDosPalette.accentViolet,
-  "Field Violet": marathonDosPalette.fieldViolet,
-  Error: marathonDosPalette.error,
-  Warning: marathonDosPalette.warning,
-  Text: marathonDosPalette.text,
-  Muted: marathonDosPalette.muted,
-  Surface: marathonDosPalette.surface,
-  Panel: marathonDosPalette.panel,
+  Primary: signalPalette.primary,
+  "Field Lime": signalPalette.fieldPrimary,
+  "Accent Violet": signalPalette.accentViolet,
+  "Field Violet": signalPalette.fieldViolet,
+  Error: signalPalette.error,
+  Warning: signalPalette.warning,
+  Text: signalPalette.text,
+  Muted: signalPalette.muted,
+  Surface: signalPalette.surface,
+  Panel: signalPalette.panel,
 });
 
 const eyebrowStyle = {
   display: "block",
   marginBottom: 6,
-  color: marathonDosPalette.primary,
+  color: signalPalette.primary,
   fontSize: 11,
   letterSpacing: "0.16em",
   textTransform: "uppercase" as const,
@@ -330,7 +330,7 @@ const swatchRowStyle = {
 const swatchStyle = {
   width: 48,
   height: 48,
-  border: `1px solid ${marathonDosPalette.grid}`,
+  border: `1px solid ${signalPalette.grid}`,
   boxShadow: "inset 0 0 0 1px rgba(255, 255, 255, 0.04)",
 };
 
@@ -358,8 +358,8 @@ const contrastChipStyle = {
   minWidth: 140,
   minHeight: 42,
   padding: "0 14px",
-  border: `1px solid ${marathonDosPalette.grid}`,
-  color: marathonDosPalette.black,
+  border: `1px solid ${signalPalette.grid}`,
+  color: signalPalette.black,
   fontSize: 11,
   fontWeight: 700,
   letterSpacing: "0.14em",

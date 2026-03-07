@@ -1,4 +1,4 @@
-export const marathonDosPalette = {
+export const signalPalette = {
   black: "#000000",
   void: "#050505",
   panel: "#0f0f0f",
@@ -16,9 +16,9 @@ export const marathonDosPalette = {
   error: "#f24723",
 } as const;
 
-export type MarathonDosPalette = Record<keyof typeof marathonDosPalette, string>;
+export type SignalPalette = Record<keyof typeof signalPalette, string>;
 
-export const marathonDosFontStacks = {
+export const signalFontStacks = {
   ui: "\"Azeret Mono\", \"SFMono-Regular\", \"Menlo\", monospace",
   display: "\"Oxanium\", \"Azeret Mono\", sans-serif",
   displaySecondary: "\"Doto\", \"Oxanium\", \"Azeret Mono\", sans-serif",

@@ -8,32 +8,32 @@ export function PixelCubeLoader({ as, className, detail = "forming cube volume",
     const Root = as ?? (showLegend ? "div" : "span");
     const Wrapper = Root === "span" ? "span" : "div";
     const loaderClassName = [
-        "marathon-pixel-cube-loader",
+        "signal-ui-pixel-cube-loader",
         toneClassName[tone],
-        showLegend ? undefined : "marathon-pixel-cube-loader--mini",
+        showLegend ? undefined : "signal-ui-pixel-cube-loader--mini",
         className,
     ]
         .filter(Boolean)
         .join(" ");
     const rootStyle = {
-        "--marathon-loader-cell-size": `${cellSize}px`,
-        "--marathon-loader-depth-origin": `${depthOrigin}px`,
-        "--marathon-loader-gap": `${gapSize}px`,
-        "--marathon-loader-grid": gridSize,
-        "--marathon-loader-size": `${size}px`,
-        "--marathon-loader-step": `${stepSize}px`,
+        "--signal-ui-loader-cell-size": `${cellSize}px`,
+        "--signal-ui-loader-depth-origin": `${depthOrigin}px`,
+        "--signal-ui-loader-gap": `${gapSize}px`,
+        "--signal-ui-loader-grid": gridSize,
+        "--signal-ui-loader-size": `${size}px`,
+        "--signal-ui-loader-step": `${stepSize}px`,
         ...style,
     };
-    return (_jsxs(Root, { "aria-label": `${label}: ${detail}`, "aria-live": "polite", className: loaderClassName, role: "status", style: rootStyle, ...props, children: [_jsx(Wrapper, { className: "marathon-pixel-cube-loader__stage", children: _jsx(Wrapper, { className: "marathon-pixel-cube-loader__viewport", children: _jsx(Wrapper, { className: "marathon-pixel-cube-loader__scene-anchor", children: _jsx(Wrapper, { className: "marathon-pixel-cube-loader__scene", children: _jsx(Wrapper, { className: "marathon-pixel-cube-loader__scene-spin", children: voxels.map((voxel) => (_jsxs("span", { "aria-hidden": "true", className: [
-                                        "marathon-pixel-cube-loader__voxel",
+    return (_jsxs(Root, { "aria-label": `${label}: ${detail}`, "aria-live": "polite", className: loaderClassName, role: "status", style: rootStyle, ...props, children: [_jsx(Wrapper, { className: "signal-ui-pixel-cube-loader__stage", children: _jsx(Wrapper, { className: "signal-ui-pixel-cube-loader__viewport", children: _jsx(Wrapper, { className: "signal-ui-pixel-cube-loader__scene-anchor", children: _jsx(Wrapper, { className: "signal-ui-pixel-cube-loader__scene", children: _jsx(Wrapper, { className: "signal-ui-pixel-cube-loader__scene-spin", children: voxels.map((voxel) => (_jsxs("span", { "aria-hidden": "true", className: [
+                                        "signal-ui-pixel-cube-loader__voxel",
                                         voxel.depth === 0
-                                            ? "marathon-pixel-cube-loader__voxel--front"
-                                            : "marathon-pixel-cube-loader__voxel--deep",
-                                    ].join(" "), "data-tone": voxel.tone, style: getVoxelStyle(voxel), children: [_jsx("span", { className: "marathon-pixel-cube-loader__voxel-face marathon-pixel-cube-loader__voxel-face--front" }), _jsx("span", { className: "marathon-pixel-cube-loader__voxel-face marathon-pixel-cube-loader__voxel-face--left" }), _jsx("span", { className: "marathon-pixel-cube-loader__voxel-face marathon-pixel-cube-loader__voxel-face--top" })] }, voxel.index))) }) }) }) }) }), showLegend ? (_jsxs(Wrapper, { className: "marathon-pixel-cube-loader__legend", children: [_jsx("span", { className: "marathon-pixel-cube-loader__label", children: label }), _jsxs("span", { className: "marathon-pixel-cube-loader__detail", children: [detail, _jsx("span", { "aria-hidden": "true", className: "marathon-pixel-cube-loader__cursor" })] })] })) : null] }));
+                                            ? "signal-ui-pixel-cube-loader__voxel--front"
+                                            : "signal-ui-pixel-cube-loader__voxel--deep",
+                                    ].join(" "), "data-tone": voxel.tone, style: getVoxelStyle(voxel), children: [_jsx("span", { className: "signal-ui-pixel-cube-loader__voxel-face signal-ui-pixel-cube-loader__voxel-face--front" }), _jsx("span", { className: "signal-ui-pixel-cube-loader__voxel-face signal-ui-pixel-cube-loader__voxel-face--left" }), _jsx("span", { className: "signal-ui-pixel-cube-loader__voxel-face signal-ui-pixel-cube-loader__voxel-face--top" })] }, voxel.index))) }) }) }) }) }), showLegend ? (_jsxs(Wrapper, { className: "signal-ui-pixel-cube-loader__legend", children: [_jsx("span", { className: "signal-ui-pixel-cube-loader__label", children: label }), _jsxs("span", { className: "signal-ui-pixel-cube-loader__detail", children: [detail, _jsx("span", { "aria-hidden": "true", className: "signal-ui-pixel-cube-loader__cursor" })] })] })) : null] }));
 }
 const toneClassName = {
     primary: undefined,
-    violet: "marathon-pixel-cube-loader--violet",
+    violet: "signal-ui-pixel-cube-loader--violet",
 };
 function createVoxelDescriptors(gridSize) {
     const center = (gridSize - 1) / 2;
@@ -62,8 +62,8 @@ function createVoxelDescriptors(gridSize) {
 }
 function getVoxelStyle(voxel) {
     return {
-        "--marathon-loader-x": voxel.x,
-        "--marathon-loader-y": voxel.y,
-        "--marathon-loader-z": voxel.z,
+        "--signal-ui-loader-x": voxel.x,
+        "--signal-ui-loader-y": voxel.y,
+        "--signal-ui-loader-z": voxel.z,
     };
 }

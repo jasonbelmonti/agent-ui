@@ -1,6 +1,6 @@
 import type { HexColor } from "./colorUtils.js";
 
-export type MarathonDosThemeColorPreferences = {
+export type SignalThemeColorPreferences = {
   accent?: HexColor;
   background?: HexColor;
   panel?: HexColor;
@@ -8,7 +8,7 @@ export type MarathonDosThemeColorPreferences = {
   text?: HexColor;
 };
 
-export type MarathonDosThemePreferences = {
+export type SignalThemePreferences = {
   borderRadius?: number;
-  colors?: MarathonDosThemeColorPreferences;
+  colors?: SignalThemeColorPreferences;
 };

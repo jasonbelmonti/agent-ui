@@ -1,13 +1,13 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { App, ConfigProvider } from "antd";
 import { useInsertionEffect } from "react";
-import { createMarathonDosTheme, createMarathonDosThemeCssVariables, marathonDosTheme, } from "../theme/marathonDosTheme.js";
+import { createSignalTheme, createSignalThemeCssVariables, signalTheme, } from "../theme/signalTheme.js";
 function useDocumentThemeVariables(themePreferences) {
     useInsertionEffect(() => {
         if (!themePreferences || typeof document === "undefined") {
             return;
         }
-        const themeVariables = createMarathonDosThemeCssVariables(themePreferences);
+        const themeVariables = createSignalThemeCssVariables(themePreferences);
         const rootStyle = document.documentElement.style;
         const previousValues = new Map();
         for (const [name, value] of Object.entries(themeVariables)) {
@@ -27,7 +27,7 @@ function useDocumentThemeVariables(themePreferences) {
     }, [themePreferences]);
 }
 export function AntdThemeProvider({ children, theme, themePreferences, }) {
-    const resolvedTheme = theme ?? (themePreferences ? createMarathonDosTheme(themePreferences) : marathonDosTheme);
+    const resolvedTheme = theme ?? (themePreferences ? createSignalTheme(themePreferences) : signalTheme);
     useDocumentThemeVariables(themePreferences);
     return (_jsx(ConfigProvider, { theme: resolvedTheme, children: _jsx(App, { children: children }) }));
 }

@@ -1,6 +1,6 @@
-# agent-ui
+# @jasonbelmonti/signal-ui
 
-Marathon-themed React and Ant Design UI package for the desktop agent apps.
+Signal-driven React and Ant Design UI package for desktop apps.
 
 ## Development
 
@@ -18,7 +18,7 @@ bun run build
 - `dist/styles.css`
 
 `dist/` is checked into the repo on purpose so Bun consumers using
-`"agent-ui": "file:../agent-ui"` can install the package from a fresh clone without
+`"@jasonbelmonti/signal-ui": "file:../signal-ui"` can install the package from a fresh clone without
 depending on blocked lifecycle scripts.
 
 ## Consumption
@@ -28,7 +28,7 @@ Add the package as a sibling file dependency:
 ```json
 {
   "dependencies": {
-    "agent-ui": "file:../agent-ui"
+    "@jasonbelmonti/signal-ui": "file:../signal-ui"
   }
 }
 ```
@@ -36,8 +36,8 @@ Add the package as a sibling file dependency:
 Import the shared global styles once at the renderer entry, then wrap the app with the provider:
 
 ```tsx
-import "agent-ui/styles.css";
-import { AntdThemeProvider } from "agent-ui";
+import "@jasonbelmonti/signal-ui/styles.css";
+import { AntdThemeProvider } from "@jasonbelmonti/signal-ui";
 ```
 
 The package exports the provider, theme tokens, and shared components including `Panel`,

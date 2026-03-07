@@ -5,7 +5,7 @@ import type { CSSProperties } from "react";
 
 import { GraphCanvas } from "../components/GraphCanvas.js";
 import type { GraphCanvasProps } from "../components/GraphCanvas.js";
-import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { signalPalette } from "../theme/signalTheme.js";
 import { GRAPH_CANVAS_EDGE_TYPE } from "../components/GraphCanvasEdge.js";
 import type { GraphCanvasEdgeDefinition } from "../components/GraphCanvasEdge.js";
 import { GRAPH_CANVAS_NODE_TYPE } from "../components/GraphCanvasNode.js";
@@ -387,7 +387,7 @@ function renderShowcase({
       <Card style={heroCardStyle}>
         <Space direction="vertical" size={10}>
           <Typography.Text style={eyebrowStyle}>{eyebrow}</Typography.Text>
-          <Typography.Title level={1} className="marathon-text-display" style={titleStyle}>
+          <Typography.Title level={1} className="signal-ui-text-display" style={titleStyle}>
             {title}
           </Typography.Title>
           <Typography.Paragraph style={copyStyle}>{copy}</Typography.Paragraph>
@@ -402,7 +402,7 @@ function renderShowcase({
 }
 
 const eyebrowStyle: CSSProperties = {
-  color: marathonDosPalette.primary,
+  color: signalPalette.primary,
   display: "block",
   fontSize: 11,
   letterSpacing: "0.16em",

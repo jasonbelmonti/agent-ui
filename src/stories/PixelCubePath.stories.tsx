@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-webpack5";
 import type { CSSProperties } from "react";
 
 import { PixelCubePath } from "../components/PixelCubePath.js";
-import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { signalPalette } from "../theme/signalTheme.js";
 
 const meta = {
   title: "Effects/Pixel Cube Path",
@@ -23,12 +23,12 @@ const meta = {
         <Flex gap={32} wrap="wrap" align="center" justify="space-between">
           <Space direction="vertical" size={10} style={{ flex: "1 1 420px", maxWidth: 620 }}>
             <Typography.Text style={eyebrowStyle}>Procedural Cube Sweep</Typography.Text>
-            <Typography.Title level={1} className="marathon-text-display" style={titleStyle}>
+            <Typography.Title level={1} className="signal-ui-text-display" style={titleStyle}>
               Flat. Symmetric. Alive.
             </Typography.Title>
             <Typography.Paragraph style={copyStyle}>
               This recasts the reference effect as a compact 3x3x3 voxel cube, keeps the flatter
-              Marathon geometry, and swaps hover-triggered glow for a deterministic path that
+              hard-edge geometry, and swaps hover-triggered glow for a deterministic path that
               continuously sweeps across the visible faces.
             </Typography.Paragraph>
           </Space>
@@ -40,7 +40,7 @@ const meta = {
       <Flex gap={24} wrap="wrap" align="stretch">
         <Card title="Violet Event Channel" style={violetCardStyle}>
           <Space direction="vertical" size={12}>
-            <Typography.Text style={{ ...eyebrowStyle, color: marathonDosPalette.accentViolet }}>
+            <Typography.Text style={{ ...eyebrowStyle, color: signalPalette.accentViolet }}>
               Alternate Tone
             </Typography.Text>
             <PixelCubePath size={208} tone="violet" />
@@ -90,7 +90,7 @@ export const DefaultPixelCubePath: Story = {};
 
 const eyebrowStyle: CSSProperties = {
   display: "block",
-  color: marathonDosPalette.primary,
+  color: signalPalette.primary,
   fontSize: 11,
   letterSpacing: "0.16em",
   marginBottom: 2,

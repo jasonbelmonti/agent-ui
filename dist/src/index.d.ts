@@ -19,5 +19,5 @@ export { SignalWireframe } from "./components/SignalWireframe.js";
 export type { PixelCubePathProps, PixelCubePathTone, } from "./components/PixelCubePath.js";
 export type { PixelCubeLoaderGridSize, PixelCubeLoaderProps, PixelCubeLoaderTone, } from "./components/PixelCubeLoader.js";
 export type { SignalWireframeProps, SignalWireframeTone, } from "./components/SignalWireframe.js";
-export { createMarathonDosTheme, createMarathonDosThemeCssVariables, marathonDosFontStacks, marathonDosPalette, marathonDosTheme, resolveMarathonDosPalette, } from "./theme/marathonDosTheme.js";
-export type { HexColor, MarathonDosPalette, MarathonDosThemeColorPreferences, MarathonDosThemePreferences, } from "./theme/marathonDosTheme.js";
+export { createSignalTheme, createSignalThemeCssVariables, resolveSignalPalette, signalFontStacks, signalPalette, signalTheme, } from "./theme/signalTheme.js";
+export type { HexColor, SignalPalette, SignalThemeColorPreferences, SignalThemePreferences, } from "./theme/signalTheme.js";

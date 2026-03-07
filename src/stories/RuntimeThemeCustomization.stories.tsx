@@ -5,10 +5,10 @@ import { useState } from "react";
 import { Panel } from "../components/Panel.js";
 import { AntdThemeProvider } from "../providers/AntdThemeProvider.js";
 import {
-  marathonDosPalette,
+  signalPalette,
   type HexColor,
-  type MarathonDosThemePreferences,
-} from "../theme/marathonDosTheme.js";
+  type SignalThemePreferences,
+} from "../theme/signalTheme.js";
 
 type RuntimeThemeState = {
   accent: HexColor;
@@ -20,12 +20,12 @@ type RuntimeThemeState = {
 };
 
 const defaultThemeState: RuntimeThemeState = {
-  accent: marathonDosPalette.accentViolet,
-  background: marathonDosPalette.black,
+  accent: signalPalette.accentViolet,
+  background: signalPalette.black,
   borderRadius: 2,
-  panel: marathonDosPalette.panel,
-  primary: marathonDosPalette.primary,
-  text: marathonDosPalette.text,
+  panel: signalPalette.panel,
+  primary: signalPalette.primary,
+  text: signalPalette.text,
 };
 
 const meta = {
@@ -44,7 +44,7 @@ type Story = StoryObj<typeof meta>;
 function RuntimeThemeCustomizationDemo() {
   const [themeState, setThemeState] = useState(defaultThemeState);
 
-  const themePreferences: MarathonDosThemePreferences = {
+  const themePreferences: SignalThemePreferences = {
     borderRadius: themeState.borderRadius,
     colors: {
       accent: themeState.accent,
@@ -120,13 +120,13 @@ function RuntimeThemeCustomizationDemo() {
             <div style={previewColumnStyle}>
               <Card
                 title="Live Preview"
-                extra={<span className="marathon-accent-field">Nested Provider</span>}
+                extra={<span className="signal-ui-accent-field">Nested Provider</span>}
               >
                 <Space direction="vertical" size="large" style={{ width: "100%" }}>
-                  <div className="marathon-heading-lockup">
-                    <span className="marathon-accent-bar" aria-hidden="true" />
-                    <div className="marathon-heading-lockup__body">
-                      <Typography.Title level={2} className="marathon-text-display" style={{ margin: 0 }}>
+                  <div className="signal-ui-heading-lockup">
+                    <span className="signal-ui-accent-bar" aria-hidden="true" />
+                    <div className="signal-ui-heading-lockup__body">
+                      <Typography.Title level={2} className="signal-ui-text-display" style={{ margin: 0 }}>
                         Runtime theme switching
                       </Typography.Title>
                       <Typography.Paragraph style={{ margin: "8px 0 0" }}>
@@ -153,7 +153,7 @@ function RuntimeThemeCustomizationDemo() {
                     title="Preview Panel"
                     cutCornerPreset="tactical"
                     cutCornerColor={themeState.accent}
-                    className="marathon-panel-tab"
+                    className="signal-ui-panel-tab"
                   >
                     <Typography.Paragraph style={{ margin: 0 }}>
                       The panel, its header treatment, and the lime signal states all follow the

@@ -4,7 +4,7 @@ import type { CSSProperties } from "react";
 
 import { Panel } from "../components/Panel.js";
 import { SignalWireframe } from "../components/SignalWireframe.js";
-import { marathonDosPalette } from "../theme/marathonDosTheme.js";
+import { signalPalette } from "../theme/signalTheme.js";
 
 const meta = {
   title: "Effects/Signal Wireframe",
@@ -29,12 +29,12 @@ const meta = {
         <Flex gap={32} wrap="wrap" align="stretch" justify="space-between">
           <Space direction="vertical" size={10} style={{ flex: "1 1 420px", maxWidth: 560 }}>
             <Typography.Text style={eyebrowStyle}>Three.js Signal Spike</Typography.Text>
-            <Typography.Title level={1} className="marathon-text-display" style={titleStyle}>
+            <Typography.Title level={1} className="signal-ui-text-display" style={titleStyle}>
               Wireframe motion that actually earns the GPU
             </Typography.Title>
             <Typography.Paragraph style={copyStyle}>
-              The scene stays boxed inside the Marathon shell, uses a hard-edged lattice instead
-              of mushy particles, and traces beam segments across the geometry so it reads like a
+              The scene stays boxed inside the shared shell, uses a hard-edged lattice instead of
+              mushy particles, and traces beam segments across the geometry so it reads like a
               live system scan instead of random chrome. The computer yearns for the grid.
             </Typography.Paragraph>
           </Space>
@@ -52,7 +52,7 @@ const meta = {
           title="Violet Event Channel"
         >
           <Space direction="vertical" size={14} style={{ width: "100%" }}>
-            <Typography.Text style={{ ...eyebrowStyle, color: marathonDosPalette.accentViolet }}>
+            <Typography.Text style={{ ...eyebrowStyle, color: signalPalette.accentViolet }}>
               Alternate Tone
             </Typography.Text>
             <SignalWireframe
@@ -101,7 +101,7 @@ export const DefaultSignalWireframe: Story = {};
 
 const eyebrowStyle: CSSProperties = {
   display: "block",
-  color: marathonDosPalette.primary,
+  color: signalPalette.primary,
   fontSize: 11,
   letterSpacing: "0.16em",
   marginBottom: 2,

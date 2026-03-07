@@ -11,8 +11,8 @@ export const toneCooldownChannels = {
     violet: [255, 174, 92],
 };
 export const toneClassName = {
-    primary: "marathon-signal-button--primary",
-    violet: "marathon-signal-button--violet",
+    primary: "signal-ui-signal-button--primary",
+    violet: "signal-ui-signal-button--violet",
 };
 export function clamp(value, min, max) {
     return Math.min(Math.max(value, min), max);

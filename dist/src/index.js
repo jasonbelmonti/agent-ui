@@ -9,4 +9,4 @@ export { SignalButton } from "./components/SignalButton.js";
 export { PixelCubePath } from "./components/PixelCubePath.js";
 export { PixelCubeLoader } from "./components/PixelCubeLoader.js";
 export { SignalWireframe } from "./components/SignalWireframe.js";
-export { createMarathonDosTheme, createMarathonDosThemeCssVariables, marathonDosFontStacks, marathonDosPalette, marathonDosTheme, resolveMarathonDosPalette, } from "./theme/marathonDosTheme.js";
+export { createSignalTheme, createSignalThemeCssVariables, resolveSignalPalette, signalFontStacks, signalPalette, signalTheme, } from "./theme/signalTheme.js";

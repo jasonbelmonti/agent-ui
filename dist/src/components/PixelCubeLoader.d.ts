@@ -2,7 +2,7 @@ import type { CSSProperties, HTMLAttributes } from "react";
 export type PixelCubeLoaderGridSize = 2 | 3;
 export type PixelCubeLoaderTone = "primary" | "violet";
 export type PixelCubeLoaderRootElement = "div" | "span";
-type LoaderStyle = CSSProperties & Record<`--marathon-loader-${string}`, string | number>;
+type LoaderStyle = CSSProperties & Record<`--signal-ui-loader-${string}`, string | number>;
 export type PixelCubeLoaderProps = Omit<HTMLAttributes<HTMLElement>, "children" | "style"> & {
     as?: PixelCubeLoaderRootElement;
     detail?: string;

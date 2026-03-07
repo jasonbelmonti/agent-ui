@@ -4,24 +4,24 @@ import { useInsertionEffect } from "react";
 import type { PropsWithChildren } from "react";
 
 import {
-  createMarathonDosTheme,
-  createMarathonDosThemeCssVariables,
-  marathonDosTheme,
-  type MarathonDosThemePreferences,
-} from "../theme/marathonDosTheme.js";
+  createSignalTheme,
+  createSignalThemeCssVariables,
+  signalTheme,
+  type SignalThemePreferences,
+} from "../theme/signalTheme.js";
 
 export type AntdThemeProviderProps = PropsWithChildren<{
   theme?: ThemeConfig;
-  themePreferences?: MarathonDosThemePreferences;
+  themePreferences?: SignalThemePreferences;
 }>;
 
-function useDocumentThemeVariables(themePreferences: MarathonDosThemePreferences | undefined) {
+function useDocumentThemeVariables(themePreferences: SignalThemePreferences | undefined) {
   useInsertionEffect(() => {
     if (!themePreferences || typeof document === "undefined") {
       return;
     }
 
-    const themeVariables = createMarathonDosThemeCssVariables(themePreferences);
+    const themeVariables = createSignalThemeCssVariables(themePreferences);
     const rootStyle = document.documentElement.style;
     const previousValues = new Map<string, string>();
 
@@ -48,7 +48,7 @@ export function AntdThemeProvider({
   themePreferences,
 }: AntdThemeProviderProps) {
   const resolvedTheme =
-    theme ?? (themePreferences ? createMarathonDosTheme(themePreferences) : marathonDosTheme);
+    theme ?? (themePreferences ? createSignalTheme(themePreferences) : signalTheme);
 
   useDocumentThemeVariables(themePreferences);
 

@@ -56,16 +56,16 @@ export type {
   SignalWireframeTone,
 } from "./components/SignalWireframe.js";
 export {
-  createMarathonDosTheme,
-  createMarathonDosThemeCssVariables,
-  marathonDosFontStacks,
-  marathonDosPalette,
-  marathonDosTheme,
-  resolveMarathonDosPalette,
-} from "./theme/marathonDosTheme.js";
+  createSignalTheme,
+  createSignalThemeCssVariables,
+  resolveSignalPalette,
+  signalFontStacks,
+  signalPalette,
+  signalTheme,
+} from "./theme/signalTheme.js";
 export type {
   HexColor,
-  MarathonDosPalette,
-  MarathonDosThemeColorPreferences,
-  MarathonDosThemePreferences,
-} from "./theme/marathonDosTheme.js";
+  SignalPalette,
+  SignalThemeColorPreferences,
+  SignalThemePreferences,
+} from "./theme/signalTheme.js";

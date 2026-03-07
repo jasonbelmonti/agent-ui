@@ -1,9 +1,9 @@
 import type { ThemeConfig } from "antd";
 import type { PropsWithChildren } from "react";
-import { type MarathonDosThemePreferences } from "../theme/marathonDosTheme.js";
+import { type SignalThemePreferences } from "../theme/signalTheme.js";
 export type AntdThemeProviderProps = PropsWithChildren<{
     theme?: ThemeConfig;
-    themePreferences?: MarathonDosThemePreferences;
+    themePreferences?: SignalThemePreferences;
 }>;
 export declare function AntdThemeProvider({ children, theme, themePreferences, }: AntdThemeProviderProps): import("react/jsx-runtime").JSX.Element;
 export type InstallStaticAntdThemeOptions = Pick<AntdThemeProviderProps, "theme" | "themePreferences">;

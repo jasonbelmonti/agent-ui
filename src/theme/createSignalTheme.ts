@@ -10,26 +10,31 @@ import {
   toRgbTriplet,
   withAlpha,
 } from "./colorUtils.js";
-import { marathonDosFontStacks, marathonDosPalette } from "./marathonDosPalette.js";
-import type { MarathonDosPalette as ResolvedMarathonDosPalette } from "./marathonDosPalette.js";
-import type { MarathonDosThemePreferences } from "./marathonDosThemePreferences.js";
+import { signalFontStacks, signalPalette } from "./signalPalette.js";
+import type { SignalPalette as ResolvedSignalPalette } from "./signalPalette.js";
+import type { SignalThemePreferences } from "./signalThemePreferences.js";
 
 function resolveBorderRadius(borderRadius = 2) {
   return Math.max(Math.round(borderRadius), 0);
 }
 
-export function resolveMarathonDosPalette(
-  preferences: MarathonDosThemePreferences = {},
-): ResolvedMarathonDosPalette {
+export function resolveSignalPalette(
+  preferences: SignalThemePreferences = {},
+): ResolvedSignalPalette {
   const colors = preferences.colors ?? {};
-  const background = resolveHexColor(colors.background, marathonDosPalette.black);
-  const panel = resolveHexColor(colors.panel, marathonDosPalette.panel);
-  const primary = resolveHexColor(colors.primary, marathonDosPalette.primary);
-  const text = resolveHexColor(colors.text, marathonDosPalette.text);
-  const accent = resolveHexColor(colors.accent, marathonDosPalette.accentViolet);
+
+  if (!Object.values(colors).some((value) => value !== undefined)) {
+    return signalPalette;
+  }
+
+  const background = resolveHexColor(colors.background, signalPalette.black);
+  const panel = resolveHexColor(colors.panel, signalPalette.panel);
+  const primary = resolveHexColor(colors.primary, signalPalette.primary);
+  const text = resolveHexColor(colors.text, signalPalette.text);
+  const accent = resolveHexColor(colors.accent, signalPalette.accentViolet);
 
   return {
-    ...marathonDosPalette,
+    ...signalPalette,
     black: background,
     void: lightenHexColor(background, 0.02),
     panel,
@@ -46,56 +51,57 @@ export function resolveMarathonDosPalette(
   };
 }
 
-export type MarathonThemeStyleVariables = CSSProperties & Record<`--marathon-${string}`, string | number>;
+export type SignalThemeStyleVariables =
+  CSSProperties & Record<`--signal-ui-${string}`, string | number>;
 
-export function createMarathonDosThemeCssVariables(
-  preferences: MarathonDosThemePreferences = {},
-): MarathonThemeStyleVariables {
-  const palette = resolveMarathonDosPalette(preferences);
+export function createSignalThemeCssVariables(
+  preferences: SignalThemePreferences = {},
+): SignalThemeStyleVariables {
+  const palette = resolveSignalPalette(preferences);
   const primaryRgb = toRgbTriplet(palette.primary) ?? "192 254 4";
   const accentRgb = toRgbTriplet(palette.accentViolet) ?? "159 77 255";
 
   return {
-    "--marathon-black": palette.black,
-    "--marathon-void": palette.void,
-    "--marathon-panel": palette.panel,
-    "--marathon-surface": palette.surface,
-    "--marathon-grid": palette.grid,
-    "--marathon-muted": palette.muted,
-    "--marathon-text": palette.text,
-    "--marathon-text-rgb": toRgbTriplet(palette.text) ?? "245 245 240",
-    "--marathon-primary": palette.primary,
-    "--marathon-primary-rgb": primaryRgb,
-    "--marathon-primary-deep": palette.primaryDeep,
-    "--marathon-field-primary": palette.fieldPrimary,
-    "--marathon-field-ink": palette.fieldInk,
-    "--marathon-accent-violet": palette.accentViolet,
-    "--marathon-accent-violet-rgb": accentRgb,
-    "--marathon-field-violet": palette.fieldViolet,
-    "--marathon-warning": palette.warning,
-    "--marathon-error": palette.error,
-    "--marathon-font-ui": marathonDosFontStacks.ui,
-    "--marathon-font-display": marathonDosFontStacks.display,
-    "--marathon-font-display-secondary": marathonDosFontStacks.displaySecondary,
-    "--marathon-font-pixel": marathonDosFontStacks.pixel,
-    "--marathon-fx-signal-ink": lightenHexColor(palette.text, 0.02),
-    "--marathon-fx-signal-accent": palette.fieldPrimary,
-    "--marathon-fx-signal-glow": withAlpha(palette.primary, 0.42),
-    "--marathon-fx-signal-alt-accent": palette.accentViolet,
-    "--marathon-fx-signal-alt-glow": withAlpha(palette.accentViolet, 0.38),
-    "--marathon-loader-accent-rgb": primaryRgb,
-    "--marathon-loader-frame": withAlpha(palette.primary, 0.36),
-    "--marathon-loader-detail": withAlpha(palette.text, 0.72),
-    "--marathon-cube-path-accent-rgb": primaryRgb,
-    "--marathon-cube-path-front-tail": withAlpha(palette.primary, 0.54),
-    "--marathon-cube-path-side-tail": withAlpha(palette.primary, 0.32),
+    "--signal-ui-black": palette.black,
+    "--signal-ui-void": palette.void,
+    "--signal-ui-panel": palette.panel,
+    "--signal-ui-surface": palette.surface,
+    "--signal-ui-grid": palette.grid,
+    "--signal-ui-muted": palette.muted,
+    "--signal-ui-text": palette.text,
+    "--signal-ui-text-rgb": toRgbTriplet(palette.text) ?? "245 245 240",
+    "--signal-ui-primary": palette.primary,
+    "--signal-ui-primary-rgb": primaryRgb,
+    "--signal-ui-primary-deep": palette.primaryDeep,
+    "--signal-ui-field-primary": palette.fieldPrimary,
+    "--signal-ui-field-ink": palette.fieldInk,
+    "--signal-ui-accent-violet": palette.accentViolet,
+    "--signal-ui-accent-violet-rgb": accentRgb,
+    "--signal-ui-field-violet": palette.fieldViolet,
+    "--signal-ui-warning": palette.warning,
+    "--signal-ui-error": palette.error,
+    "--signal-ui-font-ui": signalFontStacks.ui,
+    "--signal-ui-font-display": signalFontStacks.display,
+    "--signal-ui-font-display-secondary": signalFontStacks.displaySecondary,
+    "--signal-ui-font-pixel": signalFontStacks.pixel,
+    "--signal-ui-fx-signal-ink": lightenHexColor(palette.text, 0.02),
+    "--signal-ui-fx-signal-accent": palette.fieldPrimary,
+    "--signal-ui-fx-signal-glow": withAlpha(palette.primary, 0.42),
+    "--signal-ui-fx-signal-alt-accent": palette.accentViolet,
+    "--signal-ui-fx-signal-alt-glow": withAlpha(palette.accentViolet, 0.38),
+    "--signal-ui-loader-accent-rgb": primaryRgb,
+    "--signal-ui-loader-frame": withAlpha(palette.primary, 0.36),
+    "--signal-ui-loader-detail": withAlpha(palette.text, 0.72),
+    "--signal-ui-cube-path-accent-rgb": primaryRgb,
+    "--signal-ui-cube-path-front-tail": withAlpha(palette.primary, 0.54),
+    "--signal-ui-cube-path-side-tail": withAlpha(palette.primary, 0.32),
   };
 }
 
-export function createMarathonDosTheme(
-  preferences: MarathonDosThemePreferences = {},
+export function createSignalTheme(
+  preferences: SignalThemePreferences = {},
 ): ThemeConfig {
-  const palette = resolveMarathonDosPalette(preferences);
+  const palette = resolveSignalPalette(preferences);
   const borderRadius = resolveBorderRadius(preferences.borderRadius);
   const compactRadius = Math.max(borderRadius - 2, 0);
   const headerSurface = lightenHexColor(palette.black, 0.035);
@@ -130,8 +136,8 @@ export function createMarathonDosTheme(
       controlOutline: withAlpha(palette.primary, 0.26),
       controlOutlineWidth: 1,
       lineWidth: 1,
-      fontFamily: marathonDosFontStacks.ui,
-      fontFamilyCode: marathonDosFontStacks.ui,
+      fontFamily: signalFontStacks.ui,
+      fontFamilyCode: signalFontStacks.ui,
       fontSize: 13,
       fontSizeHeading1: 42,
       fontSizeHeading2: 28,

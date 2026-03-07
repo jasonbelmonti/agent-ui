@@ -22,8 +22,8 @@ export type GraphCanvasEdgeDefinition = Edge<GraphCanvasEdgeData>;
 type GraphCanvasEdgeRendererDefinition = Edge<GraphCanvasEdgeData, typeof GRAPH_CANVAS_EDGE_TYPE>;
 
 type EdgeStyle = CSSProperties & {
-  "--marathon-graph-edge-glow"?: string;
-  "--marathon-graph-edge-stroke"?: string;
+  "--signal-ui-graph-edge-glow"?: string;
+  "--signal-ui-graph-edge-stroke"?: string;
 };
 
 function encodeMarkerIdPart(value: string) {
@@ -47,7 +47,7 @@ export function GraphCanvasEdge({
 }: EdgeProps<GraphCanvasEdgeRendererDefinition>) {
   const edgeInstanceId = useId();
   const tone = resolveGraphCanvasTone(data?.tone);
-  const markerId = `marathon-graph-edge-arrow-${encodeMarkerIdPart(edgeInstanceId)}-${encodeMarkerIdPart(id)}`;
+  const markerId = `signal-ui-graph-edge-arrow-${encodeMarkerIdPart(edgeInstanceId)}-${encodeMarkerIdPart(id)}`;
   const markerColor = selected ? graphCanvasToneAccentColor.primary : graphCanvasToneAccentColor[tone];
   const [path, labelX, labelY] = getSmoothStepPath({
     sourcePosition,
@@ -59,8 +59,8 @@ export function GraphCanvasEdge({
   });
   const edgeStyle: EdgeStyle = {
     ...(style ?? {}),
-    "--marathon-graph-edge-glow": graphCanvasToneGlowColor[tone],
-    "--marathon-graph-edge-stroke": graphCanvasToneStrokeColor[tone],
+    "--signal-ui-graph-edge-glow": graphCanvasToneGlowColor[tone],
+    "--signal-ui-graph-edge-stroke": graphCanvasToneStrokeColor[tone],
   };
   const edgeLabel = data?.label ?? label;
 
@@ -82,7 +82,7 @@ export function GraphCanvasEdge({
       </defs>
 
       <BaseEdge
-        className="marathon-graph-edge__path"
+        className="signal-ui-graph-edge__path"
         interactionWidth={interactionWidth ?? 24}
         label={edgeLabel}
         labelBgBorderRadius={0}
@@ -95,7 +95,7 @@ export function GraphCanvasEdge({
         labelShowBg={Boolean(edgeLabel)}
         labelStyle={{
           fill: selected ? "#f9ffef" : "rgba(245, 245, 240, 0.74)",
-          fontFamily: "var(--marathon-font-ui)",
+          fontFamily: "var(--signal-ui-font-ui)",
           fontSize: 10,
           fontWeight: 700,
           letterSpacing: "0.16em",

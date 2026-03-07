@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef, CSSProperties } from "react";
 export type SignalWireframeTone = "primary" | "violet";
-type SignalWireframeStyle = CSSProperties & Record<`--marathon-signal-wireframe-${string}`, string | number>;
+type SignalWireframeStyle = CSSProperties & Record<`--signal-ui-signal-wireframe-${string}`, string | number>;
 type SignalWireframeBaseProps = Omit<ComponentPropsWithoutRef<"div">, "aria-hidden" | "aria-label" | "children" | "role" | "style"> & {
     animated?: boolean;
     detail?: string;
